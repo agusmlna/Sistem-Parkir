@@ -7,6 +7,18 @@
             <div class="col-xl-10 col-lg-12 col-md-9">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
+
+                        {{-- TODO: ubah tampilan pesan error email dan password --}}
+                        {{-- pesan error, email tidak terdaftar --}}
+                        @if (Session::has('errorEmail'))
+                            <h1>{{ Session::get('errorEmail') }}</h1>
+                        @endif
+
+                        {{-- pesan error, password tidak terdaftar --}}
+                        @if (Session::has('errorPassword'))
+                            <h1>{{ Session::get('errorPassword') }}</h1>
+                        @endif
+
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div

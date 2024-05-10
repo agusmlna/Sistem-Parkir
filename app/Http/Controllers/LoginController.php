@@ -70,7 +70,10 @@ class LoginController extends Controller
         $user = User::where('email', $email)
             ->first();
 
-        // TODO: buat pesan ketika salah email atau password
+        // jika email tidak ditemukan di dalam database
+        if (is_null($user)) {
+            return back()->with('errorEmail', 'email tidak terdaftar');
+        }
 
         // user login untuk owner
         if ($user->role_id == 1) {
@@ -82,6 +85,8 @@ class LoginController extends Controller
                 ];
 
                 return redirect('/owner');
+            } else {
+                return back()->with('errorPassword', 'password salah');
             }
         }
 
@@ -95,18 +100,9 @@ class LoginController extends Controller
                 ];
 
                 return redirect('/dashboard');
+            } else {
+                return back()->with('errorPassword', 'password salah');
             }
         }
-
-        // if ($user->password == $password) {
-        //     $data = [
-        //         'id' => $user->id,
-        //         'email' => $user->email,
-        //     ];
-
-        //     return redirect('/admin');
-        // } else {
-        //     return view('auths.signIn');
-        // }
     }
 }
