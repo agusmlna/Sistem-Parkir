@@ -7,7 +7,6 @@
         @section('sidebar')
             @include('layouts.sidebar')
         @show
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -224,7 +223,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Data Motor</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Data Pegawai</h1>
                     <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
                         For more information about DataTables, please visit the <a target="_blank"
                             href="https://datatables.net">official DataTables documentation</a>.</p>
@@ -239,42 +238,73 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Plat Nomor</th>
-                                            <th>Properti</th>
-                                            <th>Jam Masuk</th>
-                                            <th>Jam Keluar</th>
-                                            <th>Tipe Motor</th>
-                                            <th>Biaya</th>
-                                            <th>Detail</th>
+                                            <th>No</th>
+                                            <th>Nama Pegawai</th>
+                                            <th>Tempat, Tanggal Lahir</th>
+                                            <th>Jenis Kelamin</th>
+                                            <th>Agama</th>
+                                            <th>Alamat</th>
+                                            <th>No. Handphone</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Plat Nomor</th>
-                                            <th>Properti</th>
-                                            <th>Jam Masuk</th>
-                                            <th>Jam Keluar</th>
-                                            <th>Tipe Motor</th>
-                                            <th>Biaya</th>
-                                            <th>Detail</th>
+                                            <th>No</th>
+                                            <th>Nama Pegawai</th>
+                                            <th>Tempat, Tanggal Lahir</th>
+                                            <th>Jenis Kelamin</th>
+                                            <th>Agama</th>
+                                            <th>Alamat</th>
+                                            <th>No. Handphone</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <tr>
-                                            <td>F4309NY</td>
-                                            <td>Helm</td>
-                                            <td>12.00</td>
-                                            <td>18.00</td>
-                                            <td>Motor Kecil</td>
-                                            <td>Rp. 5000</td>
+                                            <td>1</td>
+                                            <td>Freddie Mercury</td>
+                                            <td>Bogor, 16 Agustus 1980</td>
+                                            <td>Pria</td>
+                                            <td>Islam</td>
+                                            <td>Jalan Bogor Mediterania no 4</td>
+                                            <td>08778081263</td>
                                             <td>
-                                                <button type="button" class="btn btn-primary"> Proses
+                                                <button type="button" class="btn btn-primary rounded-circle btn-sm"> <i class="fas fa-info-circle"></i>
                                                 </button>
-                                                <button type="button" class="btn btn-success"> Done
-                                                </button>
-                                                <button type="button" class="btn btn-danger"> Delete
+                                                <button type="button" class="btn btn-danger rounded-circle btn-sm"> <i class="fas fa-trash"></i>
                                                 </button>
                                             </td>
+                                        </tr>
+                                        <tr>
+                                          <td>2</td>
+                                          <td>Freddie Mercury</td>
+                                          <td>Bogor, 16 Agustus 1980</td>
+                                          <td>Pria</td>
+                                          <td>Islam</td>
+                                          <td>Jalan Bogor Mediterania no 4</td>
+                                          <td>08778081263</td>
+                                          <td>
+                                            <button type="button" class="btn btn-primary rounded-circle btn-sm"> <i class="fas fa-info-circle"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-danger rounded-circle btn-sm"> <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                        </tr>
+                                        <tr>
+                                          <td>3</td>
+                                          <td>Freddie Mercury</td>
+                                          <td>Bogor, 16 Agustus 1980</td>
+                                          <td>Pria</td>
+                                          <td>Islam</td>
+                                          <td>Jalan Bogor Mediterania no 4</td>
+                                          <td>08778081263</td>
+                                          <td>
+                                            <button type="button" class="btn btn-primary rounded-circle btn-sm"> <i class="fas fa-info-circle"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-danger rounded-circle btn-sm"> <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -292,7 +322,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; SI Parkir 2024</span>
+                        <span>Copyright &copy; Your Website 2020</span>
                     </div>
                 </div>
             </footer>
