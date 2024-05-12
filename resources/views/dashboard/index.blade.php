@@ -1,4 +1,6 @@
-@extends('layouts.main') @section('content')
+@extends('layouts.main') 
+
+@section('content')
 <!-- Page Wrapper -->
 <div id="wrapper">
     @section('sidebar')
