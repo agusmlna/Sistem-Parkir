@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Home;
+use App\Models\Motor;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,15 +30,25 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        Motor::create([
+            'motor' => $request->motor,
+            'plat_nomor' => $request->platNomor,
+            'properti' => $request->properti,
+            'jam_masuk' => Carbon::now(),
+            'tipe_motor' => $request->tipeMotor,
+            'biaya' => $request->biaya,
+            'status' => 'diproses',
+        ]);
+
+        return redirect('/datamotor')->with('success', 'data motor berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Home $report)
+    public function show(Motor $motor)
     {
-        //
     }
 
     /**

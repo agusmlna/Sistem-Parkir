@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DataMotor;
+use App\Models\Motor;
 use Illuminate\Http\Request;
 
 class DataMotorController extends Controller
@@ -12,7 +12,12 @@ class DataMotorController extends Controller
      */
     public function index()
     {
-        return view('dashboard.datamotor');
+        $data = [
+            'title' => 'Detail Data Produk',
+            'dataMotor' => Motor::all()
+        ];
+
+        return view('dashboard.datamotor', $data);
     }
 
     /**
@@ -34,15 +39,14 @@ class DataMotorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(DataMotor $dataMotor)
+    public function show(Motor $motor)
     {
-        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(DataMotor $dataMotor)
+    public function edit(Motor $motor)
     {
         //
     }
@@ -50,7 +54,7 @@ class DataMotorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DataMotor $dataMotor)
+    public function update(Request $request, Motor $motor)
     {
         //
     }
@@ -58,7 +62,7 @@ class DataMotorController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DataMotor $dataMotor)
+    public function destroy(Motor $motor)
     {
         //
     }

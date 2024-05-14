@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-// Route::Resource('/', LoginController::class);
+Route::Resource('/', LoginController::class);
 Route::post('/auth/login', [LoginController::class, 'login']);
 Route::Resource('/dashboard', DashboardController::class);
 Route::Resource('/report', ReportController::class);
 Route::Resource('/datamotor', DataMotorController::class);
 Route::Resource('/datapegawai', DataPegawaiController::class);
-Route::Resource('/home', HomeController::class); 
+Route::Resource('/home', HomeController::class);

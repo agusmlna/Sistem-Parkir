@@ -234,31 +234,33 @@
                         </div>
                         
                         <div class="col px-4 py-3">
-                            <form class="row g-3">
+                            <form class="row g-3" action="/home" method="post">
+                                @csrf
                                 <div class="col-md-6">
-                                  <label for="inputEmail4" class="form-label font-weight-bold">Motor</label>
-                                  <input type="text" class="form-control" id="inputmotor">
+                                  <label for="motor" class="form-label font-weight-bold">Motor</label>
+                                  <input type="text" class="form-control" id="motor" name="motor">
                                 </div>
                                 <div class="col-md-6">
-                                  <label for="inputPassword4" class="form-label font-weight-bold">Plat Nomor</label>
-                                  <input type="text" class="form-control" id="inputplat">
+                                  <label for="platNomor" class="form-label font-weight-bold">Plat Nomor</label>
+                                  <input type="text" class="form-control" id="platNomor" name="platNomor">
                                 </div>
                                 <div class="col-12 pt-2">
-                                  <label for="inputAddress" class="form-label font-weight-bold">Properti</label>
-                                  <input type="text" class="form-control" id="inputAddress" placeholder="Ket. Helm">
+                                  <label for="properti" class="form-label font-weight-bold">Properti</label>
+                                  <input type="text" class="form-control" id="properti" placeholder="Ket. Helm" name="properti">
                                 </div> 
                                 <div class="col-12 pt-2">
-                                  <label for="inputAddress" class="form-label font-weight-bold">Kategori</label> 
-                                  <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+                                  <label for="kategori" class="form-label font-weight-bold">Kategori</label> 
+                                  <select class="form-select" id="kategori" aria-label="Example select with button addon" onchange="selectBox(event)">
                                     <option selected>Choose...</option>
                                     <option value="1">Motor Kecil Rp 5.000</option>
                                     <option value="2">Motor Gede Rp 7.000</option> 
                                   </select>
                                 </div>  
                                 <div class="col-12 pt-2">
-                                  <label for="inputAddress" class="form-label font-weight-bold">Harga</label>
-                                  <input type="text" class="form-control" id="inputAddress" placeholder="Rp 5.000">
-                                </div> 
+                                  <label for="biaya" class="form-label font-weight-bold">Biaya</label>
+                                  <input type="text" class="form-control" id="biaya" placeholder="Rp 5.000" name="biaya" readonly>
+                                </div>
+                                <input type="text" name="tipeMotor" id="tipeMotor" class="d-none" >
                                 <div class="col-12 pt-3">
                                   <button type="submit" class="btn btn-primary">Input</button>
                                 </div>

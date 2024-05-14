@@ -260,22 +260,29 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                        @foreach ($dataMotor as $data)
                                         <tr>
-                                            <td>F4309NY</td>
-                                            <td>Helm</td>
-                                            <td>12.00</td>
-                                            <td>18.00</td>
-                                            <td>Motor Kecil</td>
-                                            <td>Rp. 5000</td>
+                                            <td>{{ $data->plat_nomor }}</td>
+                                            <td>{{ $data->properti }}</td>
+                                            <td>{{ $data->jam_masuk->format('H.i') }}</td>
+                                            <td>{{ $data->jam_keluar }}</td>
+                                            <td>{{ $data->tipe_motor }}</td>
+                                            <td>Rp. {{ $data->biaya }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-primary"> Proses
-                                                </button>
-                                                <button type="button" class="btn btn-success"> Done
-                                                </button>
-                                                <button type="button" class="btn btn-danger"> Delete
-                                                </button>
+                                                @if ($data->status == 'diproses')
+                                                    <button type="button" class="btn btn-primary"> Proses
+                                                    </button>
+                                                @elseif($data->status == 'selesai' )
+                                                    <button type="button" class="btn btn-success"> Done
+                                                    </button>
+                                                @elseif($data->status == 'delete') 
+                                                    <button type="button" class="btn btn-danger"> Delete
+                                                    </button>
+                                                @endif
                                             </td>
                                         </tr>
+                                        @endforeach
+                                        
                                     </tbody>
                                 </table>
                             </div>
