@@ -3,7 +3,6 @@
 @section('content')
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         @section('sidebar')
             @include('layouts.sidebar')
         @show
@@ -223,7 +222,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Data Pegawai</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Home</h1>
                     <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
                         For more information about DataTables, please visit the <a target="_blank"
                             href="https://datatables.net">official DataTables documentation</a>.</p>
@@ -231,205 +230,39 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Tambah Data Pegawai
-                            </button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Pegawai</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h6 class="m-0 font-weight-bold text-primary">Data Parkiran</h6>
+                        </div>
+                        
+                        <div class="col px-4 py-3">
+                            <form class="row g-3">
+                                <div class="col-md-6">
+                                  <label for="inputEmail4" class="form-label font-weight-bold">Motor</label>
+                                  <input type="text" class="form-control" id="inputmotor">
                                 </div>
-                                <div class="modal-body">
-                                <form>
-                                    <div class="row mb-3">
-                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                                        <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="inputEmail3">
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-                                        <div class="col-sm-10">
-                                        <input type="password" class="form-control" id="inputPassword3">
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="inputNama4" class="col-sm-2 col-form-label">Nama</label>
-                                        <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputNama4">
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="inputTTL4" class="col-sm-2 col-form-label">Tempat, Tanggal Lahir</label>
-                                        <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputTTL4">
-                                        </div>
-                                    </div>
-                                    <fieldset class="row mb-3">
-                                        <legend class="col-form-label col-sm-2 pt-0">Jenis Kelamin</legend>
-                                        <div class="col-sm-10">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                                            <label class="form-check-label" for="gridRadios1">
-                                            Pria
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                                            <label class="form-check-label" for="gridRadios2">
-                                            Wanita
-                                            </label>
-                                        </div> 
-                                        </div>
-                                    </fieldset>
-                                    <fieldset class="row mb-3">
-                                        <legend class="col-form-label col-sm-2 pt-0">Agama</legend>
-                                        <div class="col-sm-10">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gridRadios2" id="gridRadios1" value="option1" checked>
-                                            <label class="form-check-label" for="gridRadios1">
-                                            Islam
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gridRadios2" id="gridRadios2" value="option2">
-                                            <label class="form-check-label" for="gridRadios2">
-                                            Kristen
-                                            </label>
-                                        </div>
-                                        <div class="form-check disabled">
-                                            <input class="form-check-input" type="radio" name="gridRadios2" id="gridRadios3" value="option3" >
-                                            <label class="form-check-label" for="gridRadios3">
-                                            Hindu
-                                            </label>
-                                        </div>
-                                        <div class="form-check disabled">
-                                            <input class="form-check-input" type="radio" name="gridRadios2" id="gridRadios3" value="option3" >
-                                            <label class="form-check-label" for="gridRadios3">
-                                            Budha
-                                            </label>
-                                        </div>
-                                        <div class="form-check disabled">
-                                            <input class="form-check-input" type="radio" name="gridRadios2" id="gridRadios3" value="option3" >
-                                            <label class="form-check-label" for="gridRadios3">
-                                            Konghucu
-                                            </label>
-                                        </div>
-                                        </div>
-                                    </fieldset>
-                                    <div class="row mb-3">
-                                        <label for="inputAlamat4" class="col-sm-2 col-form-label">Alamat</label>
-                                        <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputAlamat4">
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="inputNoHP4" class="col-sm-2 col-form-label">No. Handphone</label>
-                                        <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputNoHP4">
-                                        </div>
-                                    </div> 
-                                    <div class="row mb-3">
-                                        <div class="col-sm-10 offset-sm-2">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                            <label class="form-check-label" for="gridCheck1">
-                                            Example checkbox
-                                            </label>
-                                        </div>
-                                        </div>
-                                    </div> 
+                                <div class="col-md-6">
+                                  <label for="inputPassword4" class="form-label font-weight-bold">Plat Nomor</label>
+                                  <input type="text" class="form-control" id="inputplat">
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Submit</button>
+                                <div class="col-12 pt-2">
+                                  <label for="inputAddress" class="form-label font-weight-bold">Properti</label>
+                                  <input type="text" class="form-control" id="inputAddress" placeholder="Ket. Helm">
+                                </div> 
+                                <div class="col-12 pt-2">
+                                  <label for="inputAddress" class="form-label font-weight-bold">Kategori</label> 
+                                  <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+                                    <option selected>Choose...</option>
+                                    <option value="1">Motor Kecil Rp 5.000</option>
+                                    <option value="2">Motor Gede Rp 7.000</option> 
+                                  </select>
+                                </div>  
+                                <div class="col-12 pt-2">
+                                  <label for="inputAddress" class="form-label font-weight-bold">Harga</label>
+                                  <input type="text" class="form-control" id="inputAddress" placeholder="Rp 5.000">
+                                </div> 
+                                <div class="col-12 pt-3">
+                                  <button type="submit" class="btn btn-primary">Input</button>
                                 </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div> 
-
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Pegawai</th>
-                                            <th>Tempat, Tanggal Lahir</th>
-                                            <th>Jenis Kelamin</th>
-                                            <th>Agama</th>
-                                            <th>Alamat</th>
-                                            <th>No. Handphone</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Pegawai</th>
-                                            <th>Tempat, Tanggal Lahir</th>
-                                            <th>Jenis Kelamin</th>
-                                            <th>Agama</th>
-                                            <th>Alamat</th>
-                                            <th>No. Handphone</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Freddie Mercury</td>
-                                            <td>Bogor, 16 Agustus 1980</td>
-                                            <td>Pria</td>
-                                            <td>Islam</td>
-                                            <td>Jalan Bogor Mediterania no 4</td>
-                                            <td>08778081263</td>
-                                            <td>
-                                                <button type="button" class="btn btn-primary rounded-circle btn-sm"> <i class="fas fa-info-circle"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger rounded-circle btn-sm"> <i class="fas fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                          <td>2</td>
-                                          <td>Freddie Mercury</td>
-                                          <td>Bogor, 16 Agustus 1980</td>
-                                          <td>Pria</td>
-                                          <td>Islam</td>
-                                          <td>Jalan Bogor Mediterania no 4</td>
-                                          <td>08778081263</td>
-                                          <td>
-                                            <button type="button" class="btn btn-primary rounded-circle btn-sm"> <i class="fas fa-info-circle"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-danger rounded-circle btn-sm"> <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                        </tr>
-                                        <tr>
-                                          <td>3</td>
-                                          <td>Freddie Mercury</td>
-                                          <td>Bogor, 16 Agustus 1980</td>
-                                          <td>Pria</td>
-                                          <td>Islam</td>
-                                          <td>Jalan Bogor Mediterania no 4</td>
-                                          <td>08778081263</td>
-                                          <td>
-                                            <button type="button" class="btn btn-primary rounded-circle btn-sm"> <i class="fas fa-info-circle"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-danger rounded-circle btn-sm"> <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                              </form>
                         </div>
                     </div>
 
@@ -480,4 +313,4 @@
         </div>
     </div>
 
-@endsection
+ @endsection

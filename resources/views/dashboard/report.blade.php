@@ -268,12 +268,33 @@
                                             <td>Motor Kecil</td>
                                             <td>Rp. 5000</td>
                                             <td>
-                                                <button type="button" class="btn btn-primary"> Proses
-                                                </button>
-                                                <button type="button" class="btn btn-success"> Done
-                                                </button>
-                                                <button type="button" class="btn btn-danger"> Delete
-                                                </button>
+                                            <span class="badge rounded-pill text-bg-primary">Proses</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td>F4309NY</td>
+                                            <td>Helm</td>
+                                            <td>12.00</td>
+                                            <td>18.00</td>
+                                            <td>Motor Kecil</td>
+                                            <td>Rp. 5000</td>
+                                            <td>
+                                            <span class="badge rounded-pill text-bg-success">Selesai</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td>F4309NY</td>
+                                            <td>Helm</td>
+                                            <td>12.00</td>
+                                            <td>18.00</td>
+                                            <td>Motor Kecil</td>
+                                            <td>Rp. 5000</td>
+                                            <td>
+                                            <span class="badge rounded-pill text-bg-danger">Dibatalkan</span>
                                             </td>
                                         </tr>
                                     </tbody>

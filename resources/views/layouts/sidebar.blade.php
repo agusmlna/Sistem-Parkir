@@ -91,6 +91,12 @@
       </div>
   </li>
 
+  <li class="nav-item active">
+      <a class="nav-link" href='/home'>
+          <i class="fas fa-fw fa-table"></i>
+          <span>Home</span></a>
+  </li>  
+
   <!-- Nav Item - Tables -->
   <li class="nav-item active">
       <a class="nav-link" href='/datamotor'>
