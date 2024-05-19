@@ -116,6 +116,12 @@
           <span>Report</span></a>
   </li>
 
+  <li class="nav-item active">
+      <a class="nav-link" href="/komplain">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Komplain</span></a>
+  </li>
+
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">
 
