@@ -44,7 +44,8 @@
                                             <th>Tipe Motor</th>
                                             <th>Biaya</th>
                                             <th>Detail</th>
-                                        </tr>
+                                            <th>Aksi</th>
+                                        </tr>   
                                     </thead>
                                     <tfoot>
                                         <tr>
@@ -55,6 +56,7 @@
                                             <th>Tipe Motor</th>
                                             <th>Biaya</th>
                                             <th>Detail</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -77,6 +79,10 @@
                                                     <button type="button" class="btn btn-danger"> Delete
                                                     </button>
                                                 @endif
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-primary rounded-circle btn-sm"> <i class="fas fa-check"></i>
+                                                </button>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -113,6 +119,27 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+
+    {{-- Modal selesai parkir --}}
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Pegawai</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <form>
+            </form>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+            </div>
+        </div>
+        </div>
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
