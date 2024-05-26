@@ -54,9 +54,18 @@ class DataMotorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Motor $motor)
+    public function update(Request $request, int $id)
     {
-        //
+        //upload image
+        $image = $request->file('bukti-bayar');
+        $image->storeAs('public/images', $image->hashName());
+
+        Motor::where('id', $id)
+            ->update([
+                'bukti_bayar' => $image->hashName(),
+                'status' => 'selesai'
+            ]);
+        return redirect('/datamotor');
     }
 
     /**
@@ -65,5 +74,19 @@ class DataMotorController extends Controller
     public function destroy(Motor $motor)
     {
         //
+    }
+
+    public function saveBuktiBayar($id, Request $request)
+    {
+        dd('dasd');
+        //upload image
+        $image = $request->file('image');
+        $image->storeAs('public/images', $image->hashName());
+
+        Motor::where('id', $id)
+            ->update([
+                'bukti_bayar' => $image->hashName(),
+                'status' => 'selesai'
+            ]);
     }
 }

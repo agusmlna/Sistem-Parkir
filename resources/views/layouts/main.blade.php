@@ -47,7 +47,8 @@
     <script src={{ asset("js/demo/datatables-demo.js") }}></script>
 
     {{-- custom js --}}
-    <script src={{ asset("js/inputMotor.js") }}></script>
+    <script src={{ asset("js/input-motor.js") }}></script>
+    <script src={{ asset("js/data-motor.js") }}></script>
 </body>
 
 </html>

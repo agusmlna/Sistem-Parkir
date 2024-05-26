@@ -81,7 +81,8 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-primary rounded-circle btn-sm"> <i class="fas fa-check"></i>
+                                                <button type="button" class="btn btn-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#selesaiParkir" onclick="dataToModal({{ $data->id }})"> 
+                                                    <i class="fas fa-check"></i>
                                                 </button>
                                             </td>
                                         </tr>
@@ -121,7 +122,7 @@
     </a>
 
     {{-- Modal selesai parkir --}}
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="selesaiParkir" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
             <div class="modal-header">
@@ -129,13 +130,22 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            <form>
-            </form>
+                <h1>Webcam Capture</h1>
+                <video id="videoElement" autoplay></video>
+                <button id="startButton">Start Webcam</button>
+                <button id="captureButton">Capture Photo</button>
+                <canvas id="canvasElement" style="display: none;"></canvas>
+                <img id="photoElement" style="display: none;">
                 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Submit</button>
+                <form onsubmit="return submitBuktiBayar(this)" method="post" id="form" enctype="multipart/form-data">
+                    @csrf
+                    @method('put')
+                    <input type="file" id="buktiBayar" name="bukti-bayar" hidden>
+                    <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
             </div>
             </div>
         </div>
