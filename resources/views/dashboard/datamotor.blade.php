@@ -84,6 +84,52 @@
                                                 <button type="button" class="btn btn-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#selesaiParkir" onclick="dataToModal({{ $data->id }})"> 
                                                     <i class="fas fa-check"></i>
                                                 </button>
+
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#komplainParkir">
+                                                Komplain
+                                                </button>
+
+                                                <!-- Modal komplain -->
+                                                <div class="modal fade" id="komplainParkir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body"> 
+                                                            <form class="row g-3" action="/home" method="post">
+                                                                @csrf
+                                                                <div class="col-md-6">
+                                                                <label for="motor" class="form-label font-weight-bold">Motor</label>
+                                                                <input type="text" class="form-control" id="motor" name="motor">
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                <label for="platNomor" class="form-label font-weight-bold">Plat Nomor</label>
+                                                                <input type="text" class="form-control" id="platNomor" name="platNomor">
+                                                                </div>
+                                                                <div class="col-12 pt-2">
+                                                                <label for="properti" class="form-label font-weight-bold">Keterangan</label>
+                                                                <input type="text" class="form-control" id="properti" placeholder="Kehilangan Pacar" name="keterangan">
+                                                                </div> 
+                                                                <div class="col-12 pt-2">
+                                                                <label for="kategori" class="form-label font-weight-bold">Kategori</label> 
+                                                                <select class="form-select" id="kategori" aria-label="Example select with button addon" onchange="selectBox(event)">
+                                                                    <option selected>Choose...</option>
+                                                                    <option value="1">Motor Kecil </option>
+                                                                    <option value="2">Motor Gede </option> 
+                                                                </select>
+                                                                </div> 
+                                                                <input type="text" name="tipeMotor" id="tipeMotor" class="d-none" > 
+                                                            </form>
+                                                        </div> 
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                                        </div> 
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                         @endforeach
