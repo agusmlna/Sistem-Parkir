@@ -58,44 +58,27 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                        @foreach ($dataMotor as $data)
                                         <tr>
-                                            <td>F4309NY</td>
-                                            <td>Helm</td>
-                                            <td>12.00</td>
-                                            <td>18.00</td>
-                                            <td>Motor Kecil</td>
-                                            <td>Rp. 5000</td>
+                                            <td>{{ $data->plat_nomor }}</td>
+                                            <td>{{ $data->properti }}</td>
+                                            <td>{{ $data->jam_masuk->format('H.i') }}</td>
+                                            <td>{{  $data->jam_keluar != null ? $data->jam_keluar->format('H.i') : '' }}</td>
+                                            <td>{{ $data->tipe_motor }}</td>
+                                            <td>Rp. {{ $data->biaya }}</td>
                                             <td>
-                                            <span class="badge rounded-pill text-bg-primary">Proses</span>
+                                                @if ($data->status == 'diproses')
+                                                    <span class="badge rounded-pill text-bg-primary">Proses</span>
+                                                @elseif($data->status == 'selesai' )
+                                                    <span class="badge rounded-pill text-bg-success">Selesai</span>
+                                                @elseif($data->status == 'delete') 
+                                                    <span class="badge rounded-pill text-bg-danger">Dibatalkan</span>
+                                                @endif
                                             </td>
                                         </tr>
+                                        @endforeach   
                                     </tbody>
-                                    <tbody>
-                                        <tr>
-                                            <td>F4309NY</td>
-                                            <td>Helm</td>
-                                            <td>12.00</td>
-                                            <td>18.00</td>
-                                            <td>Motor Kecil</td>
-                                            <td>Rp. 5000</td>
-                                            <td>
-                                            <span class="badge rounded-pill text-bg-success">Selesai</span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <tbody>
-                                        <tr>
-                                            <td>F4309NY</td>
-                                            <td>Helm</td>
-                                            <td>12.00</td>
-                                            <td>18.00</td>
-                                            <td>Motor Kecil</td>
-                                            <td>Rp. 5000</td>
-                                            <td>
-                                            <span class="badge rounded-pill text-bg-danger">Dibatalkan</span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
+                                    
                                 </table>
                             </div>
                         </div>

@@ -19,6 +19,7 @@ Route::Resource('/dashboard', DashboardController::class);
 Route::Resource('/report', ReportController::class);
 Route::Resource('/datamotor', DataMotorController::class);
 Route::post('/datamotor/upload-bukti-bayar/{id}', [DataMotorController::class, 'saveBuktiBayar']);
+Route::put('/datamotor/komplain/{id}', [DataMotorController::class, 'komplain']);
 Route::Resource('/datapegawai', DataPegawaiController::class);
 Route::Resource('/home', HomeController::class);
 Route::Resource('/komplain', KomplainController::class);

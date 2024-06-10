@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Komplain;
+use App\Models\Motor;
 use Illuminate\Http\Request;
 
 class KomplainController extends Controller
@@ -12,7 +13,11 @@ class KomplainController extends Controller
      */
     public function index()
     {
-        return view('dashboard.komplain');
+        $data = [
+            'title' => 'Detail Data Produk',
+            'dataMotor' => Motor::whereNotNull('komplain')->get(),
+        ];
+        return view('dashboard.komplain', $data);
     }
 
     /**

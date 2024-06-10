@@ -14,7 +14,7 @@ function dataToModal(id) {
 }
 
 function submitBuktiBayar(form) {
-    form.action = `/datamotor/1`;
+    form.action = `/datamotor/${_id}`;
 }
 
 async function startWebcam() {
@@ -53,3 +53,29 @@ function capturePhoto() {
 }
 
 captureButton.addEventListener("click", capturePhoto);
+
+//
+//
+//
+let _idForComplain;
+let komplainMotor = document.getElementById("inputKomplainMotor");
+let komplainPlatNomor = document.getElementById("inputKomplainPlatNomor");
+let komplainTipeMotor = document.getElementById("inputKomplainTipeMotor");
+
+function dataToModalComplain(motor) {
+    console.log(motor);
+    _idForComplain = motor["id"];
+
+    komplainMotor.value = motor["motor"];
+    komplainPlatNomor.value = motor["plat_nomor"];
+
+    if (motor["tipe_motor"] == "Motor Kecil") {
+        komplainTipeMotor.selectedIndex = 1;
+    } else {
+        komplainTipeMotor.selectedIndex = 2;
+    }
+}
+
+function submitKomplain(form) {
+    form.action = `/datamotor/komplain/${_idForComplain}`;
+}

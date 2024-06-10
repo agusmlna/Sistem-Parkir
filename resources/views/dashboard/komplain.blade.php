@@ -260,31 +260,35 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                        @php
+                                            $i = 0;
+                                        @endphp
+
+                                        @foreach ($dataMotor as $data)
+                                        
+                                        @php
+                                            $i++
+                                        @endphp
                                         <tr>
-                                            <td>1</td>
-                                            <td>F4309NY</td>
-                                            <td>12.00</td>
-                                            <td>18.00</td>
-                                            <td>Motor Kecil</td>
-                                            <td>Kehilangan Helm dan rantai</td>
+                                            <td>{{ $i }}</td>
+                                            <td>{{ $data->plat_nomor }}</td>
+                                            <td>{{ $data->jam_masuk->format('H.i') }}</td>
+                                            <td>{{  $data->jam_keluar != null ? $data->jam_keluar->format('H.i') : '' }}</td>
+                                            <td>{{ $data->tipe_motor }}</td>
+                                            <td>{{ $data->komplain }}</td>
                                             <td>
-                                            <span class="badge rounded-pill text-bg-primary">Proses</span>
+                                                @if ($data->status == 'diproses')
+                                                    <span class="badge rounded-pill text-bg-primary">Proses</span>
+                                                @elseif($data->status == 'selesai' )
+                                                    <span class="badge rounded-pill text-bg-success">Selesai</span>
+                                                @elseif($data->status == 'delete') 
+                                                    <span class="badge rounded-pill text-bg-danger">Dibatalkan</span>
+                                                @endif
                                             </td>
                                         </tr>
+                                        @endforeach   
                                     </tbody>
-                                    <tbody>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>F4309NY</td>
-                                            <td>12.00</td>
-                                            <td>18.00</td>
-                                            <td>Motor Kecil</td>
-                                            <td>Kehilangan Helm</td>
-                                            <td>
-                                            <span class="badge rounded-pill text-bg-success">selesai</span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
+                                    
                                 </table>
                             </div>
                         </div>
