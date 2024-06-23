@@ -79,6 +79,7 @@ class HomeController extends Controller
 
         $data = [
             'title' => 'Struk',
+            'date' => date('m/d/Y'),
             'data' => Motor::where('id', $id)->first()
         ];
         return view('dashboard.struk', $data);
