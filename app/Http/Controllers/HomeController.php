@@ -31,7 +31,7 @@ class HomeController extends Controller
     public function store(Request $request)
     {
 
-        Motor::create([
+        $motor = Motor::create([
             'motor' => $request->motor,
             'plat_nomor' => $request->platNomor,
             'properti' => $request->properti,
@@ -41,7 +41,7 @@ class HomeController extends Controller
             'status' => 'diproses',
         ]);
 
-        return redirect('/datamotor')->with('success', 'data motor berhasil ditambahkan');
+        return redirect()->route('struk', [$motor]);
     }
 
     /**
@@ -73,5 +73,15 @@ class HomeController extends Controller
     public function destroy(Home $report)
     {
         //
+    }
+     public function struk($id)
+    {
+
+        $data = [
+            'title' => 'Struk',
+            'data' => Motor::where('id', $id)->get() 
+
+        ];
+        return view('dashboard.struk', $data);
     }
 }

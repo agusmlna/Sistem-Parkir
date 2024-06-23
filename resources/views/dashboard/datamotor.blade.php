@@ -22,21 +22,18 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Data Motor</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
-
+                    <h1 class="h3 mb-2 text-gray-800">Data Motor</h1> 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data Motor</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>Motor</th>
                                             <th>Plat Nomor</th>
                                             <th>Properti</th>
                                             <th>Jam Masuk</th>
@@ -45,10 +42,12 @@
                                             <th>Biaya</th>
                                             <th>Detail</th>
                                             <th>Aksi</th>
+                                            <th>Komplain</th>
                                         </tr>   
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th>Motor</th>
                                             <th>Plat Nomor</th>
                                             <th>Properti</th>
                                             <th>Jam Masuk</th>
@@ -57,11 +56,13 @@
                                             <th>Biaya</th>
                                             <th>Detail</th>
                                             <th>Aksi</th>
+                                            <th>Komplain</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         @foreach ($dataMotor as $data)
                                         <tr>
+                                            <td>{{ $data->motor }}</td>
                                             <td>{{ $data->plat_nomor }}</td>
                                             <td>{{ $data->properti }}</td>
                                             <td>{{ $data->jam_masuk->format('H.i') }}</td>
@@ -82,12 +83,19 @@
                                             </td>
                                             <td>
                                                 <button type="button" class="btn btn-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#selesaiParkir" onclick="dataToModal({{ $data->id }})"> 
-                                                    <i class="fas fa-check"></i>
+                                                    <i class="fas fa-qrcode"></i>
                                                 </button>
-
+                                                <button type="button" class="btn btn-danger rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target=" " > 
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target=" " > 
+                                                    <i class="fas fa-money-bill"></i>
+                                                </button>
+                                            </td>
+                                            <td>
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#komplainParkir">
-                                                Komplain
+                                                <i class="fas fa-info"></i>
                                                 </button>
 
                                                 <!-- Modal komplain -->
@@ -95,7 +103,7 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Input Komplainan</h1>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body"> 
