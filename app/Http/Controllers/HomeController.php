@@ -74,13 +74,12 @@ class HomeController extends Controller
     {
         //
     }
-     public function struk($id)
+    public function struk($id)
     {
 
         $data = [
             'title' => 'Struk',
-            'data' => Motor::where('id', $id)->get() 
-
+            'data' => Motor::where('id', $id)->first()
         ];
         return view('dashboard.struk', $data);
     }

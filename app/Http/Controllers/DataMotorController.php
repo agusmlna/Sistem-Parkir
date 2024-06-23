@@ -15,7 +15,7 @@ class DataMotorController extends Controller
     {
         $data = [
             'title' => 'Detail Data Produk',
-            'dataMotor' => Motor::where('status', 'diproses')->get(),
+            'dataMotor' => Motor::whereDate('created_at', date('Y-m-d'))->get(),
         ];
 
         return view('dashboard.datamotor', $data);
@@ -57,7 +57,40 @@ class DataMotorController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        //upload image
+        // //upload image
+        // $image = $request->file('bukti-bayar');
+        // $image->storeAs('public/images', $image->hashName());
+
+        // Motor::where('id', $id)
+        //     ->update([
+        //         'bukti_bayar' => $image->hashName(),
+        //         'status' => 'selesai',
+        //         'jam_keluar' => Carbon::now(),
+        //     ]);
+        // return redirect('/datamotor');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Motor $motor)
+    {
+        //
+    }
+
+    public function cash($id, Request $request)
+    {
+        Motor::where('id', $id)
+            ->update([
+                'status' => 'selesai',
+                'jam_keluar' => Carbon::now(),
+            ]);
+        return redirect('/datamotor');
+    }
+
+    public function transfer($id, Request $request)
+    {
+        // upload image
         $image = $request->file('bukti-bayar');
         $image->storeAs('public/images', $image->hashName());
 
@@ -69,27 +102,6 @@ class DataMotorController extends Controller
             ]);
         return redirect('/datamotor');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Motor $motor)
-    {
-        //
-    }
-
-    // public function saveBuktiBayar($id, Request $request)
-    // {
-    //     //upload image
-    //     $image = $request->file('image');
-    //     $image->storeAs('public/images', $image->hashName());
-
-    //     Motor::where('id', $id)
-    //         ->update([
-    //             'bukti_bayar' => $image->hashName(),
-    //             'status' => 'selesai'
-    //         ]);
-    // }
 
     public function komplain($id, Request $request)
     {

@@ -1,6 +1,7 @@
 @extends('layouts.main') 
 
 @section('content')
+
 <!-- Page Wrapper -->
 <div id="wrapper">
     @section('sidebar')
@@ -22,7 +23,7 @@
                 >
                     <h1 class="h3 mb-0 text-gray-800 fw-bold">Struk Parkiran</h1>
                     <a
-                        href="/generate-pdf"
+                        href="/generate-pdf/{{ $data->id }}"
                         class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                         ><i class="fas fa-download fa-sm text-white-50"></i>
                         Generate Report</a
@@ -36,9 +37,9 @@
                         <div class="card shadow mb-4">
                             <div class="card-header py-3 text-center">
                                 <h3 class="m-0 font-weight-bold text-primary">
-                                    Transaksi : 1
+                                    Transaksi : {{ $data->id }}
                                 </h3>
-                                <h4>Minggu, 24/06/2024</h4>
+                                <h4>{{ $date }}</h4>
                             </div>
                             <div class="row justify-content-between">
                                 <div class="col-4 pl-5 ml-5 py-3">

@@ -14,7 +14,7 @@ function dataToModal(id) {
 }
 
 function submitBuktiBayar(form) {
-    form.action = `/datamotor/${_id}`;
+    form.action = `/datamotor/transfer/${_id}`;
 }
 
 async function startWebcam() {

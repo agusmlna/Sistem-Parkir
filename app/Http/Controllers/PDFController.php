@@ -1,11 +1,12 @@
 <?php
-  
+
 namespace App\Http\Controllers;
-   
+
+use App\Models\Motor;
 use Illuminate\Http\Request;
 use App\Models\User;
 use PDF;
-    
+
 class PDFController extends Controller
 {
     /**
@@ -13,19 +14,18 @@ class PDFController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function generatePDF()
+    public function generatePDF($id)
     {
-        $users = User::get();
-    
+        $motor = Motor::where('id', $id)->first();
+
         $data = [
-            'title' => 'Welcome to ItSolutionStuff.com',
+            'title' => 'Struk',
             'date' => date('m/d/Y'),
-            'users' => $users
-        ]; 
-              
-        PDF::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif']);
-        $pdf = PDF::loadView('dashboard.pdfstruk', $data)->setPaper('a4', 'landscape');
-       
-        return $pdf->download('itsolutionstuff.pdf');
+            'data' => $motor
+        ];
+
+        $pdf = PDF::loadView('dashboard.pdfstruk', $data);
+
+        return $pdf->download('struk-' . $id . '.pdf');
     }
 }

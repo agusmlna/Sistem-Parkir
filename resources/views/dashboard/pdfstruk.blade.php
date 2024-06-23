@@ -17,26 +17,24 @@
                         <div class="card shadow mb-4">
                             <div class="card-header py-3 text-center">
                                 <h3 class="m-0 font-weight-bold text-primary">
-                                    Transaksi : 1
+                                    Transaksi : {{ $data->id }}
                                 </h3>
-                                <h4>Minggu, 24/06/2024</h4>
+                                <h4>{{ $date }}</h4>
                             </div>
                             <div class="row justify-content-between">
                                 <div class="col-4 pl-5 ml-5 py-3">
-                                <h5>Nama Motor</h5>
-                                <h5>Plat Nompor</h5>
-                                <h5>Jam Masuk</h5>
-                                <h5>Jam Keluar</h5>
-                                <h5>Jenis Motor</h5>
-                                <h5>Total Harga</h5>
+                                    <h5>Nama Motor</h5>
+                                    <h5>Plat Nompor</h5>
+                                    <h5>Jam Masuk</h5>
+                                    <h5>Jenis Motor</h5>
+                                    <h5>Total Harga</h5>
                                 </div>
                                 <div class="col-4 pl-5 ml-5 py-3">   
-                                <h5>Vario</h5>
-                                <h5>F4039NY</h5>
-                                <h5>11.30</h5>
-                                <h5>20.00</h5>
-                                <h5>Motor Gede</h5>
-                                <h5>Rp.7000</h5>
+                                    <h5>{{$data->motor}}</h5>
+                                    <h5>{{$data->plat_nomor}}</h5> 
+                                    <h5>{{ $data->jam_masuk->format('H.i') }}</h5>
+                                    <h5>{{ $data->tipe_motor }}</h5>
+                                    <h5>{{ $data->biaya }}</h5>
                                 </div>
                             </div>
                             <div class="card-header py-3 text-center">

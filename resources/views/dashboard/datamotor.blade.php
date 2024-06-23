@@ -88,9 +88,9 @@
                                                 <button type="button" class="btn btn-danger rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target=" " > 
                                                     <i class="fas fa-trash"></i>
                                                 </button>
-                                                <button type="button" class="btn btn-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target=" " > 
+                                                <a class="btn btn-primary rounded-circle btn-sm" href='/datamotor/cash/{{ $data->id }}' > 
                                                     <i class="fas fa-money-bill"></i>
-                                                </button>
+                                                </a>
 
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#komplainParkir">
