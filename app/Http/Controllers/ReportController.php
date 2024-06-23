@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Motor;
 use App\Models\Report;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,12 @@ class ReportController extends Controller
      */
     public function index()
     {
-        return view('dashboard.report');
+        $data = [
+            'title' => 'Report',
+            'dataMotor' => Motor::all()
+        ];
+
+        return view('dashboard.report', $data);
     }
 
     /**

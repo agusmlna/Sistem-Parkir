@@ -66,7 +66,7 @@
                                             <td>{{ $data->plat_nomor }}</td>
                                             <td>{{ $data->properti }}</td>
                                             <td>{{ $data->jam_masuk->format('H.i') }}</td>
-                                            <td>{{ $data->jam_keluar }}</td>
+                                            <td>{{  $data->jam_keluar != null ? $data->jam_keluar->format('H.i') : '' }}</td>
                                             <td>{{ $data->tipe_motor }}</td>
                                             <td>Rp. {{ $data->biaya }}</td>
                                             <td>
@@ -74,10 +74,10 @@
                                                     <button type="button" class="btn btn-primary"> Proses
                                                     </button>
                                                 @elseif($data->status == 'selesai' )
-                                                    <button type="button" class="btn btn-success"> Done
+                                                    <button type="button" class="btn btn-success"> Selesai
                                                     </button>
                                                 @elseif($data->status == 'delete') 
-                                                    <button type="button" class="btn btn-danger"> Delete
+                                                    <button type="button" class="btn btn-danger"> Dibatalkan
                                                     </button>
                                                 @endif
                                             </td>
@@ -91,11 +91,10 @@
                                                 <button type="button" class="btn btn-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target=" " > 
                                                     <i class="fas fa-money-bill"></i>
                                                 </button>
-                                            </td>
-                                            <td>
+
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#komplainParkir">
-                                                <i class="fas fa-info"></i>
+                                                Komplain
                                                 </button>
 
                                                 <!-- Modal komplain -->
@@ -103,7 +102,7 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Input Komplainan</h1>
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body"> 
@@ -141,7 +140,6 @@
                                             </td>
                                         </tr>
                                         @endforeach
-                                        
                                     </tbody>
                                 </table>
                             </div>
@@ -222,6 +220,48 @@
                     <a class="btn btn-primary" href="login.html">Logout</a>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Modal komplain -->
+    <div class="modal fade" id="komplainParkir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body"> 
+                <form onsubmit="return submitKomplain(this)" class="row g-3" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('put')
+                    <div class="col-md-6">
+                    <label for="motor" class="form-label font-weight-bold">Motor</label>
+                    <input type="text" class="form-control" id="inputKomplainMotor" name="motor">
+                    </div>
+                    <div class="col-md-6">
+                    <label for="platNomor" class="form-label font-weight-bold">Plat Nomor</label>
+                    <input type="text" class="form-control" id="inputKomplainPlatNomor" name="platNomor">
+                    </div>
+                    <div class="col-12 pt-2">
+                        <label for="kategori" class="form-label font-weight-bold">Kategori</label> 
+                        <select class="form-select" id="inputKomplainTipeMotor" aria-label="Example select with button addon" onchange="selectBox(event)">
+                            <option selected>Choose...</option>
+                            <option value="1">Motor Kecil </option>
+                            <option value="2">Motor Gede </option> 
+                        </select>
+                        {{-- <input type="text" name="inputKomplainTipeMotor" id="tipeMotor" class="d-none" >  --}}
+                    </div> 
+                    <div class="col-12 pt-2">
+                        <label for="properti" class="form-label font-weight-bold">Keterangan</label>
+                        <input type="text" class="form-control" id="inputKomplainProperti" placeholder="Kehilangan Pacar" name="komplain">
+                    </div> 
+                </div> 
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div> 
+            </form>
         </div>
     </div>
 

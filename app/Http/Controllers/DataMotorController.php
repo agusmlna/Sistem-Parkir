@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Motor;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DataMotorController extends Controller
@@ -14,7 +15,7 @@ class DataMotorController extends Controller
     {
         $data = [
             'title' => 'Detail Data Produk',
-            'dataMotor' => Motor::all()
+            'dataMotor' => Motor::where('status', 'diproses')->get(),
         ];
 
         return view('dashboard.datamotor', $data);
@@ -63,7 +64,8 @@ class DataMotorController extends Controller
         Motor::where('id', $id)
             ->update([
                 'bukti_bayar' => $image->hashName(),
-                'status' => 'selesai'
+                'status' => 'selesai',
+                'jam_keluar' => Carbon::now(),
             ]);
         return redirect('/datamotor');
     }
@@ -76,17 +78,25 @@ class DataMotorController extends Controller
         //
     }
 
-    public function saveBuktiBayar($id, Request $request)
-    {
-        dd('dasd');
-        //upload image
-        $image = $request->file('image');
-        $image->storeAs('public/images', $image->hashName());
+    // public function saveBuktiBayar($id, Request $request)
+    // {
+    //     //upload image
+    //     $image = $request->file('image');
+    //     $image->storeAs('public/images', $image->hashName());
 
+    //     Motor::where('id', $id)
+    //         ->update([
+    //             'bukti_bayar' => $image->hashName(),
+    //             'status' => 'selesai'
+    //         ]);
+    // }
+
+    public function komplain($id, Request $request)
+    {
         Motor::where('id', $id)
             ->update([
-                'bukti_bayar' => $image->hashName(),
-                'status' => 'selesai'
+                'komplain' => $request->komplain,
             ]);
+        return redirect('/datamotor');
     }
 }
