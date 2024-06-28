@@ -30,8 +30,58 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Laporan Parkiran</h6>
                         </div>
+                        <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                            <i class="fa fa-calendar"></i>&nbsp;
+                            <span></span> <i class="fa fa-caret-down"></i>
+                        </div>
+                        <!-- <div class="col-md-5 mt-3"> 
+                                <div class="col">
+                                    <div class="row">
+                                        <label for="tanggal-2" class="col-3 col-form-label">Date</label>
+                                        <div class="col-5 pb-3">
+                                            <div class="input-group date" id="datepicker-2">
+                                                <input type="text" class="form-control" id="inputTanggal-2" name="tanggal-2" />
+                                                <span class="input-group-append">
+                                                    <span class="input-group-text bg-light d-block">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <div class="col">
+                                    <div class="row">
+                                        <label for="tanggal-2" class="col-3 col-form-label">S/D</label>
+                                        <div class="col-5 pb-3">
+                                            <div class="input-group date" id="datepicker-2">
+                                                <input type="text" class="form-control" id="inputTanggal-2" name="tanggal-2" />
+                                                <span class="input-group-append">
+                                                    <span class="input-group-text bg-light d-block">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                            <div class="row">
+                                <div class="col">
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                                        <button class="btn btn-primary me-md-1 ml-2" type="submit"><i class="fa-solid fa-filter"></i>Filter</button>
+                                        <button type="reset" class="btn btn-outline-dark">Reset</button> 
+                                            <a
+                                                href="/generate-pdf"
+                                                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                                ><i class="fas fa-download fa-sm text-white-50"></i>
+                                                Generate Report</a
+                                            > 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  -->
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

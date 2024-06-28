@@ -34,10 +34,21 @@
                         <div class="col px-4 py-3">
                             <form class="row g-3" action="/home" method="post">
                                 @csrf
-                                <div class="col-md-6">
-                                  <label for="motor" class="form-label font-weight-bold">Motor</label>
-                                  <input type="text" class="form-control" id="motor" name="motor">
+                                <div class="col-12 pt-2 mb-3">
+                                        <label for="jenismotor" class="form-label font-weight-bold">Jenis Motor</label> 
+                                        <select class="form-select" id="jenismotor" aria-label="Example select with button addon" onchange="selectBox(event)">
+                                            <option selected>Choose...</option>
+                                            <option value="Honda">Honda</option>
+                                            <option value="Yamaha">Yamaha</option>
+                                            <option value="Kawasaki">Kawasaki</option>
+                                            <option value="Suzuki">Suzuki</option>
+                                            <option value="BMW">BMW</option>
+                                        </select>
                                 </div>
+                                <div class="col-md-6">
+                                  <label for="motor" class="form-label font-weight-bold">Nama Motor</label>
+                                  <input type="text" class="form-control" id="motor" name="motor">
+                                </div>  
                                 <div class="col-md-6">
                                   <label for="platNomor" class="form-label font-weight-bold">Plat Nomor</label>
                                   <input type="text" class="form-control" id="platNomor" name="platNomor">

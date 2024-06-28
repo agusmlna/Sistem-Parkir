@@ -84,42 +84,7 @@
                                             </label>
                                         </div> 
                                         </div>
-                                    </fieldset>
-                                    <fieldset class="row mb-3">
-                                        <legend class="col-form-label col-sm-2 pt-0">Agama</legend>
-                                        <div class="col-sm-10">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gridRadios2" id="gridRadios1" value="option1" checked>
-                                            <label class="form-check-label" for="gridRadios1">
-                                            Islam
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gridRadios2" id="gridRadios2" value="option2">
-                                            <label class="form-check-label" for="gridRadios2">
-                                            Kristen
-                                            </label>
-                                        </div>
-                                        <div class="form-check disabled">
-                                            <input class="form-check-input" type="radio" name="gridRadios2" id="gridRadios3" value="option3" >
-                                            <label class="form-check-label" for="gridRadios3">
-                                            Hindu
-                                            </label>
-                                        </div>
-                                        <div class="form-check disabled">
-                                            <input class="form-check-input" type="radio" name="gridRadios2" id="gridRadios3" value="option3" >
-                                            <label class="form-check-label" for="gridRadios3">
-                                            Budha
-                                            </label>
-                                        </div>
-                                        <div class="form-check disabled">
-                                            <input class="form-check-input" type="radio" name="gridRadios2" id="gridRadios3" value="option3" >
-                                            <label class="form-check-label" for="gridRadios3">
-                                            Konghucu
-                                            </label>
-                                        </div>
-                                        </div>
-                                    </fieldset>
+                                    </fieldset> 
                                     <div class="row mb-3">
                                         <label for="inputAlamat4" class="col-sm-2 col-form-label">Alamat</label>
                                         <div class="col-sm-10">
@@ -160,8 +125,7 @@
                                             <th>No</th>
                                             <th>Nama Pegawai</th>
                                             <th>Tempat, Tanggal Lahir</th>
-                                            <th>Jenis Kelamin</th>
-                                            <th>Agama</th>
+                                            <th>Jenis Kelamin</th> 
                                             <th>Alamat</th>
                                             <th>No. Handphone</th>
                                             <th>Aksi</th>
@@ -172,8 +136,7 @@
                                             <th>No</th>
                                             <th>Nama Pegawai</th>
                                             <th>Tempat, Tanggal Lahir</th>
-                                            <th>Jenis Kelamin</th>
-                                            <th>Agama</th>
+                                            <th>Jenis Kelamin</th> 
                                             <th>Alamat</th>
                                             <th>No. Handphone</th>
                                             <th>Aksi</th>
@@ -184,8 +147,7 @@
                                             <td>1</td>
                                             <td>Freddie Mercury</td>
                                             <td>Bogor, 16 Agustus 1980</td>
-                                            <td>Pria</td>
-                                            <td>Islam</td>
+                                            <td>Pria</td> 
                                             <td>Jalan Bogor Mediterania no 4</td>
                                             <td>08778081263</td>
                                             <td>
@@ -199,8 +161,7 @@
                                           <td>2</td>
                                           <td>Freddie Mercury</td>
                                           <td>Bogor, 16 Agustus 1980</td>
-                                          <td>Pria</td>
-                                          <td>Islam</td>
+                                          <td>Pria</td> 
                                           <td>Jalan Bogor Mediterania no 4</td>
                                           <td>08778081263</td>
                                           <td>
@@ -214,8 +175,7 @@
                                           <td>3</td>
                                           <td>Freddie Mercury</td>
                                           <td>Bogor, 16 Agustus 1980</td>
-                                          <td>Pria</td>
-                                          <td>Islam</td>
+                                          <td>Pria</td> 
                                           <td>Jalan Bogor Mediterania no 4</td>
                                           <td>08778081263</td>
                                           <td>

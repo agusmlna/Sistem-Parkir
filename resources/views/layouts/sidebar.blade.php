@@ -19,15 +19,37 @@
           <span>Dashboard</span></a>
   </li>
 
+  <hr class="sidebar-divider">
+
+<!-- Heading -->
+  <div class="sidebar-heading">
+    Tabel Master
+  </div> 
+
+<!-- Divider -->
+  <hr class="sidebar-divider">
+
+  <li class="nav-item active">
+      <a class="nav-link" href='/mastermotor'>
+          <i class="fas fa-fw fa-motorcycle"></i>
+          <span>Motor</span></a>
+  </li>  
+
+  <!-- Nav Item - Tables -->
+  <li class="nav-item active">
+      <a class="nav-link" href='/merek-motor'>
+          <i class="fas fa-fw fa-gears"></i>
+          <span>Merek Motor</span></a>
+  </li> 
+
   <!-- Divider -->
   <hr class="sidebar-divider">
 
   <!-- Heading -->
   <div class="sidebar-heading">
-      Interface
-  </div>
+      Tabel Transaksi
+  </div> 
 
- 
   <!-- Divider -->
   <hr class="sidebar-divider">
  
