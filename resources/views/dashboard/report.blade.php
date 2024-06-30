@@ -22,10 +22,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Data Motor</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
+                    <h1 class="h3 mb-2 text-gray-800">Data Laporan</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -93,6 +90,8 @@
                                             <th>Jam Keluar</th>
                                             <th>Tipe Motor</th>
                                             <th>Biaya</th>
+                                            <th>Tipe Pembayaran</th>
+                                            <th>Bukti Pembayaran</th>
                                             <th>Detail</th>
                                         </tr>
                                     </thead>
@@ -104,6 +103,8 @@
                                             <th>Jam Keluar</th>
                                             <th>Tipe Motor</th>
                                             <th>Biaya</th>
+                                            <th>Tipe Pembayaran</th>
+                                            <th>Bukti Pembayaran</th>
                                             <th>Detail</th>
                                         </tr>
                                     </tfoot>
@@ -116,6 +117,8 @@
                                             <td>{{  $data->jam_keluar != null ? $data->jam_keluar->format('H.i') : '' }}</td>
                                             <td>{{ $data->tipe_motor }}</td>
                                             <td>Rp. {{ $data->biaya }}</td>
+                                            <td>Cash</td>
+                                            <td><img src="" alt=""></td>
                                             <td>
                                                 @if ($data->status == 'diproses')
                                                     <span class="badge rounded-pill text-bg-primary">Proses</span>
