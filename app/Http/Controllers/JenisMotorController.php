@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transaction;
-use App\Models\Report;
+use App\Models\JenisMotor;
 use Illuminate\Http\Request;
 
-class ReportController extends Controller
+class JenisMotorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +13,9 @@ class ReportController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Report',
-            'dataMotor' => Transaction::all()
+            'jenis' => JenisMotor::all(),
         ];
-
-        return view('dashboard.report', $data);
+        return view('dashboard.jenisMotor', $data);
     }
 
     /**
@@ -34,13 +31,18 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        JenisMotor::create([
+            'jenis' => $request->inputJenis,
+            'biaya' => $request->inputBiaya,
+        ]);
+
+        return redirect('/jenis-motor');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Report $report)
+    public function show(JenisMotor $jenisMotor)
     {
         //
     }
@@ -48,7 +50,7 @@ class ReportController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Report $report)
+    public function edit(JenisMotor $jenisMotor)
     {
         //
     }
@@ -56,7 +58,7 @@ class ReportController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Report $report)
+    public function update(Request $request, JenisMotor $jenisMotor)
     {
         //
     }
@@ -64,7 +66,7 @@ class ReportController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Report $report)
+    public function destroy(JenisMotor $jenisMotor)
     {
         //
     }

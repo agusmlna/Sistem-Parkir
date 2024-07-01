@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Home;
+use App\Models\Merek;
 use App\Models\Motor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -14,7 +16,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard.home');
+        $motor = DB::table('motors')
+            ->join('mereks', 'mereks.id', '=', 'motors.id_merek')
+            ->join('jenis_motors', 'jenis_motors.id', '=', 'motors.id_jenis')
+            ->get();
+        $data = [
+            'merek' => Merek::all(),
+            'motor' => $motor,
+        ];
+        return view('dashboard.home', $data);
     }
 
     /**
