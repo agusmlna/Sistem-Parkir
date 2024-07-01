@@ -98,7 +98,7 @@
                                         <th>Properti</th>
                                         <th>Jam Masuk</th>
                                         <th>Jam Keluar</th>
-                                        <th>Tipe Motor</th>
+                                        <th>Jenis Motor</th>
                                         <th>Biaya</th>
                                         <th>Tipe Pembayaran</th>
                                         <th>Bukti Pembayaran</th>
@@ -112,7 +112,7 @@
                                         <th>Properti</th>
                                         <th>Jam Masuk</th>
                                         <th>Jam Keluar</th>
-                                        <th>Tipe Motor</th>
+                                        <th>Jenis Motor</th>
                                         <th>Biaya</th>
                                         <th>Tipe Pembayaran</th>
                                         <th>Bukti Pembayaran</th>
@@ -127,7 +127,7 @@
                                             <td>{{ $data->properti }}</td>
                                             <td>{{ $data->jam_masuk->format('H.i') }}</td>
                                             <td>{{ $data->jam_keluar != null ? $data->jam_keluar->format('H.i') : '' }}</td>
-                                            <td>{{ $data->tipe_motor }}</td>
+                                            <td>{{ $data->jenis }}</td>
                                             <td>Rp. {{ $data->biaya }}</td>
                                             <td>Cash</td>
                                             <td><img src="" alt=""></td>
