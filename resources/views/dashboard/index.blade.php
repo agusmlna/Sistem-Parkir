@@ -1,11 +1,11 @@
-@extends('layouts.main') 
+@extends('layouts.main')
 
 @section('content')
-<!-- Page Wrapper -->
-<div id="wrapper">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
     @section('sidebar')
-     @include('layouts.sidebar') 
-     @show
+        @include('layouts.sidebar')
+    @show
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
@@ -17,9 +17,7 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 <!-- Page Heading -->
-                <div
-                    class="d-sm-flex align-items-center justify-content-between mb-4"
-                >
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800 fw-bold">Dashboard</h1>
                 </div>
 
@@ -31,21 +29,15 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div
-                                            class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                                        >
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                             Laporan Harian
                                         </div>
-                                        <div
-                                            class="h5 mb-0 font-weight-bold text-gray-800"
-                                        >
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
                                             Rp. 500.000
                                         </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i
-                                            class="fas fa-calendar fa-2x text-gray-300"
-                                        ></i>
+                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
                                     </div>
                                 </div>
                             </div>
@@ -58,21 +50,15 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div
-                                            class="text-xs font-weight-bold text-success text-uppercase mb-1"
-                                        >
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Laporan Bulanan
                                         </div>
-                                        <div
-                                            class="h5 mb-0 font-weight-bold text-gray-800"
-                                        >
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
                                             Rp. 5.000.000
                                         </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i
-                                            class="fas fa-dollar-sign fa-2x text-gray-300"
-                                        ></i>
+                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                                     </div>
                                 </div>
                             </div>
@@ -85,34 +71,24 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div
-                                            class="text-xs font-weight-bold text-info text-uppercase mb-1"
-                                        >
+                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                             Data Motor
                                         </div>
-                                        <div
-                                            class="row no-gutters align-items-center"
-                                        >
+                                        <div class="row no-gutters align-items-center">
                                             <div class="col-auto">
-                                                <div
-                                                    class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
-                                                >
+                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                                                     Total :
                                                 </div>
                                             </div>
                                             <div class="col">
-                                                <div
-                                                    class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
-                                                >
+                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                                                     15
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i
-                                            class="fas fa-clipboard-list fa-2x text-gray-300"
-                                        ></i>
+                                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                                     </div>
                                 </div>
                             </div>
@@ -125,21 +101,15 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div
-                                            class="text-xs font-weight-bold text-warning text-uppercase mb-1"
-                                        >
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                             Data Pegawai
                                         </div>
-                                        <div
-                                            class="h5 mb-0 font-weight-bold text-gray-800"
-                                        >
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
                                             2
                                         </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i
-                                            class="fas fa-comments fa-2x text-gray-300"
-                                        ></i>
+                                        <i class="fas fa-comments fa-2x text-gray-300"></i>
                                     </div>
                                 </div>
                             </div>
@@ -161,86 +131,63 @@
                                 <h3 class="font-weight-bold">AP Tantrum</h3>
                                 <p class="mb-0">Senin, 17 Mei 2024</p>
                                 <!-- Button trigger modal -->
-                                <button
-                                    type="button"
-                                    class="btn btn-primary"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal"
-                                >
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     detail
                                 </button>
 
                                 <!-- Modal -->
-                                <div
-                                    class="modal fade"
-                                    id="exampleModal"
-                                    tabindex="-1"
-                                    aria-labelledby="exampleModalLabel"
-                                    aria-hidden="true"
-                                >
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h1
-                                                    class="modal-title fs-5 fw-bold"
-                                                    id="exampleModalLabel"
-                                                >
+                                                <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
                                                     Pegawai
                                                 </h1>
-                                                <button
-                                                    type="button"
-                                                    class="btn-close"
-                                                    data-bs-dismiss="modal"
-                                                    aria-label="Close"
-                                                ></button>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="container">
                                                     <div class="row justify-content-center">
                                                         <div class="col-4">
-                                                        <img src="dasd" alt="">
+                                                            <img src="dasd" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="row justify-content-center">
                                                         <div class="col-4">
-                                                        Nama :
+                                                            Nama :
                                                         </div>
                                                         <div class="col-4">
-                                                        Jidan Nurrosadi
-                                                        </div>
-                                                    </div>
-                                                    <div class="row justify-content-center">
-                                                        <div class="col-4">
-                                                        Tempat, Tanggal Lahir :
-                                                        </div>
-                                                        <div class="col-4">
-                                                        Bogor, 16 Agustus 2001
+                                                            Jidan Nurrosadi
                                                         </div>
                                                     </div>
                                                     <div class="row justify-content-center">
                                                         <div class="col-4">
-                                                        No telpon :
+                                                            Tempat, Tanggal Lahir :
                                                         </div>
                                                         <div class="col-4">
-                                                        08778081263	
+                                                            Bogor, 16 Agustus 2001
                                                         </div>
                                                     </div>
                                                     <div class="row justify-content-center">
                                                         <div class="col-4">
-                                                        Jenis Kelamin :
+                                                            No telpon :
                                                         </div>
                                                         <div class="col-4">
-                                                        Pria	
+                                                            08778081263
+                                                        </div>
+                                                    </div>
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-4">
+                                                            Jenis Kelamin :
+                                                        </div>
+                                                        <div class="col-4">
+                                                            Pria
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-secondary"
-                                                    data-bs-dismiss="modal"
-                                                >
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                                     Close
                                                 </button>
                                             </div>
@@ -261,12 +208,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="text-center">
-                                    <img
-                                        class="img-fluid px-3 px-sm-4 mt-3 mb-4"
-                                        style="width: 25rem"
-                                        src="{{ ('../img/fotoparkir.jpg ') }}"
-                                        alt="..."
-                                    />
+                                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem" src={{ asset('img/fotoparkir.jpg ') }} alt="..." />
                                 </div>
                                 <p>
                                     parkiran yang terletak di daerah cibinong, jawa barat
@@ -300,26 +242,14 @@
 </a>
 
 <!-- Logout Modal-->
-<div
-    class="modal fade"
-    id="logoutModal"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
                     Ready to Leave?
                 </h5>
-                <button
-                    class="close"
-                    type="button"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                >
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
@@ -328,11 +258,7 @@
                 session.
             </div>
             <div class="modal-footer">
-                <button
-                    class="btn btn-secondary"
-                    type="button"
-                    data-dismiss="modal"
-                >
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">
                     Cancel
                 </button>
                 <a class="btn btn-primary" href="login.html">Logout</a>
