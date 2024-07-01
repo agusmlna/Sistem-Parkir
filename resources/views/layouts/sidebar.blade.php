@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href='/dashboard'>
@@ -38,7 +38,7 @@
     <!-- Nav Item - Tables -->
     <li class="nav-item active">
         <a class="nav-link" href='/merek-motor'>
-            <i class="fas fa-fw fa-gears"></i>
+            <i class="fas fa-band-aid"></i>
             <span>Merek Motor</span></a>
 
     <li class="nav-item active">
@@ -67,25 +67,25 @@
     <!-- Nav Item - Tables -->
     <li class="nav-item active">
         <a class="nav-link" href='/datamotor'>
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-database"></i>
             <span>Data Motor</span></a>
     </li>
 
     <li class="nav-item active">
         <a class="nav-link" href='/datapegawai'>
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-users"></i>
             <span>Data Pegawai</span></a>
     </li>
 
     <li class="nav-item active">
         <a class="nav-link" href="/report">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-flag"></i>
             <span>Report</span></a>
     </li>
 
     <li class="nav-item active">
         <a class="nav-link" href="/komplain">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-exclamation"></i>
             <span>Komplain</span></a>
     </li>
 

@@ -20,13 +20,7 @@
                 <div
                     class="d-sm-flex align-items-center justify-content-between mb-4"
                 >
-                    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                    <a
-                        href="#"
-                        class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-                        ><i class="fas fa-download fa-sm text-white-50"></i>
-                        Generate Report</a
-                    >
+                    <h1 class="h3 mb-0 text-gray-800 fw-bold">Dashboard</h1>
                 </div>
 
                 <!-- Content Row -->
@@ -173,7 +167,7 @@
                                     data-bs-toggle="modal"
                                     data-bs-target="#exampleModal"
                                 >
-                                    Launch demo modal
+                                    detail
                                 </button>
 
                                 <!-- Modal -->
@@ -188,10 +182,10 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h1
-                                                    class="modal-title fs-5"
+                                                    class="modal-title fs-5 fw-bold"
                                                     id="exampleModalLabel"
                                                 >
-                                                    Modal title
+                                                    Pegawai
                                                 </h1>
                                                 <button
                                                     type="button"
@@ -200,7 +194,47 @@
                                                     aria-label="Close"
                                                 ></button>
                                             </div>
-                                            <div class="modal-body">...</div>
+                                            <div class="modal-body">
+                                                <div class="container">
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-4">
+                                                        <img src="dasd" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-4">
+                                                        Nama :
+                                                        </div>
+                                                        <div class="col-4">
+                                                        Jidan Nurrosadi
+                                                        </div>
+                                                    </div>
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-4">
+                                                        Tempat, Tanggal Lahir :
+                                                        </div>
+                                                        <div class="col-4">
+                                                        Bogor, 16 Agustus 2001
+                                                        </div>
+                                                    </div>
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-4">
+                                                        No telpon :
+                                                        </div>
+                                                        <div class="col-4">
+                                                        08778081263	
+                                                        </div>
+                                                    </div>
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-4">
+                                                        Jenis Kelamin :
+                                                        </div>
+                                                        <div class="col-4">
+                                                        Pria	
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="modal-footer">
                                                 <button
                                                     type="button"
@@ -208,12 +242,6 @@
                                                     data-bs-dismiss="modal"
                                                 >
                                                     Close
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-primary"
-                                                >
-                                                    Save changes
                                                 </button>
                                             </div>
                                         </div>
@@ -228,7 +256,7 @@
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">
-                                    Illustrations
+                                    Keterangan
                                 </h6>
                             </div>
                             <div class="card-body">
@@ -236,28 +264,13 @@
                                     <img
                                         class="img-fluid px-3 px-sm-4 mt-3 mb-4"
                                         style="width: 25rem"
-                                        src="img/undraw_posting_photo.svg"
+                                        src="{{ ('../img/fotoparkir.jpg ') }}"
                                         alt="..."
                                     />
                                 </div>
                                 <p>
-                                    Add some quality, svg illustrations to your
-                                    project courtesy of
-                                    <a
-                                        target="_blank"
-                                        rel="nofollow"
-                                        href="https://undraw.co/"
-                                        >unDraw</a
-                                    >, a constantly updated collection of
-                                    beautiful svg images that you can use
-                                    completely free and without attribution!
+                                    parkiran yang terletak di daerah cibinong, jawa barat
                                 </p>
-                                <a
-                                    target="_blank"
-                                    rel="nofollow"
-                                    href="https://undraw.co/"
-                                    >Browse Illustrations on unDraw &rarr;</a
-                                >
                             </div>
                         </div>
                     </div>

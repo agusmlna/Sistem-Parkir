@@ -22,14 +22,11 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Data Pegawai</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Isi Data Pegawai</h6>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Tambah Data Pegawai
                             </button>
@@ -44,6 +41,10 @@
                                 </div>
                                 <div class="modal-body">
                                 <form>
+                                    <div class="row mb-3">
+                                        <label for="formFile" class="form-label">Upload Foto</label>
+                                        <input class="form-control" type="file" id="formFile">
+                                    </div>
                                     <div class="row mb-3">
                                         <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                                         <div class="col-sm-10">
@@ -123,6 +124,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>Foto</th>
                                             <th>Nama Pegawai</th>
                                             <th>Tempat, Tanggal Lahir</th>
                                             <th>Jenis Kelamin</th> 
@@ -134,6 +136,7 @@
                                     <tfoot>
                                         <tr>
                                             <th>No</th>
+                                            <th>Foto</th>
                                             <th>Nama Pegawai</th>
                                             <th>Tempat, Tanggal Lahir</th>
                                             <th>Jenis Kelamin</th> 
@@ -145,6 +148,7 @@
                                     <tbody>
                                         <tr>
                                             <td>1</td>
+                                            <td> <img src="" alt=""> </td>
                                             <td>Freddie Mercury</td>
                                             <td>Bogor, 16 Agustus 1980</td>
                                             <td>Pria</td> 
@@ -159,6 +163,7 @@
                                         </tr>
                                         <tr>
                                           <td>2</td>
+                                          <td> <img src="" alt=""> </td>
                                           <td>Freddie Mercury</td>
                                           <td>Bogor, 16 Agustus 1980</td>
                                           <td>Pria</td> 
@@ -173,6 +178,7 @@
                                         </tr>
                                         <tr>
                                           <td>3</td>
+                                          <td> <img src="" alt=""> </td>
                                           <td>Freddie Mercury</td>
                                           <td>Bogor, 16 Agustus 1980</td>
                                           <td>Pria</td> 
