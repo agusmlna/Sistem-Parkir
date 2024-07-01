@@ -30,7 +30,7 @@
                         <h6 class="m-0 font-weight-bold text-primary">Laporan Parkiran</h6>
                     </div>
 
-                    <form action="" method="post" class="container mt-2">
+                    <form action="" method="post" class="container mt-2 ms-2">
                         <div class="row">
                             <div id="reportrange" class="col-4" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc;">
                                 <i class="fa fa-calendar"></i>&nbsp;

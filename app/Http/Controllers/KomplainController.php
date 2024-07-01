@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Komplain;
-use App\Models\Motor;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class KomplainController extends Controller
@@ -15,7 +15,7 @@ class KomplainController extends Controller
     {
         $data = [
             'title' => 'Detail Data Produk',
-            'dataMotor' => Motor::whereNotNull('komplain')->get(),
+            'dataMotor' => Transaction::whereNotNull('komplain')->get(),
         ];
         return view('dashboard.komplain', $data);
     }

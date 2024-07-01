@@ -13,9 +13,15 @@ class DataMotorController extends Controller
      */
     public function index()
     {
+        $dataMotor = Transaction::leftJoin('motors', 'transactions.id_motor', '=', 'motors.id')
+            ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
+            ->whereDate('transactions.created_at', date('Y-m-d'))
+            ->select('transactions.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
+            ->get();
+
         $data = [
             'title' => 'Detail Data Produk',
-            'dataMotor' => Transaction::whereDate('created_at', date('Y-m-d'))->get(),
+            'dataMotor' => $dataMotor
         ];
 
         return view('dashboard.datamotor', $data);
