@@ -93,6 +93,7 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
+                                        <th>Motor</th>
                                         <th>Plat Nomor</th>
                                         <th>Properti</th>
                                         <th>Jam Masuk</th>
@@ -106,6 +107,7 @@
                                 </thead>
                                 <tfoot>
                                     <tr>
+                                        <th>Motor</th>
                                         <th>Plat Nomor</th>
                                         <th>Properti</th>
                                         <th>Jam Masuk</th>
@@ -120,6 +122,7 @@
                                 <tbody>
                                     @foreach ($dataMotor as $data)
                                         <tr>
+                                            <td>{{ $data->motor }}</td>
                                             <td>{{ $data->plat_nomor }}</td>
                                             <td>{{ $data->properti }}</td>
                                             <td>{{ $data->jam_masuk->format('H.i') }}</td>
