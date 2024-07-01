@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Home;
+use App\Models\Transaction;
 use App\Models\Merek;
 use App\Models\Motor;
 use Carbon\Carbon;
@@ -41,17 +41,15 @@ class HomeController extends Controller
     public function store(Request $request)
     {
 
-        $motor = Motor::create([
-            'motor' => $request->motor,
+        $transaction = Transaction::create([
+            'id_motor' => $request->idMotor,
             'plat_nomor' => $request->platNomor,
             'properti' => $request->properti,
             'jam_masuk' => Carbon::now(),
-            'tipe_motor' => $request->tipeMotor,
-            'biaya' => $request->biaya,
             'status' => 'diproses',
         ]);
 
-        return redirect()->route('struk', [$motor]);
+        return redirect()->route('struk', [$transaction]);
     }
 
     /**
@@ -64,7 +62,7 @@ class HomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Home $report)
+    public function edit(Transaction $transaction)
     {
         //
     }
@@ -72,7 +70,7 @@ class HomeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Home $report)
+    public function update(Request $request, Transaction $transaction)
     {
         //
     }
@@ -80,18 +78,23 @@ class HomeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Home $report)
+    public function destroy(Transaction $transaction)
     {
         //
     }
-    public function struk($id)
+    public function struk($idTransaction)
     {
 
         $data = [
             'title' => 'Struk',
             'date' => date('m/d/Y'),
-            'data' => Motor::where('id', $id)->first()
+            'data' => Transaction::leftJoin('motors', 'transactions.id_motor', '=', 'motors.id')
+                ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
+                ->where('transactions.id', $idTransaction)
+                ->select('transactions.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
+                ->first()
         ];
+
         return view('dashboard.struk', $data);
     }
 }

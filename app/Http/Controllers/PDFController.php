@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Motor;
-use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Transaction;
 use PDF;
 
 class PDFController extends Controller
@@ -14,18 +12,22 @@ class PDFController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function generatePDF($id)
+    public function generatePDF($idTransaction)
     {
-        $motor = Motor::where('id', $id)->first();
+        $transaction = Transaction::leftJoin('motors', 'transactions.id_motor', '=', 'motors.id')
+            ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
+            ->where('transactions.id', $idTransaction)
+            ->select('transactions.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
+            ->first();
 
         $data = [
             'title' => 'Struk',
             'date' => date('m/d/Y'),
-            'data' => $motor
+            'data' => $transaction
         ];
 
         $pdf = PDF::loadView('dashboard.pdfstruk', $data);
 
-        return $pdf->download('struk-' . $id . '.pdf');
+        return $pdf->download('struk-' . $idTransaction . '.pdf');
     }
 }

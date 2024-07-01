@@ -7,12 +7,12 @@ function selectMerek(e) {
     // reset option select nama motor
     selectNamaMotor.length = 0;
 
-    let dropDownMerekMotor = (document.getElementById("merekMotor").value =
+    let selectMerekMotor = (document.getElementById("merekMotor").value =
         e.target.value);
     console.log(merekMotor);
 
     filterData = dataMotor.filter(
-        (data) => data["id_merek"] == dropDownMerekMotor
+        (data) => data["id_merek"] == selectMerekMotor
     );
 
     console.log(filterData);
@@ -40,4 +40,10 @@ function inputJenisDanBiaya() {
 
     inputJenisMotor.value = motor["jenis"];
     inputBiaya.value = motor["biaya"];
+    inputIdMotor(motor["id"]);
+}
+
+function inputIdMotor(id) {
+    let inputIdMotor = document.getElementById("idMotor");
+    inputIdMotor.value = id;
 }

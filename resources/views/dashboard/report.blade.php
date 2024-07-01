@@ -29,14 +29,18 @@
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Laporan Parkiran</h6>
                     </div>
-                    <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
-                        <i class="fa fa-calendar"></i>&nbsp;
-                        <span></span> <i class="fa fa-caret-down"></i>
-                    </div>
 
-                    <form action="" method="post">
-                        <input type="hidden" id="startDate" name="start-date">
-                        <input type="hidden" id="endDate" name="end-date">
+                    <form action="" method="post" class="container mt-2">
+                        <div class="row">
+                            <div id="reportrange" class="col-4" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc;">
+                                <i class="fa fa-calendar"></i>&nbsp;
+                                <span></span> <i class="fa fa-caret-down"></i>
+                            </div>
+                            <input type="hidden" id="startDate" name="start-date">
+                            <input type="hidden" id="endDate" name="end-date">
+                            <button type="submit" class="btn btn-primary col-1 ms-2">Search</button>
+                        </div>
+
                     </form>
                     <!-- <div class="col-md-5 mt-3">
                                 <div class="col">

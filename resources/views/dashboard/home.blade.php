@@ -34,6 +34,8 @@
                     <div class="col px-4 py-3">
                         <form class="row g-3" action="/home" method="post">
                             @csrf
+                            <input type="hidden" name="" id="dataMotor" value='{{ $motor }}'>
+
                             <div class="col-12 pt-2 mb-3">
                                 <label for="merek-motor" class="form-label font-weight-bold">Merek Motor</label>
                                 <select class="form-select" id="merekMotor" aria-label="Example select with button addon" onchange="selectMerek(event)">
@@ -45,13 +47,13 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="nama-motor" class="form-label font-weight-bold">Nama Motor</label>
-                                <select class="form-select" id="selectNamaMotor" aria-label="Example select with button addon" onchange="selectMotor(event)">
+                                <select class="form-select" id="selectNamaMotor" name="motor" aria-label="Example select with button addon" onchange="selectMotor(event)">
                                     <option selected>Choose...</option>
                                     {{-- @foreach ($motor as $mtr)
                                         <option value={{ $mtr->id }}>{{ $mtr->motor }}</option>
                                     @endforeach --}}
                                 </select>
-                                <input type="hidden" name="" id="dataMotor" value='{{ $motor }}'>
+                                <input type="hidden" name="idMotor" id="idMotor">
                                 {{-- <label for="motor" class="form-label font-weight-bold">Nama Motor</label>
                                 <input type="text" class="form-control" id="motor" name="motor"> --}}
                             </div>
