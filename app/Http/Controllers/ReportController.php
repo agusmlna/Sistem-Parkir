@@ -13,9 +13,16 @@ class ReportController extends Controller
      */
     public function index()
     {
+        $transaction = Transaction::leftJoin('motors', 'transactions.id_motor', '=', 'motors.id')
+            ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
+            ->select('transactions.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
+            ->get();
+
         $data = [
             'title' => 'Report',
-            'dataMotor' => Transaction::all()
+            'dataMotor' => $transaction,
+            'start_date' => null,
+            'end_date' => null
         ];
 
         return view('dashboard.report', $data);
@@ -67,5 +74,46 @@ class ReportController extends Controller
     public function destroy(Report $report)
     {
         //
+    }
+
+    public function filterDate(Request $request)
+    {
+
+        $startDate = date("Y-m-d H:i:s", strtotime($request->startDate));
+        // dd($startDate);
+        $endDate = date("Y-m-d H:i:s", strtotime($request->endDate));
+
+        $transaction = Transaction::leftJoin('motors', 'transactions.id_motor', '=', 'motors.id')
+            ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
+            ->select('transactions.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
+            ->whereBetween('transactions.created_at', [$startDate, $endDate])
+            ->get();
+
+        $data = [
+            'title' => 'Report',
+            'dataMotor' => $transaction,
+            'start_date' => $startDate,
+            'end_date' => $endDate
+        ];
+
+        return view('dashboard.report', $data);
+    }
+
+    public function filterJenis(Request $request)
+    {
+        $transaction = Transaction::leftJoin('motors', 'transactions.id_motor', '=', 'motors.id')
+            ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
+            ->select('transactions.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
+            ->where('jenis_motors.id', '=', $request->selectJenisMotor)
+            ->get();
+
+        $data = [
+            'title' => 'Report',
+            'dataMotor' => $transaction,
+            'start_date' => null,
+            'end_date' => null
+        ];
+
+        return view('dashboard.report', $data);
     }
 }

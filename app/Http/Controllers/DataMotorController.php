@@ -89,6 +89,7 @@ class DataMotorController extends Controller
         Transaction::where('id', $id)
             ->update([
                 'status' => 'selesai',
+                'tipe_pembayaran' => 'cash',
                 'jam_keluar' => Carbon::now(),
             ]);
         return redirect('/datamotor');
@@ -104,6 +105,7 @@ class DataMotorController extends Controller
             ->update([
                 'bukti_bayar' => $image->hashName(),
                 'status' => 'selesai',
+                'tipe_pembayaran' => 'transfer',
                 'jam_keluar' => Carbon::now(),
             ]);
         return redirect('/datamotor');

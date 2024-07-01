@@ -5,6 +5,7 @@ const startButton = document.getElementById("startButton");
 const captureButton = document.getElementById("captureButton");
 const inputBuktiBayarElement = document.getElementById("buktiBayar");
 const formElement = document.getElementById("form");
+const imageModal = document.querySelector(".image-modal");
 
 let stream;
 let _id = "";
@@ -78,4 +79,11 @@ function dataToModalComplain(motor) {
 
 function submitKomplain(form) {
     form.action = `/datamotor/komplain/${_idForComplain}`;
+}
+
+function sendImageToModal(image) {
+    console.log("image modal");
+    console.log(image);
+    console.log(imageModal);
+    imageModal.src = image;
 }

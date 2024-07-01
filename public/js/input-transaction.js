@@ -37,6 +37,7 @@ function inputJenisDanBiaya() {
     let motor = filterData.find(
         (data) => data["motor"] === selectNamaMotor.value
     );
+    console.log(motor);
 
     inputJenisMotor.value = motor["jenis"];
     inputBiaya.value = motor["biaya"];

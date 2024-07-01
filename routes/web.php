@@ -21,6 +21,8 @@ Route::Resource('/', LoginController::class);
 Route::post('/auth/login', [LoginController::class, 'login']);
 Route::Resource('/dashboard', DashboardController::class);
 Route::Resource('/report', ReportController::class);
+Route::post('/report/filter', [ReportController::class, 'filterDate'])->name('report.filter');
+Route::post('/report/filter/jenis', [ReportController::class, 'filterJenis'])->name('report.filter.jenis');
 Route::Resource('/datamotor', DataMotorController::class);
 Route::get('/datamotor/cash/{id}', [DataMotorController::class, 'cash'])->name('datamotor.cash');
 Route::put('/datamotor/transfer/{id}', [DataMotorController::class, 'transfer'])->name('datamotor.transfer');

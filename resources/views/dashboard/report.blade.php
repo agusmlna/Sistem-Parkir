@@ -30,64 +30,33 @@
                         <h6 class="m-0 font-weight-bold text-primary">Laporan Parkiran</h6>
                     </div>
 
-                    <form action="" method="post" class="container mt-2 ms-2">
-                        <div class="row">
-                            <div id="reportrange" class="col-4" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc;">
-                                <i class="fa fa-calendar"></i>&nbsp;
-                                <span></span> <i class="fa fa-caret-down"></i>
+                    <class class="d-flex mt-2 ms-2">
+                        <form action="/report/filter" method="post" class="flex-fill">
+                            @csrf
+                            <div class="d-flex">
+                                <div id="reportrange" class="w-50" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc;">
+                                    <i class="fa fa-calendar"></i>&nbsp;
+                                    <span></span> <i class="fa fa-caret-down"></i>
+                                </div>
+                                <input type="hidden" id="startDate" name="startDate" value={{ $start_date }}>
+                                <input type="hidden" id="endDate" name="endDate" value={{ $end_date }}>
+                                <button type="submit" class="btn btn-primary ms-2">Search</button>
                             </div>
-                            <input type="hidden" id="startDate" name="start-date">
-                            <input type="hidden" id="endDate" name="end-date">
-                            <button type="submit" class="btn btn-primary col-1 ms-2">Search</button>
-                        </div>
+                        </form>
 
-                    </form>
-                    <!-- <div class="col-md-5 mt-3">
-                                <div class="col">
-                                    <div class="row">
-                                        <label for="tanggal-2" class="col-3 col-form-label">Date</label>
-                                        <div class="col-5 pb-3">
-                                            <div class="input-group date" id="datepicker-2">
-                                                <input type="text" class="form-control" id="inputTanggal-2" name="tanggal-2" />
-                                                <span class="input-group-append">
-                                                    <span class="input-group-text bg-light d-block">
-                                                        <i class="fa fa-calendar"></i>
-                                                    </span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="row">
-                                        <label for="tanggal-2" class="col-3 col-form-label">S/D</label>
-                                        <div class="col-5 pb-3">
-                                            <div class="input-group date" id="datepicker-2">
-                                                <input type="text" class="form-control" id="inputTanggal-2" name="tanggal-2" />
-                                                <span class="input-group-append">
-                                                    <span class="input-group-text bg-light d-block">
-                                                        <i class="fa fa-calendar"></i>
-                                                    </span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                                        <button class="btn btn-primary me-md-1 ml-2" type="submit"><i class="fa-solid fa-filter"></i>Filter</button>
-                                        <button type="reset" class="btn btn-outline-dark">Reset</button>
-                                            <a
-                                                href="/generate-pdf"
-                                                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-                                                ><i class="fas fa-download fa-sm text-white-50"></i>
-                                                Generate Report</a
-                                            >
-                                    </div>
-                                </div>
+                        <form action="/report/filter/jenis" method="post" class="flex-fill">
+                            @csrf
+                            <div class="d-flex">
+                                <select class="form-select w-50" aria-label="Default select example" name="selectJenisMotor">
+                                    <option selected>Jenis Motor</option>
+                                    <option value="1">Motor Kecil</option>
+                                    <option value="2">Motor Besar</option>
+                                </select>
+                                <button type="submit" class="btn btn-primary ms-2">Search</button>
+
                             </div>
-                        </div>  -->
+                        </form>
+                    </class>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -129,8 +98,13 @@
                                             <td>{{ $data->jam_keluar != null ? $data->jam_keluar->format('H.i') : '' }}</td>
                                             <td>{{ $data->jenis }}</td>
                                             <td>Rp. {{ $data->biaya }}</td>
-                                            <td>Cash</td>
-                                            <td><img src="" alt=""></td>
+                                            <td>{{ $data->tipe_pembayaran }}</td>
+                                            <td>
+                                                <img src='{{ asset('storage/images/' . $data->bukti_bayar) }}' alt="" class="buktibayar"
+                                                    style="width: 100px; min-height: 0; max-height: 100px; object-fit: cover;" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#imageModal" onclick="sendImageToModal('{{ asset('storage/images/' . $data->bukti_bayar) }}')"
+                                                >
+                                            </td>
                                             <td>
                                                 @if ($data->status == 'diproses')
                                                     <span class="badge rounded-pill text-bg-primary">Proses</span>
@@ -190,6 +164,21 @@
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-primary" href="login.html">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Image -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">Bukti Transfer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="" class="img-fluid image-modal" alt="...">
             </div>
         </div>
     </div>

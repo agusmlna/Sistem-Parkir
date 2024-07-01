@@ -1,9 +1,18 @@
 $(function () {
-    var start = moment().subtract(29, "days");
-    var end = moment();
+    let start;
+    let end;
 
     let startDate = document.getElementById("startDate");
     let endDate = document.getElementById("endDate");
+
+    if (startDate.value == null || startDate.value == "") {
+        console.log("kosong");
+        start = moment().subtract(29, "days");
+        end = moment();
+    } else {
+        start = moment(startDate.value);
+        end = moment(endDate.value);
+    }
 
     function cb(start, end) {
         $("#reportrange span").html(
@@ -11,7 +20,7 @@ $(function () {
         );
 
         startDate.value = start;
-        endDate.value = start;
+        endDate.value = end;
     }
 
     $("#reportrange").daterangepicker(

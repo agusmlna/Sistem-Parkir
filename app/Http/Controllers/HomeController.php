@@ -19,6 +19,7 @@ class HomeController extends Controller
         $motor = DB::table('motors')
             ->join('mereks', 'mereks.id', '=', 'motors.id_merek')
             ->join('jenis_motors', 'jenis_motors.id', '=', 'motors.id_jenis')
+            ->select('motors.*', 'jenis_motors.jenis', 'jenis_motors.biaya')
             ->get();
         $data = [
             'merek' => Merek::all(),
