@@ -21,14 +21,14 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Data Merek Motor</h1>
+                <h1 class="h3 mb-2 text-gray-800">Jenis Motor</h1>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Isi Inputan Merek Motor</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Isi Inputan Jenis Motor</h6>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Tambah Data Merek Motor
+                            Tambah Data Jenis Motor
                         </button>
 
                         <!-- Modal -->
@@ -36,16 +36,22 @@
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Merek Motor</h1>
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Jenis Motor</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/merek-motor" method="post">
+                                        <form action="/jenis-motor" method="post">
                                             @csrf
                                             <div class="row mb-3">
-                                                <label for="inputMerek" class="col-sm-2 col-form-label">Merek Motor</label>
+                                                <label for="inputJenis" class="col-sm-2 col-form-label">Jenis Motor</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputMerek" name="inputMerek">
+                                                    <input type="text" class="form-control" id="inputJenis" name="inputJenis">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <label for="inputBiaya" class="col-sm-2 col-form-label">Biaya</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="inputBiaya" name="inputBiaya">
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
@@ -74,14 +80,16 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Merek Motor</th>
+                                        <th>Jenis Motor</th>
+                                        <th>Biaya</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
                                         <th>No</th>
-                                        <th>Merek Motor</th>
+                                        <th>Jenis Motor</th>
+                                        <th>Biaya</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </tfoot>
@@ -90,10 +98,11 @@
                                         $i = 1;
                                     @endphp
 
-                                    @foreach ($merek as $m)
+                                    @foreach ($jenis as $j)
                                         <tr>
                                             <td>{{ $i++ }}</td>
-                                            <td> {{ $m->merek }} </td>
+                                            <td> {{ $j->jenis }} </td>
+                                            <td> {{ $j->biaya }} </td>
                                             <td>
                                                 <button type="button" class="btn btn-primary rounded-circle btn-sm"> <i class="fas fa-info-circle"></i>
                                                 </button>

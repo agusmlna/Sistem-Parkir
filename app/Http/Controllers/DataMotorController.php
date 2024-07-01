@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Motor;
+use App\Models\Transaction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -15,7 +15,7 @@ class DataMotorController extends Controller
     {
         $data = [
             'title' => 'Detail Data Produk',
-            'dataMotor' => Motor::whereDate('created_at', date('Y-m-d'))->get(),
+            'dataMotor' => Transaction::whereDate('created_at', date('Y-m-d'))->get(),
         ];
 
         return view('dashboard.datamotor', $data);
@@ -40,14 +40,14 @@ class DataMotorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Motor $motor)
+    public function show(Transaction $transaction)
     {
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Motor $motor)
+    public function edit(Transaction $transaction)
     {
         //
     }
@@ -73,14 +73,14 @@ class DataMotorController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Motor $motor)
+    public function destroy(Transaction $transaction)
     {
         //
     }
 
     public function cash($id, Request $request)
     {
-        Motor::where('id', $id)
+        Transaction::where('id', $id)
             ->update([
                 'status' => 'selesai',
                 'jam_keluar' => Carbon::now(),
@@ -94,7 +94,7 @@ class DataMotorController extends Controller
         $image = $request->file('bukti-bayar');
         $image->storeAs('public/images', $image->hashName());
 
-        Motor::where('id', $id)
+        Transaction::where('id', $id)
             ->update([
                 'bukti_bayar' => $image->hashName(),
                 'status' => 'selesai',
@@ -105,7 +105,7 @@ class DataMotorController extends Controller
 
     public function komplain($id, Request $request)
     {
-        Motor::where('id', $id)
+        Transaction::where('id', $id)
             ->update([
                 'komplain' => $request->komplain,
             ]);

@@ -2,20 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JenisMotor;
 use App\Models\Merek;
+use App\Models\Motor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class MasterMotorController extends Controller
+class MotorController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $motor = DB::table('motors')
+            ->join('mereks', 'mereks.id', '=', 'motors.id_merek')
+            ->join('jenis_motors', 'jenis_motors.id', '=', 'motors.id_jenis')
+            ->get();
+
         $data = [
+            'motor' => $motor,
             'merek' => Merek::all(),
+            'jenis' => JenisMotor::all()
         ];
-        return view('dashboard.mastermotor', $data);
+        return view('dashboard.Motor', $data);
     }
 
     /**
@@ -31,7 +41,13 @@ class MasterMotorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Motor::create([
+            'motor' => $request->inputNamaMotor,
+            'id_merek' => $request->inputMerek,
+            'id_jenis' => $request->inputJenis,
+        ]);
+
+        return redirect('/motor');
     }
 
     /**
