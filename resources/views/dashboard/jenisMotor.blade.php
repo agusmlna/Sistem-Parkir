@@ -104,8 +104,52 @@
                                             <td> {{ $j->jenis }} </td>
                                             <td> {{ $j->biaya }} </td>
                                             <td>
-                                                <button type="button" class="btn btn-primary rounded-circle btn-sm"> <i class="fas fa-info-circle"></i>
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editjenisMotor">
+                                                <i class="fas fa-info"></i>
                                                 </button>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="editjenisMotor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">Edit Data Jenis Motor</h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <!-- <form action="/jenis-motor" method="post"> -->
+                                                                @csrf
+                                                                <div class="row mb-3">
+                                                                    <label for="inputJenis" class="col-sm-2 col-form-label">Jenis Motor</label>
+                                                                    <div class="col-sm-10">
+                                                                        <input type="text" class="form-control" id="inputJenis" name="inputJenis">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <label for="inputBiaya" class="col-sm-2 col-form-label">Biaya</label>
+                                                                    <div class="col-sm-10">
+                                                                        <input type="text" class="form-control" id="inputBiaya" name="inputBiaya">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <div class="col-sm-10 offset-sm-2">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                                                            <label class="form-check-label" for="gridCheck1">
+                                                                                setuju?
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <button type="button" class="btn btn-danger rounded-circle btn-sm"> <i class="fas fa-trash"></i>
                                                 </button>
                                             </td>

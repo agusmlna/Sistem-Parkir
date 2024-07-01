@@ -43,7 +43,7 @@
 
     <li class="nav-item active">
         <a class="nav-link" href='/jenis-motor'>
-            <i class="fas fa-fw fa-gears"></i>
+            <i class="fas fa-cogs"></i>
             <span>Jenis Motor</span></a>
     </li>
 

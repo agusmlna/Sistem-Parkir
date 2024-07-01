@@ -18,10 +18,7 @@
                 <!-- Illustrations -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3 text-center">
-                        <h3 class="m-0 font-weight-bold text-primary">
-                            Transaksi : {{ $data->id }}
-                        </h3>
-                        <h4>{{ $date }}</h4>
+                        <h2>{{ $date }}</h2>
                     </div>
                     <div class="row justify-content-between">
                         <div class="col-4 pl-5 ml-5 py-3">
@@ -40,10 +37,10 @@
                         </div>
                     </div>
                     <div class="card-header py-3 text-center">
-                        <h4 class="m-0 font-weight-bold text-primary">
+                        <h3 class="m-0 font-weight-bold text-primary">
                             Terima Kasih
-                        </h4>
-                        <h5>Parkiran Cibinong</h5>
+                        </h3>
+                        <h4>Penitipan motor simpati</h4>
                     </div>
                 </div>
             </div>

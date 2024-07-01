@@ -30,9 +30,6 @@
                         <!-- Illustrations -->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3 text-center">
-                                <h3 class="m-0 font-weight-bold text-primary">
-                                    Transaksi : {{ $data->id }}
-                                </h3>
                                 <h4>{{ $date }}</h4>
                             </div>
                             <div class="row justify-content-between">
@@ -55,7 +52,7 @@
                                 <h4 class="m-0 font-weight-bold text-primary">
                                     Terima Kasih
                                 </h4>
-                                <h5>Parkiran Cibinong</h5>
+                                <h5>Penitipan motor simpati</h5>
                             </div>
                         </div>
                     </div>
