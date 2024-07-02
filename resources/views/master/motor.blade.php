@@ -65,69 +65,12 @@
                                             <td> {{ $mtr->jenis }} </td>
                                             <td>
                                                 <!-- Button trigger modal -->
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editMotor">
-                                                <i class="fas fa-info"></i>
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editMotor" onclick="openModalEditMotor({{ $mtr }})">
+                                                    <i class="fas fa-info"></i>
                                                 </button>
-
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="editMotor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">Edit Data Motor</h1>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <!-- <form action="/motor" method="post"> -->
-                                                                    @csrf
-                                                                    <div class="row mb-3">
-                                                                        <div class="col">
-                                                                            <label for="inputNamaMotor" class="col-form-label fw-bold">Nama Motor</label>
-                                                                                <input type="text" class="form-control" id="inputNamaMotor" name="inputNamaMotor">
-                                                                        </div>
-                                                                    
-                                                                        <div class="col-12 pt-2 mb-3">
-                                                                            <label for="merek-motor" class="form-label font-weight-bold">Merek Motor</label>
-                                                                            <select class="form-select" id="merekMotor" aria-label="Example select with button addon" name="inputMerek">
-                                                                                <option selected>Choose...</option>
-                                                                                @foreach ($merek as $m)
-                                                                                    <option value={{ $m->id }}>{{ $m->merek }}</option>
-                                                                                @endforeach
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="col-12 pt-2">
-                                                                            <label for="jenis-motor" class="form-label font-weight-bold">Jenis Motor</label>
-                                                                            <select class="form-select" id="jenisMotor" name="inputJenis" aria-label="Example select with button addon" onchange="selectBox(event)">
-                                                                                <option selected>Choose...</option>
-                                                                                @foreach ($jenis as $j)
-                                                                                    <option value={{ $j->id }}>{{ $j->jenis }}</option>
-                                                                                @endforeach
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    {{-- <div class="col-12 pt-2">
-                                                                        <label for="input-biaya" class="form-label font-weight-bold">Biaya</label>
-                                                                        <input type="text" class="form-control" id="inputBiaya" placeholder="0" name="input-biaya" readonly>
-                                                                    </div> --}}
-                                                                    <div class="row mb-3 pt-3">
-                                                                        <div class="col-sm-10 offset-sm-2">
-                                                                            <div class="form-check">
-                                                                                <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                                                                <label class="form-check-label" for="gridCheck1">
-                                                                                    setuju?
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                                                    </div>
-                                                                <!-- </form> -->
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editMotor" onclick="openModalEditMotor({{ $mtr }})">
+                                                    <i class="fas fa-info"></i>
+                                                </button> --}}
                                                 <button type="button" class="btn btn-danger rounded-circle btn-sm"> <i class="fas fa-trash"></i>
                                                 </button>
                                             </td>
@@ -185,7 +128,7 @@
     </div>
 </div>
 
-<!-- Modal -->
+<!-- Add Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -239,6 +182,67 @@
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editMotor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">Edit Data Motor</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- <form action="/motor" method="post"> -->
+                @csrf
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="inputNamaMotor" class="col-form-label fw-bold">Nama Motor</label>
+                        <input type="text" class="form-control" id="inputNamaMotor" name="inputNamaMotor">
+                    </div>
+
+                    <div class="col-12 pt-2 mb-3">
+                        <label for="merek-motor" class="form-label font-weight-bold">Merek Motor</label>
+                        <select class="form-select" id="merekMotor" aria-label="Example select with button addon" name="inputMerek">
+                            <option selected>Choose...</option>
+                            @foreach ($merek as $m)
+                                <option value={{ $m->id }}>{{ $m->merek }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-12 pt-2">
+                        <label for="jenis-motor" class="form-label font-weight-bold">Jenis Motor</label>
+                        <select class="form-select" id="jenisMotor" name="inputJenis" aria-label="Example select with button addon" onchange="selectBox(event)">
+                            <option selected>Choose...</option>
+                            @foreach ($jenis as $j)
+                                <option value={{ $j->id }}>{{ $j->jenis }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                {{-- <div class="col-12 pt-2">
+                        <label for="input-biaya" class="form-label font-weight-bold">Biaya</label>
+                        <input type="text" class="form-control" id="inputBiaya" placeholder="0" name="input-biaya" readonly>
+                    </div> --}}
+                <div class="row mb-3 pt-3">
+                    <div class="col-sm-10 offset-sm-2">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck1">
+                            <label class="form-check-label" for="gridCheck1">
+                                setuju?
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                <!-- </form> -->
             </div>
         </div>
     </div>

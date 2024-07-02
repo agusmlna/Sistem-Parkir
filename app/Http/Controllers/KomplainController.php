@@ -17,7 +17,7 @@ class KomplainController extends Controller
             'title' => 'Detail Data Produk',
             'dataMotor' => Transaction::whereNotNull('komplain')->get(),
         ];
-        return view('dashboard.komplain', $data);
+        return view('transaksi.komplain', $data);
     }
 
     /**

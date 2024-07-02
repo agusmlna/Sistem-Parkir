@@ -26,7 +26,7 @@ class PDFController extends Controller
             'data' => $transaction
         ];
 
-        $pdf = PDF::loadView('dashboard.pdfstruk', $data);
+        $pdf = PDF::loadView('struk.pdfstruk', $data);
 
         return $pdf->download('struk-' . $idTransaction . '.pdf');
     }

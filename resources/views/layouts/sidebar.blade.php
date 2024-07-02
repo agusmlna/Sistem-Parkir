@@ -47,8 +47,19 @@
             <span>Jenis Motor</span></a>
     </li>
 
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Tabel Pegawai
+    </div>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
+
+    <li class="nav-item active">
+        <a class="nav-link" href='/datapegawai'>
+            <i class="fas fa-users"></i>
+            <span>Data Pegawai</span></a>
+    </li>
 
     <!-- Heading -->
     <div class="sidebar-heading">
@@ -59,22 +70,16 @@
     <hr class="sidebar-divider">
 
     <li class="nav-item active">
-        <a class="nav-link" href='/home'>
+        <a class="nav-link" href='/tambah-data-parkir'>
             <i class="fas fa-fw fa-table"></i>
-            <span>Home</span></a>
+            <span>Tambah Data Parkir</span></a>
     </li>
 
     <!-- Nav Item - Tables -->
     <li class="nav-item active">
-        <a class="nav-link" href='/datamotor'>
+        <a class="nav-link" href='/data-motor'>
             <i class="fas fa-database"></i>
-            <span>Data Motor</span></a>
-    </li>
-
-    <li class="nav-item active">
-        <a class="nav-link" href='/datapegawai'>
-            <i class="fas fa-users"></i>
-            <span>Data Pegawai</span></a>
+            <span>Data Parkir</span></a>
     </li>
 
     <li class="nav-item active">

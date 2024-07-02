@@ -24,7 +24,7 @@ class DataMotorController extends Controller
             'dataMotor' => $dataMotor
         ];
 
-        return view('dashboard.datamotor', $data);
+        return view('transaksi.datamotor', $data);
     }
 
     /**
@@ -92,7 +92,7 @@ class DataMotorController extends Controller
                 'tipe_pembayaran' => 'cash',
                 'jam_keluar' => Carbon::now(),
             ]);
-        return redirect('/datamotor');
+        return redirect('/data-motor');
     }
 
     public function transfer($id, Request $request)
@@ -108,7 +108,7 @@ class DataMotorController extends Controller
                 'tipe_pembayaran' => 'transfer',
                 'jam_keluar' => Carbon::now(),
             ]);
-        return redirect('/datamotor');
+        return redirect('/data-motor');
     }
 
     public function komplain($id, Request $request)
@@ -117,6 +117,6 @@ class DataMotorController extends Controller
             ->update([
                 'komplain' => $request->komplain,
             ]);
-        return redirect('/datamotor');
+        return redirect('/data-motor');
     }
 }

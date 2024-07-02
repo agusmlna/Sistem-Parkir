@@ -90,7 +90,7 @@
                                                 <button type="button" class="btn btn-danger rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target=" ">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
-                                                <a class="btn btn-primary rounded-circle btn-sm" href='/datamotor/cash/{{ $data->id }}'>
+                                                <a class="btn btn-primary rounded-circle btn-sm" href='/data-motor/cash/{{ $data->id }}'>
                                                     <i class="fas fa-money-bill"></i>
                                                 </a>
 

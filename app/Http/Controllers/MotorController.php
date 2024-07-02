@@ -6,7 +6,6 @@ use App\Models\JenisMotor;
 use App\Models\Merek;
 use App\Models\Motor;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class MotorController extends Controller
 {
@@ -15,9 +14,9 @@ class MotorController extends Controller
      */
     public function index()
     {
-        $motor = DB::table('motors')
-            ->join('mereks', 'mereks.id', '=', 'motors.id_merek')
+        $motor = Motor::join('mereks', 'mereks.id', '=', 'motors.id_merek')
             ->join('jenis_motors', 'jenis_motors.id', '=', 'motors.id_jenis')
+            ->select('motors.*', 'mereks.merek', 'jenis_motors.jenis')
             ->get();
 
         $data = [
@@ -25,7 +24,7 @@ class MotorController extends Controller
             'merek' => Merek::all(),
             'jenis' => JenisMotor::all()
         ];
-        return view('dashboard.Motor', $data);
+        return view('Master.Motor', $data);
     }
 
     /**

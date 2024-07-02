@@ -15,7 +15,7 @@ function dataToModal(id) {
 }
 
 function submitBuktiBayar(form) {
-    form.action = `/datamotor/transfer/${_id}`;
+    form.action = `/data-motor/transfer/${_id}`;
 }
 
 async function startWebcam() {
@@ -78,7 +78,7 @@ function dataToModalComplain(motor) {
 }
 
 function submitKomplain(form) {
-    form.action = `/datamotor/komplain/${_idForComplain}`;
+    form.action = `/data-motor/komplain/${_idForComplain}`;
 }
 
 function sendImageToModal(image) {
