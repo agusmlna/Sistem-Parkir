@@ -15,7 +15,7 @@ class JenisMotorController extends Controller
         $data = [
             'jenis' => JenisMotor::all(),
         ];
-        return view('dashboard.jenisMotor', $data);
+        return view('master.jenisMotor', $data);
     }
 
     /**
@@ -58,9 +58,16 @@ class JenisMotorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JenisMotor $jenisMotor)
+    public function update(Request $request, int $id)
     {
-        //
+        $jenis = JenisMotor::findOrFail($id);
+
+        $jenis->update([
+            'jenis' => $request->editInputJenis,
+            'biaya' => $request->editInputBiaya,
+        ]);
+
+        return redirect('/jenis-motor');
     }
 
     /**
@@ -68,6 +75,8 @@ class JenisMotorController extends Controller
      */
     public function destroy(JenisMotor $jenisMotor)
     {
-        //
+        JenisMotor::destroy($jenisMotor->id);
+
+        return redirect('/jenis-motor');
     }
 }

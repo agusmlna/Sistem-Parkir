@@ -22,7 +22,7 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800 fw-bold">Home</h1>
+                <h1 class="h3 mb-2 text-gray-800 fw-bold">Tambah Data Parkiran</h1>
                 <p class="mb-4">Penginputan data parkiran motor</p>
 
                 <!-- DataTales Example -->
@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="col px-4 py-3">
-                        <form class="row g-3" action="/home" method="post">
+                        <form class="row g-3" action="/tambah-data-parkir" method="post">
                             @csrf
                             <input type="hidden" name="" id="dataMotor" value='{{ $motor }}'>
 

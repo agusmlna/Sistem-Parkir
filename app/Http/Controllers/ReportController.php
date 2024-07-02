@@ -25,7 +25,7 @@ class ReportController extends Controller
             'end_date' => null
         ];
 
-        return view('dashboard.report', $data);
+        return view('transaksi.report', $data);
     }
 
     /**
@@ -96,7 +96,7 @@ class ReportController extends Controller
             'end_date' => $endDate
         ];
 
-        return view('dashboard.report', $data);
+        return view('transaksi.report', $data);
     }
 
     public function filterJenis(Request $request)
@@ -114,6 +114,6 @@ class ReportController extends Controller
             'end_date' => null
         ];
 
-        return view('dashboard.report', $data);
+        return view('transaksi.report', $data);
     }
 }

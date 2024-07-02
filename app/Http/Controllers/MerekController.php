@@ -12,10 +12,10 @@ class MerekController extends Controller
      */
     public function index()
     {
-        $data = [ 
+        $data = [
             'merek' => Merek::all(),
         ];
-        return view('dashboard.merek', $data);
+        return view('Master.Merek', $data);
     }
 
     /**
@@ -32,7 +32,7 @@ class MerekController extends Controller
     public function store(Request $request)
     {
         Merek::create([
-            'merek' => $request->inputMerek, 
+            'merek' => $request->inputMerek,
         ]);
 
         return redirect('/merek-motor');
@@ -57,16 +57,24 @@ class MerekController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Merek $merek)
+    public function update(Request $request, $id)
     {
-        //
+        $jenis = Merek::findOrFail($id);
+
+        $jenis->update([
+            'merek' => $request->editInputMerek,
+        ]);
+
+        return redirect('/merek-motor');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Merek $merek)
+    public function destroy(int $id)
     {
-        //
+        Merek::destroy($id);
+
+        return redirect('/merek-motor');
     }
 }

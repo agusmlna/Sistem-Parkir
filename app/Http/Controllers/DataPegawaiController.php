@@ -12,7 +12,7 @@ class DataPegawaiController extends Controller
      */
     public function index()
     {
-        return view('dashboard.datapegawai');
+        return view('pegawai.datapegawai');
     }
 
     /**

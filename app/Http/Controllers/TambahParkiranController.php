@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Transaction;
 use App\Models\Merek;
-use App\Models\Motor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class HomeController extends Controller
+class TambahParkiranController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +24,7 @@ class HomeController extends Controller
             'merek' => Merek::all(),
             'motor' => $motor,
         ];
-        return view('dashboard.home', $data);
+        return view('transaksi.tambahData', $data);
     }
 
     /**
@@ -56,7 +55,7 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Motor $motor)
+    public function show(Transaction $transaction)
     {
     }
 
@@ -96,6 +95,6 @@ class HomeController extends Controller
                 ->first()
         ];
 
-        return view('dashboard.struk', $data);
+        return view('struk.struk', $data);
     }
 }

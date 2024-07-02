@@ -18,6 +18,10 @@
 
     <!-- Custom styles for this template-->
     <link rel="stylesheet" href={{ asset('css/sb-admin-2.min.css') }} />
+
+    {{-- custom css --}}
+    <link rel="stylesheet" href={{ asset('css/custom-modal.css') }} />
+
 </head>
 
 <body>
@@ -57,6 +61,9 @@
     <script src={{ asset('js/input-data-motor.js') }}></script>
     <script src={{ asset('js/input-transaction.js') }}></script>
     <script src={{ asset('js/transaction.js') }}></script>
+    <script src={{ asset('js/master/motor.js') }}></script>
+    <script src={{ asset('js/master/merek.js') }}></script>
+    <script src={{ asset('js/master/jenis.js') }}></script>
 </body>
 
 </html>
