@@ -19,6 +19,7 @@ Route::Resource('/', LoginController::class);
 
 // auth
 Route::post('/auth/login', [LoginController::class, 'login']);
+Route::get('/auth/logout', [LoginController::class, 'logout']);
 
 // dashboard
 Route::Resource('/dashboard', DashboardController::class);
@@ -40,7 +41,7 @@ Route::put('/data-motor/transfer/{id}', [DataMotorController::class, 'transfer']
 Route::put('/data-motor/komplain/{id}', [DataMotorController::class, 'komplain']);
 
 // pegawai
-Route::Resource('/datapegawai', DataPegawaiController::class);
+Route::Resource('/data-pegawai', DataPegawaiController::class);
 
 // tambah data perkir
 Route::Resource('/tambah-data-parkir', TambahParkiranController::class);
