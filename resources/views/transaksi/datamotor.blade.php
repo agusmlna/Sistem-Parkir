@@ -84,35 +84,33 @@
                                             </td>
                                             <td>
                                                 @if ($data->status != 'selesai')
-                                                    <button type="button" class="btn btn-primary rounded-circle btn-sm"
-                                                        data-bs-toggle="modal" data-bs-target="#selesaiParkir"
-                                                        onclick="dataToModal({{ $data->id }})">
+                                                    <button type="button" class="btn btn-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#selesaiParkir"
+                                                        onclick="dataToModal({{ $data->id }})"
+                                                    >
                                                         <i class="fas fa-qrcode"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-danger rounded-circle btn-sm"
-                                                        data-bs-toggle="modal" data-bs-target=" ">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                    <a class="btn btn-primary rounded-circle btn-sm"
-                                                        href='/data-motor/cash/{{ $data->id }}'>
+                                                    <a class="btn btn-primary rounded-circle btn-sm" href='/data-motor/cash/{{ $data->id }}'>
                                                         <i class="fas fa-money-bill"></i>
                                                     </a>
+                                                    <button type="button" class="btn btn-danger rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target=" ">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($data->id_komplain == null)
+                                                @if ($data->id_komplain != null)
                                                     <!-- Button trigger modal -->
-                                                    <button type="button" class="btn btn-warning"
-                                                        data-bs-toggle="modal" data-bs-target="#komplainParkir"
-                                                        onclick='dataToModalComplain({{ $data }})' disabled>
+                                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#komplainParkir"
+                                                        onclick='dataToModalComplain({{ $data }})' disabled
+                                                    >
                                                         Komplain
                                                     </button>
                                                 @endif
-                                                @if ($data->id_komplain != null)
+                                                @if ($data->id_komplain == null)
                                                     <!-- Button trigger modal -->
-                                                    <button type="button" class="btn btn-warning"
-                                                        data-bs-toggle="modal" data-bs-target="#komplainParkir"
-                                                        onclick='dataToModalComplain({{ $data }})'>
+                                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#komplainParkir"
+                                                        onclick='dataToModalComplain({{ $data }})'
+                                                    >
                                                         Komplain
                                                     </button>
                                                 @endif
@@ -153,8 +151,7 @@
 </a>
 
 {{-- Modal selesai parkir --}}
-<div class="modal fade" id="selesaiParkir" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="selesaiParkir" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -171,8 +168,7 @@
 
             </div>
             <div class="modal-footer">
-                <form onsubmit="return submitBuktiBayar(this)" method="post" id="form"
-                    enctype="multipart/form-data">
+                <form onsubmit="return submitBuktiBayar(this)" method="post" id="form" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <input type="file" id="buktiBayar" name="bukti-bayar" hidden>
@@ -185,8 +181,7 @@
 </div>
 
 <!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -212,8 +207,7 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form onsubmit="return submitKomplain(this)" class="row g-3" method="post"
-                enctype="multipart/form-data">
+            <form onsubmit="return submitKomplain(this)" class="row g-3" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="modal-body">
@@ -223,13 +217,11 @@
                     </div>
                     <div class="col-md-6">
                         <label for="platNomor" class="form-label font-weight-bold">Plat Nomor</label>
-                        <input type="text" class="form-control" id="inputKomplainPlatNomor" name="platNomor"
-                            disabled>
+                        <input type="text" class="form-control" id="inputKomplainPlatNomor" name="platNomor" disabled>
                     </div>
                     <div class="col-12 pt-2">
                         <label for="kategori" class="form-label font-weight-bold">Kategori</label>
-                        <select class="form-select" id="inputKomplainJenisMotor"
-                            aria-label="Example select with button addon" disabled>
+                        <select class="form-select" id="inputKomplainJenisMotor" aria-label="Example select with button addon" disabled>
                             <option selected>Choose...</option>
                             <option value="1">Motor Kecil </option>
                             <option value="2">Motor Gede </option>
@@ -238,8 +230,7 @@
                     </div>
                     <div class="col-12 pt-2">
                         <label for="properti" class="form-label font-weight-bold">Keterangan</label>
-                        <input type="text" class="form-control" id="inputKomplainProperti"
-                            placeholder="Kehilangan Pacar" name="inputKomplainProperti">
+                        <input type="text" class="form-control" id="inputKomplainProperti" placeholder="Kehilangan Pacar" name="inputKomplainProperti">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -265,25 +256,20 @@
                     @csrf
                     <div class="col-md-6">
                         <label for="inputKomplainMotor" class="form-label font-weight-bold">Motor</label>
-                        <input type="text" class="form-control" id="inputKomplainMotor"
-                            name="inputKomplainMotor">
+                        <input type="text" class="form-control" id="inputKomplainMotor" name="inputKomplainMotor">
                     </div>
                     <div class="col-md-6">
                         <label for="inputKomplainPlatNomor" class="form-label font-weight-bold">Plat
                             Nomor</label>
-                        <input type="text" class="form-control" id="inputKomplainPlatNomor"
-                            name="inputKomplainPlatNomor">
+                        <input type="text" class="form-control" id="inputKomplainPlatNomor" name="inputKomplainPlatNomor">
                     </div>
                     <div class="col-12 pt-2">
                         <label for="properti" class="form-label font-weight-bold">Keterangan</label>
-                        <input type="text" class="form-control" id="properti" placeholder="Kehilangan Pacar"
-                            name="keterangan">
+                        <input type="text" class="form-control" id="properti" placeholder="Kehilangan Pacar" name="keterangan">
                     </div>
                     <div class="col-12 pt-2">
                         <label for="inputKomplainJenisMotor" class="form-label font-weight-bold">JenisMotor</label>
-                        <select class="form-select" id="inputKomplainJenisMotor"
-                            aria-label="Example select with button addon" onchange="selectBox(event)"
-                            name='inputKomplainJenisMotor'>
+                        <select class="form-select" id="inputKomplainJenisMotor" aria-label="Example select with button addon" onchange="selectBox(event)" name='inputKomplainJenisMotor'>
                             <option selected>Choose...</option>
                             <option value="1">Motor Kecil </option>
                             <option value="2">Motor Besar </option>

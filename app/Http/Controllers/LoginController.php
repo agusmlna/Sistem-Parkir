@@ -75,34 +75,41 @@ class LoginController extends Controller
             return back()->with('errorEmail', 'email tidak terdaftar');
         }
 
-        // user login untuk owner
-        if ($user->role_id == 1) {
-            // jika possword benar
-            if ($user->password == $password) {
-                $data = [
-                    'id' => $user->id,
-                    'email' => $user->email,
-                ];
+        if ($user->password == $password) {
+            session([
+                'id' => $user->id,
+                'name' => $user->name,
+                'role' => $user->role
+            ]);
 
-                return redirect('/owner');
-            } else {
-                return back()->with('errorPassword', 'password salah');
-            }
+            return redirect('/dashboard');
+        } else {
+            return back()->with('errorPassword', 'password salah');
         }
+        // // user login untuk owner
+        // if ($user->role == 'admin') {
+        //     // jika possword benar
+        // }
 
-        // user login untuk pegawai
-        if ($user->role_id == 2) {
-            // jika possword benar
-            if ($user->password == $password) {
-                $data = [
-                    'id' => $user->id,
-                    'email' => $user->email,
-                ];
+        // // user login untuk pegawai
+        // if ($user->role_id == 2) {
+        //     // jika possword benar
+        //     if ($user->password == $password) {
+        //         $data = [
+        //             'id' => $user->id,
+        //             'email' => $user->email,
+        //         ];
 
-                return redirect('/dashboard');
-            } else {
-                return back()->with('errorPassword', 'password salah');
-            }
-        }
+        //         return redirect('/dashboard');
+        //     } else {
+        //         return back()->with('errorPassword', 'password salah');
+        //     }
+        // }
+    }
+
+    function logout()
+    {
+        session()->flush();
+        return redirect('/');
     }
 }

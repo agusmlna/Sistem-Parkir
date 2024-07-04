@@ -1,11 +1,11 @@
 @extends('layouts.main')
 
 @section('content')
-<!-- Page Wrapper -->
-<div id="wrapper">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
     @section('sidebar')
-    @include('layouts.sidebar')
+        @include('layouts.sidebar')
     @show
 
     <!-- Content Wrapper -->
@@ -15,7 +15,7 @@
         <div id="content">
 
             @section('topbar')
-            @include('layouts.topbar')
+                @include('layouts.topbar')
             @show
 
             <!-- Begin Page Content -->
@@ -93,28 +93,31 @@
                                 </tfoot>
                                 <tbody>
                                     @foreach ($dataMotor as $data)
-                                    <tr>
-                                        <td>{{ $data->motor }}</td>
-                                        <td>{{ $data->plat_nomor }}</td>
-                                        <td>{{ $data->properti }}</td>
-                                        <td>{{ $data->jam_masuk->format('d, M:H.i') }}</td>
-                                        <td>{{ $data->jam_keluar != null ? $data->jam_keluar->format('d, M:H.i') : '' }}</td>
-                                        <td>{{ $data->jenis }}</td>
-                                        <td>Rp. {{ $data->biaya }}</td>
-                                        <td>{{ $data->tipe_pembayaran }}</td>
-                                        <td>
-                                            <img src='{{ asset('storage/images/' . $data->bukti_bayar) }}' alt="" class="buktibayar" style="width: 100px; min-height: 0; max-height: 100px; object-fit: cover;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="sendImageToModal('{{ asset('storage/images/' . $data->bukti_bayar) }}')">
-                                        </td>
-                                        <td>
-                                            @if ($data->status == 'diproses')
-                                            <span class="badge rounded-pill text-bg-primary">Proses</span>
-                                            @elseif($data->status == 'selesai')
-                                            <span class="badge rounded-pill text-bg-success">Selesai</span>
-                                            @elseif($data->status == 'delete')
-                                            <span class="badge rounded-pill text-bg-danger">Dibatalkan</span>
-                                            @endif
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>{{ $data->motor }}</td>
+                                            <td>{{ $data->plat_nomor }}</td>
+                                            <td>{{ $data->properti }}</td>
+                                            <td>{{ $data->jam_masuk->format('d, M:H.i') }}</td>
+                                            <td>{{ $data->jam_keluar != null ? $data->jam_keluar->format('d, M:H.i') : '' }}</td>
+                                            <td>{{ $data->jenis }}</td>
+                                            <td>Rp. {{ $data->biaya }}</td>
+                                            <td>{{ $data->tipe_pembayaran }}</td>
+                                            <td>
+                                                <img src='{{ asset('storage/images/' . $data->bukti_bayar) }}' alt="" class="buktibayar"
+                                                    style="width: 100px; min-height: 0; max-height: 100px; object-fit: cover;" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#imageModal" onclick="sendImageToModal('{{ asset('storage/images/' . $data->bukti_bayar) }}')"
+                                                >
+                                            </td>
+                                            <td>
+                                                @if ($data->status == 'diproses')
+                                                    <span class="badge rounded-pill text-bg-primary">Proses</span>
+                                                @elseif($data->status == 'selesai')
+                                                    <span class="badge rounded-pill text-bg-success">Selesai</span>
+                                                @elseif($data->status == 'delete')
+                                                    <span class="badge rounded-pill text-bg-danger">Dibatalkan</span>
+                                                @endif
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
 

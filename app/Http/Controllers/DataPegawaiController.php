@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataPegawai;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DataPegawaiController extends Controller
@@ -12,7 +13,10 @@ class DataPegawaiController extends Controller
      */
     public function index()
     {
-        return view('pegawai.datapegawai');
+        $data = [
+            'pegawai' => User::all()
+        ];
+        return view('pegawai.datapegawai', $data);
     }
 
     /**
@@ -20,7 +24,7 @@ class DataPegawaiController extends Controller
      */
     public function create()
     {
-        //
+        // 
     }
 
     /**
@@ -28,7 +32,24 @@ class DataPegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->file('inputFoto'));
+        // upload image
+        $foto = $request->file('inputFoto');
+        $foto->storeAs('public/images', $foto->hashName());
+
+        User::create([
+            'email' => $request->inputEmail,
+            'password' => $request->inputPassword,
+            'name' => $request->inputName,
+            'tempat_tanggal_lahir' => $request->inputTTL,
+            'jenis_kelamin' => $request->jenisKelamin,
+            'alamat' => $request->inputAlamat,
+            'no_handphone' => $request->inputNoHP,
+            'role' => $request->role,
+            'foto' => $foto->hashName(),
+        ]);
+
+        return redirect('/data-pegawai');
     }
 
     /**

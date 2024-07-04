@@ -23,7 +23,7 @@
 
                 <!-- Content Row -->
                 <div class="row">
-                    <!-- Earnings (Monthly) Card Example -->
+                    <!-- Earnings (Daily) Card Example -->
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
@@ -33,7 +33,7 @@
                                             Laporan Harian
                                         </div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            Rp. 500.000
+                                            Rp. {{ $total_harian }}
                                         </div>
                                     </div>
                                     <div class="col-auto">
@@ -54,7 +54,7 @@
                                             Laporan Bulanan
                                         </div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            Rp. 5.000.000
+                                            Rp. {{ $total_bulanan }}
                                         </div>
                                     </div>
                                     <div class="col-auto">
@@ -72,7 +72,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                            Data Motor
+                                            Data Parkir
                                         </div>
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-auto">
@@ -82,7 +82,7 @@
                                             </div>
                                             <div class="col">
                                                 <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                    15
+                                                    {{ $total_parkir }}
                                                 </div>
                                             </div>
                                         </div>
@@ -105,7 +105,7 @@
                                             Data Pegawai
                                         </div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            2
+                                            {{ $total_pegawai }}
                                         </div>
                                     </div>
                                     <div class="col-auto">
@@ -128,8 +128,8 @@
                                 </h6>
                             </div>
                             <div class="card-body">
-                                <h3 class="font-weight-bold">AP Tantrum</h3>
-                                <p class="mb-0">Senin, 17 Mei 2024</p>
+                                <h3 class="font-weight-bold">{{ $user->name }}</h3>
+                                <p class="mb-0">{{ $user->tempat_tanggal_lahir }}</p>
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     detail
@@ -157,7 +157,7 @@
                                                             Nama :
                                                         </div>
                                                         <div class="col-4">
-                                                            Jidan Nurrosadi
+                                                            {{ $user->name }}
                                                         </div>
                                                     </div>
                                                     <div class="row justify-content-center">
@@ -165,7 +165,7 @@
                                                             Tempat, Tanggal Lahir :
                                                         </div>
                                                         <div class="col-4">
-                                                            Bogor, 16 Agustus 2001
+                                                            {{ $user->tempat_tanggal_lahir }}
                                                         </div>
                                                     </div>
                                                     <div class="row justify-content-center">
@@ -173,7 +173,7 @@
                                                             No telpon :
                                                         </div>
                                                         <div class="col-4">
-                                                            08778081263
+                                                            {{ $user->no_handphone }}
                                                         </div>
                                                     </div>
                                                     <div class="row justify-content-center">
@@ -181,7 +181,7 @@
                                                             Jenis Kelamin :
                                                         </div>
                                                         <div class="col-4">
-                                                            Pria
+                                                            {{ $user->jenis_kelamin }}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -241,30 +241,6 @@
     <i class="fas fa-angle-up"></i>
 </a>
 
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
-                    Ready to Leave?
-                </h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Select "Logout" below if you are ready to end your current
-                session.
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">
-                    Cancel
-                </button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 @endsection
