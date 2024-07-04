@@ -24,8 +24,31 @@
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800 fw-bold">Data Laporan Parkiran</h1>
-                    <a href="/generate-pdf/{{ $data->id }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i>
-                        Generate Report</a>
+                    @if (request()->is('report'))
+                        <a href="/generate-pdf/report" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                            <i class="fas fa-download fa-sm text-white-50"></i>
+                            Generate Report
+                        </a>
+                    @elseif (request()->is('report/filter'))
+                        <form action="/generate-pdf/report/filter-date" method="post">
+                            @csrf
+                            <input type="hidden" id="startDatePdf" name="startDatePdf" value={{ $start_date_pdf }}>
+                            <input type="hidden" id="endDatePdf" name="endDatePdf" value={{ $end_date_pdf }}>
+                            <button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                <i class="fas fa-download fa-sm text-white-50"></i>
+                                Generate Report
+                            </button>
+                        </form>
+                    @elseif (request()->is('report/filter/jenis'))
+                        <form action="/generate-pdf/report/filter-jenis" method="post">
+                            @csrf
+                            <input type="hidden" value={{ $input_jenis }} name="jenis">
+                            <button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                <i class="fas fa-download fa-sm text-white-50"></i>
+                                Generate Report
+                            </button>
+                        </form>
+                    @endif
                 </div>
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -52,8 +75,9 @@
                             <div class="d-flex">
                                 <select class="form-select w-50" aria-label="Default select example" name="selectJenisMotor">
                                     <option selected>Jenis Motor</option>
-                                    <option value="1">Motor Kecil</option>
-                                    <option value="2">Motor Besar</option>
+                                    @foreach ($jenis as $j)
+                                        <option value="{{ $j->id }}">{{ $j->jenis }}</option>
+                                    @endforeach
                                 </select>
                                 <button type="submit" class="btn btn-primary ms-2">Search</button>
 

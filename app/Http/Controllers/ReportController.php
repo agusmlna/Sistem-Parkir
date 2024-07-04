@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JenisMotor;
 use App\Models\Transaction;
 use App\Models\Report;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -20,6 +22,7 @@ class ReportController extends Controller
 
         $data = [
             'title' => 'Report',
+            'jenis' => JenisMotor::all(),
             'dataMotor' => $transaction,
             'start_date' => null,
             'end_date' => null
@@ -78,10 +81,8 @@ class ReportController extends Controller
 
     public function filterDate(Request $request)
     {
-
-        $startDate = date("Y-m-d H:i:s", strtotime($request->startDate));
-        // dd($startDate);
-        $endDate = date("Y-m-d H:i:s", strtotime($request->endDate));
+        $startDate = Carbon::parse($request->startDate)->startOfDay();
+        $endDate = Carbon::parse($request->endDate)->endOfDay();
 
         $transaction = Transaction::leftJoin('motors', 'transactions.id_motor', '=', 'motors.id')
             ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
@@ -91,9 +92,12 @@ class ReportController extends Controller
 
         $data = [
             'title' => 'Report',
+            'jenis' => JenisMotor::all(),
             'dataMotor' => $transaction,
             'start_date' => $startDate,
-            'end_date' => $endDate
+            'end_date' => $endDate,
+            'start_date_pdf' => $startDate,
+            'end_date_pdf' => $endDate,
         ];
 
         return view('transaksi.report', $data);
@@ -109,9 +113,11 @@ class ReportController extends Controller
 
         $data = [
             'title' => 'Report',
+            'jenis' => JenisMotor::all(),
             'dataMotor' => $transaction,
             'start_date' => null,
-            'end_date' => null
+            'end_date' => null,
+            'input_jenis' => $request->selectJenisMotor
         ];
 
         return view('transaksi.report', $data);

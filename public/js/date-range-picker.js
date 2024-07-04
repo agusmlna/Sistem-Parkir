@@ -10,17 +10,17 @@ $(function () {
         start = moment().subtract(29, "days");
         end = moment();
     } else {
-        start = moment(startDate.value);
+        start = moment.parseZone(startDate.value);
         end = moment(endDate.value);
     }
 
     function cb(start, end) {
+        startDate.value = start;
+        endDate.value = end;
+
         $("#reportrange span").html(
             start.format("MMMM D, YYYY") + " - " + end.format("MMMM D, YYYY")
         );
-
-        startDate.value = start;
-        endDate.value = end;
     }
 
     $("#reportrange").daterangepicker(

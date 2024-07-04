@@ -32,27 +32,32 @@
                                     <th>Biaya</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                @php
+                                    $i = 1;
+                                    $total = 0;
+                                @endphp
+                                @foreach ($data as $d)
+                                    @php
+                                        $total += $d->biaya;
+                                    @endphp
+                                    <tr>
+                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $d->motor }}</td>
+                                        <td>{{ $d->plat_nomor }}</td>
+                                        <td>{{ $d->jam_masuk->format('d, M:H.i') }}</td>
+                                        <td>{{ $d->jenis }}</td>
+                                        <td>Rp. {{ $d->biaya }}</td>
+                                        <td>{{ $d->tipe_pembayaran }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                             <tfoot>
                                 <tr>
                                     <th scope="row">Total</th>
-                                    <td colspan="4">Rp.500.000</td>
+                                    <td colspan="4">Rp.{{ $total }}</td>
                                 </tr>
                             </tfoot>
-                            <tbody>
-                                @php
-                                $i = 1;
-                                @endphp
-                                <tr>
-                                    <td>{{ $i++ }}</td>
-                                    <td>{{ $data->motor }}</td>
-                                    <td>{{ $data->plat_nomor }}</td>
-                                    <td>{{ $data->jam_masuk->format('d, M:H.i') }}</td>
-                                    <td>{{ $data->jenis }}</td>
-                                    <td>Rp. {{ $data->biaya }}</td>
-                                    <td>{{ $data->tipe_pembayaran }}</td>
-                                </tr>
-                            </tbody>
-
                         </table>
                     </div>
                 </div>

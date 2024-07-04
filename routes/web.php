@@ -53,4 +53,7 @@ Route::Resource('/komplain', KomplainController::class);
 Route::get('/struk/{id}', [TambahParkiranController::class, 'struk'])->name('struk');
 
 // pdf
-Route::get('generate-pdf/{id}', [PDFController::class, 'generatePDF'])->name('generate-pdf');
+Route::get('generate-pdf/struk/{id}', [PDFController::class, 'generatePDF'])->name('generate-pdf');
+Route::get('/generate-pdf/report', [PDFController::class, 'generatePDFReport'])->name('generate-pdf.report');
+Route::post('/generate-pdf/report/filter-date', [PDFController::class, 'generatePDFReportFilterDate'])->name('generate-pdf.report.filter-date');
+Route::post('/generate-pdf/report/filter-jenis', [PDFController::class, 'generatePDFReportFilterJenis'])->name('generate-pdf.report.filter-jenis');
