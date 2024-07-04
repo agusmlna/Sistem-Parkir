@@ -61,7 +61,7 @@ captureButton.addEventListener("click", capturePhoto);
 let _idForComplain;
 let komplainMotor = document.getElementById("inputKomplainMotor");
 let komplainPlatNomor = document.getElementById("inputKomplainPlatNomor");
-let komplainTipeMotor = document.getElementById("inputKomplainTipeMotor");
+let komplainJenisMotor = document.getElementById("inputKomplainJenisMotor");
 
 function dataToModalComplain(motor) {
     console.log(motor);
@@ -70,15 +70,15 @@ function dataToModalComplain(motor) {
     komplainMotor.value = motor["motor"];
     komplainPlatNomor.value = motor["plat_nomor"];
 
-    if (motor["tipe_motor"] == "Motor Kecil") {
-        komplainTipeMotor.selectedIndex = 1;
+    if (motor["jenis"] == "Motor Kecil") {
+        komplainJenisMotor.selectedIndex = 1;
     } else {
-        komplainTipeMotor.selectedIndex = 2;
+        komplainJenisMotor.selectedIndex = 2;
     }
 }
 
 function submitKomplain(form) {
-    form.action = `/data-motor/komplain/${_idForComplain}`;
+    form.action = `/data-motor/${_idForComplain}`;
 }
 
 function sendImageToModal(image) {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Komplain;
 use App\Models\Transaction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -63,17 +64,16 @@ class DataMotorController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        // //upload image
-        // $image = $request->file('bukti-bayar');
-        // $image->storeAs('public/images', $image->hashName());
+        $komplain = Komplain::create([
+            'komplain' => $request->inputKomplainProperti,
+            'status' => 'diproses',
+        ]);
+        $transaction = Transaction::find($id);
+        $transaction->update([
+            'id_komplain' => $komplain->id,
+        ]);
 
-        // Motor::where('id', $id)
-        //     ->update([
-        //         'bukti_bayar' => $image->hashName(),
-        //         'status' => 'selesai',
-        //         'jam_keluar' => Carbon::now(),
-        //     ]);
-        // return redirect('/datamotor');
+        return redirect('/komplain');
     }
 
     /**

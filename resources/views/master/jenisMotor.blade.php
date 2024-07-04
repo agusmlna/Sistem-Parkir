@@ -66,12 +66,12 @@
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editJenisMotor"
                                                     onclick="openModalEditJenis({{ $j }}); takeId({{ $j->id }})"
                                                 >
-                                                    <i class="fas fa-info"></i>
+                                                    Edit
                                                 </button>
-                                                <button type="button" class="btn btn-danger rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal"
                                                     onclick="takeId({{ $j->id }})"
                                                 >
-                                                    <i class="fas fa-trash"></i>
+                                                    Hapus
                                                 </button>
                                             </td>
                                         </tr>

@@ -3,8 +3,8 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href='/dashboard'>
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+        <div class="sidebar-brand-icon">
+            <i class="fas fa-parking"></i>
         </div>
         <div class="sidebar-brand-text mx-3">SI Parkir</div>
     </a>
@@ -22,7 +22,7 @@
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-    <div class="sidebar-heading">
+    <div class="sidebar-heading text-center pb-3">
         Tabel Master
     </div>
 
@@ -47,8 +47,10 @@
             <span>Jenis Motor</span></a>
     </li>
 
+    <hr class="sidebar-divider">
+
     <!-- Heading -->
-    <div class="sidebar-heading">
+    <div class="sidebar-heading text-center pb-3">
         Tabel Pegawai
     </div>
 
@@ -61,8 +63,10 @@
             <span>Data Pegawai</span></a>
     </li>
 
+    <hr class="sidebar-divider">
+
     <!-- Heading -->
-    <div class="sidebar-heading">
+    <div class="sidebar-heading text-center pb-3">
         Tabel Transaksi
     </div>
 

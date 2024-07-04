@@ -157,7 +157,7 @@
                                             <td>
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editPegawai">
-                                                <i class="fas fa-info"></i>
+                                                Edit
                                                 </button>
 
                                                 <!-- Modal -->
@@ -245,40 +245,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <button type="button" class="btn btn-danger rounded-circle btn-sm"> <i class="fas fa-trash"></i>
+                                                <button type="button" class="btn btn-danger btn-sm"> Hapus
                                                 </button>
                                             </td>
-                                        </tr>
-                                        <tr>
-                                          <td>2</td>
-                                          <td> <img src="" alt=""> </td>
-                                          <td>Freddie Mercury</td>
-                                          <td>Bogor, 16 Agustus 1980</td>
-                                          <td>Pria</td> 
-                                          <td>Jalan Bogor Mediterania no 4</td>
-                                          <td>08778081263</td>
-                                          <td>
-                                            <button type="button" class="btn btn-primary rounded-circle btn-sm"> <i class="fas fa-info-circle"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-danger rounded-circle btn-sm"> <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                        </tr>
-                                        <tr>
-                                          <td>3</td>
-                                          <td> <img src="" alt=""> </td>
-                                          <td>Freddie Mercury</td>
-                                          <td>Bogor, 16 Agustus 1980</td>
-                                          <td>Pria</td> 
-                                          <td>Jalan Bogor Mediterania no 4</td>
-                                          <td>08778081263</td>
-                                          <td>
-                                            <button type="button" class="btn btn-primary rounded-circle btn-sm"> <i class="fas fa-info-circle"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-danger rounded-circle btn-sm"> <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                        </tr>
+                                        </tr> 
                                     </tbody>
                                 </table>
                             </div>

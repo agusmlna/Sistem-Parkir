@@ -13,9 +13,15 @@ class KomplainController extends Controller
      */
     public function index()
     {
+        $komplains = Transaction::leftJoin('motors', 'transactions.id_motor', '=', 'motors.id')
+            ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
+            ->join('komplains', 'transactions.id_komplain', '=', 'komplains.id')
+            ->select('transactions.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya', 'komplains.komplain', 'komplains.status')
+            ->get();
+
         $data = [
             'title' => 'Detail Data Produk',
-            'dataMotor' => Transaction::whereNotNull('komplain')->get(),
+            'komplain' => $komplains
         ];
         return view('transaksi.komplain', $data);
     }
@@ -33,7 +39,14 @@ class KomplainController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //     $komplain = Komplain::create([
+        //         'komplain' => $request->inputKomplainProperti,
+        //         'status' => 'diproses',
+        //     ]);
+
+        //     $transaction = Transaction->update([
+        //         'id_merek' => $komplain->id,
+        //     ]);
     }
 
     /**

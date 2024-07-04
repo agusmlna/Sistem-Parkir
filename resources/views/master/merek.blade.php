@@ -63,12 +63,12 @@
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editMerekMotor"
                                                     onclick="openModalEditMerek({{ $m }}); takeIdMerek({{ $m->id }})"
                                                 >
-                                                    <i class="fas fa-info"></i>
+                                                    Edit
                                                 </button>
-                                                <button type="button" class="btn btn-danger rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal"
                                                     onclick="takeIdMerek({{ $m->id }})"
                                                 >
-                                                    <i class="fas fa-trash"></i>
+                                                    Hapus
                                                 </button>
                                             </td>
                                         </tr>
