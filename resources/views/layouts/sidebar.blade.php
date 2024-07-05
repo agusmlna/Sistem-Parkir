@@ -84,27 +84,25 @@
                 <i class="fas fa-fw fa-table"></i>
                 <span>Tambah Data Parkir</span></a>
         </li>
-
-        <!-- Nav Item - Tables -->
-        <li class="nav-item active">
-            <a class="nav-link" href='/data-motor'>
-                <i class="fas fa-database"></i>
-                <span>Data Parkir</span></a>
-        </li>
     @endif
 
-    @if (session('role') == 'owner')
-        <li class="nav-item active">
-            <a class="nav-link" href="/report">
-                <i class="fas fa-flag"></i>
-                <span>Report</span></a>
-        </li>
-        <li class="nav-item active">
-            <a class="nav-link" href="/komplain">
-                <i class="fas fa-exclamation"></i>
-                <span>Komplain</span></a>
-        </li>
-    @endif
+    <!-- Nav Item - Tables -->
+    <li class="nav-item active">
+        <a class="nav-link" href='/data-motor'>
+            <i class="fas fa-database"></i>
+            <span>Data Parkir</span></a>
+    </li>
+
+    <li class="nav-item active">
+        <a class="nav-link" href="/report">
+            <i class="fas fa-flag"></i>
+            <span>Report</span></a>
+    </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="/komplain">
+            <i class="fas fa-exclamation"></i>
+            <span>Komplain</span></a>
+    </li>
 
 
     <!-- Divider -->

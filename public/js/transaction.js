@@ -87,3 +87,7 @@ function sendImageToModal(image) {
     console.log(imageModal);
     imageModal.src = image;
 }
+
+function submitCancelParkir(form) {
+    form.action = `/data-motor/${_id}`;
+}

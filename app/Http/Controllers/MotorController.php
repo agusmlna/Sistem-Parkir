@@ -70,7 +70,15 @@ class MotorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $motor = Motor::findOrFail($id);
+
+        $motor->update([
+            'motor' => $request->inputEditNamaMotor,
+            'id_merek' => $request->selectEditMerek,
+            'id_jenis' => $request->selectEditJenis,
+        ]);
+
+        return redirect('/motor');
     }
 
     /**
@@ -78,6 +86,8 @@ class MotorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Motor::destroy($id);
+
+        return redirect('/motor');
     }
 }

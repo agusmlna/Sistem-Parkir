@@ -16,7 +16,7 @@ class KomplainController extends Controller
         $komplains = Transaction::leftJoin('motors', 'transactions.id_motor', '=', 'motors.id')
             ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
             ->join('komplains', 'transactions.id_komplain', '=', 'komplains.id')
-            ->select('transactions.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya', 'komplains.komplain', 'komplains.status')
+            ->select('transactions.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya', 'komplains.id as id_komplain', 'komplains.komplain', 'komplains.status')
             ->get();
 
         $data = [
@@ -68,9 +68,16 @@ class KomplainController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Komplain $report)
+    public function update(Request $request, int $id)
     {
-        //
+        $komplain = Komplain::findOrFail($id);
+
+        $komplain->update([
+            'komplain' => $request->inputGantiRugi,
+            'status' => 'selesai',
+        ]);
+
+        return redirect('/komplain');
     }
 
     /**

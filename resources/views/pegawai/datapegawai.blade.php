@@ -88,10 +88,13 @@
                                             <td>{{ $p->no_handphone }}</td>
                                             <td>
                                                 <!-- Button trigger modal -->
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editPegawai">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editPegawai"
+                                                    onclick="openModalEditPegawai({{ $p }}); takeIdPegawai({{ $p->id }})"
+                                                >
                                                     Edit
                                                 </button>
-                                                <button type="button" class="btn btn-danger btn-sm"> Hapus
+                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="takeIdPegawai({{ $p->id }})">
+                                                    Hapus
                                                 </button>
                                             </td>
                                         </tr>
@@ -156,8 +159,8 @@
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Pegawai</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form action="/data-pegawai" method="post" enctype="multipart/form-data">
+            <form action="/data-pegawai" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
                     @csrf
                     <div class="row mb-3">
                         <label for="inputFoto" class="form-label">Upload Foto</label>
@@ -243,11 +246,12 @@
                             </div>
                         </div>
                     </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -260,80 +264,83 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Data Pegawai</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form>
+            <form onsubmit="return submitEditPegawai(this)" method="post" enctype="multipart/form-data">
+                @csrf
+                @method('put')
+                <div class="modal-body">
                     <div class="row mb-3">
                         <label for="formFile" class="form-label">Upload Foto</label>
-                        <input class="form-control" type="file" id="formFile">
+                        <input class="form-control" type="file" id="formFile" name="editFoto">
                     </div>
                     <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                        <label for="inputEditEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3">
+                            <input type="email" class="form-control" id="inputEditEmail" name="inputEditEmail">
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                        <label for="inputEditPassword" class="col-sm-2 col-form-label">Password</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="inputPassword3">
+                            <input type="password" class="form-control" id="inputEditPassword" name="inputEditPassword">
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="inputNama4" class="col-sm-2 col-form-label">Nama</label>
+                        <label for="inputEditNama" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputNama4">
+                            <input type="text" class="form-control" id="inputEditNama" name="inputEditNama">
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="inputTTL4" class="col-sm-2 col-form-label">Tempat, Tanggal Lahir</label>
+                        <label for="inputEditTTL" class="col-sm-2 col-form-label">Tempat, Tanggal Lahir</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputTTL4">
+                            <input type="text" class="form-control" id="inputEditTTL" name="inputEditTTL">
                         </div>
                     </div>
-                    <fieldset class="row mb-3">
+                    <fieldset class="row mb-3" name="listJenisKelamin">
                         <legend class="col-form-label col-sm-2 pt-0">Jenis Kelamin</legend>
                         <div class="col-sm-10">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                                <label class="form-check-label" for="gridRadios1">
+                                <input class="form-check-input" type="radio" name="radioJenisKelamin" id="radioJenisKelamin1" value="pria" checked>
+                                <label class="form-check-label" for="radioJenisKelamin1">
                                     Pria
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                                <label class="form-check-label" for="gridRadios2">
+                                <input class="form-check-input" type="radio" name="radioJenisKelamin" id="radioJenisKelamin2" value="wanita">
+                                <label class="form-check-label" for="radioJenisKelamin2">
                                     Wanita
                                 </label>
                             </div>
                         </div>
                     </fieldset>
                     <div class="row mb-3">
-                        <label for="inputAlamat4" class="col-sm-2 col-form-label">Alamat</label>
+                        <label for="inputEditAlamat" class="col-sm-2 col-form-label">Alamat</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputAlamat4">
+                            <input type="text" class="form-control" id="inputEditAlamat" name="inputEditAlamat">
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="inputNoHP4" class="col-sm-2 col-form-label">No. Handphone</label>
+                        <label for="inputEditNoHP" class="col-sm-2 col-form-label">No. Handphone</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputNoHP4">
+                            <input type="text" class="form-control" id="inputEditNoHP" name="inputEditNoHP">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-sm-10 offset-sm-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                <label class="form-check-label" for="gridCheck1">
-                                    Example checkbox
+                                <input class="form-check-input" type="checkbox" id="checkBoxEditPegawai" onclick="confirmEditPegawai()">
+                                <label class="form-check-label" for="checkBoxEditPegawai">
+                                    Setuju?
                                 </label>
                             </div>
                         </div>
                     </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="btnEditPegawai">Save changes</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -348,6 +355,33 @@
             </div>
             <div class="modal-body">
                 <img src="" class="img-fluid image-modal" id="userFoto" alt="...">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{-- delete modal --}}
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header flex-column">
+                <div class="icon-box">
+                    <i class="material-icons">&times;</i>
+                </div>
+                <h4 class="modal-title w-100">Are you sure?</h4>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Do you really want to delete these records? This process cannot be undone.</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form onsubmit="return submitDeletePegawai(this)" method="post">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             </div>
         </div>
     </div>
