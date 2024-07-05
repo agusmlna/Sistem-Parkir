@@ -1,7 +1,7 @@
 <!-- Topbar -->
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-    <h3 class ="fw-bold">{{ session('role') }} </h3>
+    <h3 class="fw-bold">{{ session('role') }} </h3>
 
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
@@ -49,7 +49,7 @@
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">
                     Cancel
                 </button>
-                <a class="btn btn-primary" href="auth/logout">Logout</a>
+                <a class="btn btn-primary" href="/">Logout</a>
             </div>
         </div>
     </div>
