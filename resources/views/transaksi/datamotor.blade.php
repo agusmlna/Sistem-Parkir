@@ -77,24 +77,30 @@
                                                 @elseif($data->status == 'selesai')
                                                     <span class ="badge text-bg-success"> Selesai
                                                     </span>
-                                                @elseif($data->status == 'delete')
+                                                @elseif($data->status == 'dibatalkan')
                                                     <span class="badge text-bg-danger"> Dibatalkan
                                                     </span>
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($data->status != 'selesai')
-                                                    <button type="button" class="btn btn-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#selesaiParkir"
-                                                        onclick="dataToModal({{ $data->id }})"
-                                                    >
-                                                        <i class="fas fa-qrcode"></i>
-                                                    </button>
-                                                    <a class="btn btn-primary rounded-circle btn-sm" href='/data-motor/cash/{{ $data->id }}'>
-                                                        <i class="fas fa-money-bill"></i>
-                                                    </a>
-                                                    <button type="button" class="btn btn-danger rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target=" ">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
+                                                @if ($data->status != 'selesai' && $data->status != 'dibatalkan')
+                                                    @if (session('role') == 'admin')
+                                                        <button type="button" class="btn btn-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#selesaiParkir"
+                                                            onclick="dataToModal({{ $data->id }})"
+                                                        >
+                                                            <i class="fas fa-qrcode"></i>
+                                                        </button>
+                                                        <a class="btn btn-primary rounded-circle btn-sm" href='/data-motor/cash/{{ $data->id }}'>
+                                                            <i class="fas fa-money-bill"></i>
+                                                        </a>
+                                                    @endif
+                                                    @if (session('role') == 'owner')
+                                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                            onclick="dataToModal({{ $data->id }})"
+                                                        >
+                                                            Batalkan
+                                                        </button>
+                                                    @endif
                                                 @endif
                                             </td>
                                             <td>
@@ -282,6 +288,32 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save
                     changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- Cancel modal --}}
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header flex-column">
+                <div class="icon-box">
+                    <i class="material-icons">&times;</i>
+                </div>
+                <h4 class="modal-title w-100">Are you sure?</h4>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Do you really want to Cancel these records? This process cannot be undone.</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form onsubmit="return submitCancelParkir(this)" method="post">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             </div>
         </div>
     </div>

@@ -68,7 +68,7 @@ class DataMotorController extends Controller
             'komplain' => $request->inputKomplainProperti,
             'status' => 'diproses',
         ]);
-        $transaction = Transaction::find($id);
+        $transaction = Transaction::findOrFail($id);
         $transaction->update([
             'id_komplain' => $komplain->id,
         ]);
@@ -79,9 +79,14 @@ class DataMotorController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Transaction $transaction)
+    public function destroy(int $id)
     {
-        //
+        $transaction = Transaction::findOrFail($id);
+
+        $transaction->update([
+            'status' => 'dibatalkan',
+        ]);
+        return redirect('/data-motor');
     }
 
     public function cash($id, Request $request)

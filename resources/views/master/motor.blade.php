@@ -30,8 +30,7 @@
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Isi Inputan Motor</h6>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Tambah Data Motor
                         </button>
                     </div>
@@ -69,15 +68,14 @@
                                             <td> {{ $mtr->jenis }} </td>
                                             <td>
                                                 <!-- Button trigger modal -->
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                    data-bs-target="#editMotor"
-                                                    onclick="openModalEditMotor({{ $mtr }})">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editMotor"
+                                                    onclick="openModalEditMotor({{ $mtr }}); takeIdMotor({{ $mtr->id }})"
+                                                >
                                                     edit
                                                 </button>
-                                                {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editMotor" onclick="openModalEditMotor({{ $mtr }})">
-                                            <i class="fas fa-info"></i>
-                                            </button> --}}
-                                                <button type="button" class="btn btn-danger btn-sm"> hapus
+                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="takeIdMotor({{ $mtr->id }})">
+                                                    Hapus
+                                                </button>
                                                 </button>
                                             </td>
                                         </tr>
@@ -116,8 +114,7 @@
 </a>
 
 <!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -136,8 +133,7 @@
 </div>
 
 <!-- Add Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -155,8 +151,7 @@
                     </div>
                     <div class="col-12 pt-2 mb-3">
                         <label for="merek-motor" class="form-label font-weight-bold">Merek Motor</label>
-                        <select class="form-select" id="merekMotor" aria-label="Example select with button addon"
-                            name="inputMerek">
+                        <select class="form-select" id="merekMotor" aria-label="Example select with button addon" name="inputMerek">
                             <option selected>Choose...</option>
                             @foreach ($merek as $m)
                                 <option value={{ $m->id }}>{{ $m->merek }}</option>
@@ -165,8 +160,7 @@
                     </div>
                     <div class="col-12 pt-2">
                         <label for="jenis-motor" class="form-label font-weight-bold">Jenis Motor</label>
-                        <select class="form-select" id="jenisMotor" name="inputJenis"
-                            aria-label="Example select with button addon" onchange="selectBox(event)">
+                        <select class="form-select" id="jenisMotor" name="inputJenis" aria-label="Example select with button addon" onchange="selectBox(event)">
                             <option selected>Choose...</option>
                             @foreach ($jenis as $j)
                                 <option value={{ $j->id }}>{{ $j->jenis }}</option>
@@ -206,55 +200,81 @@
                 <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">Edit Data Motor</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <!-- <form action="/motor" method="post"> -->
+            <form onsubmit="return submitEditMotor(this)" method="post">
                 @csrf
-                <div class="row mb-3">
-                    <div class="col">
-                        <label for="inputNamaMotor" class="col-form-label fw-bold">Nama Motor</label>
-                        <input type="text" class="form-control" id="inputNamaMotor" name="inputNamaMotor">
-                    </div>
+                @method('put')
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="inputEditNamaMotor" class="col-form-label fw-bold">Nama Motor</label>
+                            <input type="text" class="form-control" id="inputEditNamaMotor" name="inputEditNamaMotor">
+                        </div>
 
-                    <div class="col-12 pt-2 mb-3">
-                        <label for="merek-motor" class="form-label font-weight-bold">Merek Motor</label>
-                        <select class="form-select" id="merekMotor" aria-label="Example select with button addon"
-                            name="inputMerek">
-                            <option selected>Choose...</option>
-                            @foreach ($merek as $m)
-                                <option value={{ $m->id }}>{{ $m->merek }}</option>
-                            @endforeach
-                        </select>
+                        <div class="col-12 pt-2 mb-3">
+                            <label for="merek-motor" class="form-label font-weight-bold">Merek Motor</label>
+                            <select class="form-select" id="selectEditMerek" aria-label="Example select with button addon" name="selectEditMerek">
+                                <option selected>Choose...</option>
+                                @foreach ($merek as $m)
+                                    <option value={{ $m->id }}>{{ $m->merek }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-12 pt-2">
+                            <label for="jenis-motor" class="form-label font-weight-bold">Jenis Motor</label>
+                            <select class="form-select" id="selectEditJenis" name="selectEditJenis" aria-label="Example select with button addon" onchange="selectBox(event)">
+                                <option selected>Choose...</option>
+                                @foreach ($jenis as $j)
+                                    <option value={{ $j->id }}>{{ $j->jenis }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
-                    <div class="col-12 pt-2">
-                        <label for="jenis-motor" class="form-label font-weight-bold">Jenis Motor</label>
-                        <select class="form-select" id="jenisMotor" name="inputJenis"
-                            aria-label="Example select with button addon" onchange="selectBox(event)">
-                            <option selected>Choose...</option>
-                            @foreach ($jenis as $j)
-                                <option value={{ $j->id }}>{{ $j->jenis }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                {{-- <div class="col-12 pt-2">
+                    {{-- <div class="col-12 pt-2">
                         <label for="input-biaya" class="form-label font-weight-bold">Biaya</label>
                         <input type="text" class="form-control" id="inputBiaya" placeholder="0" name="input-biaya" readonly>
                     </div> --}}
-                <div class="row mb-3 pt-3">
-                    <div class="col-sm-10 offset-sm-2">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck1">
-                            <label class="form-check-label" for="gridCheck1">
-                                setuju?
-                            </label>
+                    <div class="row mb-3 pt-3">
+                        <div class="col-sm-10 offset-sm-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="checkBoxEditMotor" onclick="confirmEditMotor()">
+                                <label class="form-check-label" for="checkBoxEditMotor">
+                                    setuju?
+                                </label>
+                            </div>
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="btnEditMotor">Submit</button>
+                    </div>
+                    <!-- </form> -->
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{{-- delete modal --}}
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header flex-column">
+                <div class="icon-box">
+                    <i class="material-icons">&times;</i>
                 </div>
-                <!-- </form> -->
+                <h4 class="modal-title w-100">Are you sure?</h4>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Do you really want to delete these records? This process cannot be undone.</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form onsubmit="return submitDeleteMotor(this)" method="post">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             </div>
         </div>
     </div>

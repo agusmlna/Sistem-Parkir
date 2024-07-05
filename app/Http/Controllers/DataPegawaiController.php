@@ -55,7 +55,7 @@ class DataPegawaiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(DataPegawai $dataPegawai)
+    public function show(User $user)
     {
         //
     }
@@ -63,7 +63,7 @@ class DataPegawaiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(DataPegawai $dataPegawai)
+    public function edit(User $user)
     {
         //
     }
@@ -71,16 +71,46 @@ class DataPegawaiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DataPegawai $dataPegawai)
+    public function update(Request $request, int $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        if ($request->hasFile('editFoto')) {
+            // upload image
+            $foto = $request->file('editFoto');
+            $foto->storeAs('public/images', $foto->hashName());
+
+            $user->update([
+                'email' => $request->inputEditEmail,
+                'password' => $request->inputEditPassword,
+                'name' => $request->inputEditNama,
+                'tempat_tanggal_lahir' => $request->inputEditTTL,
+                'jenis_kelamin' => $request->radioJenisKelamin,
+                'alamat' => $request->inputEditAlamat,
+                'no_handphone' => $request->inputEditNoHP,
+                'foto' => $foto->hashName(),
+            ]);
+        } else {
+            $user->update([
+                'email' => $request->inputEditEmail,
+                'password' => $request->inputEditPassword,
+                'name' => $request->inputEditNama,
+                'tempat_tanggal_lahir' => $request->inputEditTTL,
+                'jenis_kelamin' => $request->radioJenisKelamin,
+                'alamat' => $request->inputEditAlamat,
+                'no_handphone' => $request->inputEditNoHP,
+            ]);
+        }
+        return redirect('/data-pegawai');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DataPegawai $dataPegawai)
+    public function destroy(int $id)
     {
-        //
+        User::destroy($id);
+
+        return redirect('/data-pegawai');
     }
 }

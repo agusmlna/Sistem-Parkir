@@ -62,6 +62,7 @@
     <script src={{ asset('js/input-transaction.js') }}></script>
     <script src={{ asset('js/transaction.js') }}></script>
     <script src={{ asset('js/pegawai.js') }}></script>
+    <script src={{ asset('js/komplain.js') }}></script>
     <script src={{ asset('js/master/motor.js') }}></script>
     <script src={{ asset('js/master/merek.js') }}></script>
     <script src={{ asset('js/master/jenis.js') }}></script>
