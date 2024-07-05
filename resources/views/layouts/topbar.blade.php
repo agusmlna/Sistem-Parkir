@@ -49,7 +49,7 @@
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">
                     Cancel
                 </button>
-                <a class="btn btn-primary" href="/">Logout</a>
+                <a class="btn btn-primary" href="/auth/logout">Logout</a>
             </div>
         </div>
     </div>
