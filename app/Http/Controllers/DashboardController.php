@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Dashboard;
-use App\Models\Transaction;
+use App\Models\Parkir;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -19,18 +18,18 @@ class DashboardController extends Controller
         $endDay = Carbon::now()->endOfDay();
         $startMoth = Carbon::now()->startOfMonth();
 
-        $laporan_harian = Transaction::join('motors', 'motors.id', '=', 'transactions.id_motor')
+        $laporan_harian = Parkir::join('motors', 'motors.id', '=', 'parkirs.id_motor')
             ->join('jenis_motors', 'jenis_motors.id', '=', 'motors.id_jenis')
             ->select('jenis_motors.biaya')
-            ->where('transactions.status', '=', 'selesai')
-            ->whereBetween('transactions.created_at', [$startDay, $endDay])
+            ->where('parkirs.status', '=', 'selesai')
+            ->whereBetween('parkirs.created_at', [$startDay, $endDay])
             ->get();
 
-        $laporan_bulanan = Transaction::join('motors', 'motors.id', '=', 'transactions.id_motor')
+        $laporan_bulanan = Parkir::join('motors', 'motors.id', '=', 'parkirs.id_motor')
             ->join('jenis_motors', 'jenis_motors.id', '=', 'motors.id_jenis')
             ->select('jenis_motors.biaya')
-            ->where('transactions.status', '=', 'selesai')
-            ->whereBetween('transactions.created_at', [$startMoth, $endDay])
+            ->where('parkirs.status', '=', 'selesai')
+            ->whereBetween('parkirs.created_at', [$startMoth, $endDay])
             ->get();
 
         $totalHarian = 0;
@@ -47,7 +46,7 @@ class DashboardController extends Controller
         $data = [
             'total_harian' => $totalHarian,
             'total_bulanan' => $totalBulanan,
-            'total_parkir' => Transaction::count(),
+            'total_parkir' => Parkir::count(),
             'total_pegawai' => User::count(),
             'user' => User::find(session('id')),
         ];
@@ -73,7 +72,7 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Dashboard $dashboard)
+    public function show($dashboard)
     {
         //
     }
@@ -81,7 +80,7 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Dashboard $dashboard)
+    public function edit($dashboard)
     {
         //
     }
@@ -89,7 +88,7 @@ class DashboardController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Dashboard $dashboard)
+    public function update(Request $request, $dashboard)
     {
         //
     }
@@ -97,7 +96,7 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Dashboard $dashboard)
+    public function destroy($dashboard)
     {
         //
     }

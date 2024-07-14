@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Komplain;
-use App\Models\Transaction;
+use App\Models\Parkir;
 use Illuminate\Http\Request;
 
 class KomplainController extends Controller
@@ -13,10 +13,10 @@ class KomplainController extends Controller
      */
     public function index()
     {
-        $komplains = Transaction::leftJoin('motors', 'transactions.id_motor', '=', 'motors.id')
+        $komplains = Parkir::leftJoin('motors', 'parkirs.id_motor', '=', 'motors.id')
             ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
-            ->join('komplains', 'transactions.id_komplain', '=', 'komplains.id')
-            ->select('transactions.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya', 'komplains.id as id_komplain', 'komplains.komplain', 'komplains.status', 'komplains.biaya as biaya_ganti_rugi')
+            ->join('komplains', 'parkirs.id_komplain', '=', 'komplains.id')
+            ->select('parkirs.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya', 'komplains.id as id_komplain', 'komplains.komplain', 'komplains.status', 'komplains.biaya as biaya_ganti_rugi')
             ->get();
 
         $data = [

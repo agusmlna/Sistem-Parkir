@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\JenisMotor;
-use App\Models\Transaction;
+use App\Models\Parkir;
 use App\Models\Report;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -15,15 +15,15 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $transaction = Transaction::leftJoin('motors', 'transactions.id_motor', '=', 'motors.id')
+        $parkir = Parkir::leftJoin('motors', 'parkirs.id_motor', '=', 'motors.id')
             ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
-            ->select('transactions.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
+            ->select('parkirs.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
             ->get();
 
         $data = [
             'title' => 'Report',
             'jenis' => JenisMotor::all(),
-            'dataMotor' => $transaction,
+            'dataMotor' => $parkir,
             'start_date' => null,
             'end_date' => null
         ];
@@ -50,7 +50,7 @@ class ReportController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Report $report)
+    public function show(Parkir $parkir)
     {
         //
     }
@@ -58,7 +58,7 @@ class ReportController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Report $report)
+    public function edit(Parkir $parkir)
     {
         //
     }
@@ -66,7 +66,7 @@ class ReportController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Report $report)
+    public function update(Request $request, Parkir $parkir)
     {
         //
     }
@@ -74,7 +74,7 @@ class ReportController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Report $report)
+    public function destroy(Parkir $parkir)
     {
         //
     }
@@ -84,16 +84,16 @@ class ReportController extends Controller
         $startDate = Carbon::parse($request->startDate)->startOfDay();
         $endDate = Carbon::parse($request->endDate)->endOfDay();
 
-        $transaction = Transaction::leftJoin('motors', 'transactions.id_motor', '=', 'motors.id')
+        $parkir = Parkir::leftJoin('motors', 'parkirs.id_motor', '=', 'motors.id')
             ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
-            ->select('transactions.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
-            ->whereBetween('transactions.created_at', [$startDate, $endDate])
+            ->select('parkirs.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
+            ->whereBetween('parkirs.created_at', [$startDate, $endDate])
             ->get();
 
         $data = [
             'title' => 'Report',
             'jenis' => JenisMotor::all(),
-            'dataMotor' => $transaction,
+            'dataMotor' => $parkir,
             'start_date' => $startDate,
             'end_date' => $endDate,
             'start_date_pdf' => $startDate,
@@ -105,16 +105,16 @@ class ReportController extends Controller
 
     public function filterJenis(Request $request)
     {
-        $transaction = Transaction::leftJoin('motors', 'transactions.id_motor', '=', 'motors.id')
+        $parkir = Parkir::leftJoin('motors', 'parkirs.id_motor', '=', 'motors.id')
             ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
-            ->select('transactions.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
+            ->select('parkirs.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
             ->where('jenis_motors.id', '=', $request->selectJenisMotor)
             ->get();
 
         $data = [
             'title' => 'Report',
             'jenis' => JenisMotor::all(),
-            'dataMotor' => $transaction,
+            'dataMotor' => $parkir,
             'start_date' => null,
             'end_date' => null,
             'input_jenis' => $request->selectJenisMotor

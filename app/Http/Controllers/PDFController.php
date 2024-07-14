@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transaction;
+use App\Models\Parkir;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use PDF;
@@ -14,38 +14,36 @@ class PDFController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function generatePDF($idTransaction)
+    public function generatePDF($idParkir)
     {
-        $transaction = Transaction::leftJoin('motors', 'transactions.id_motor', '=', 'motors.id')
+        $parkir = Parkir::leftJoin('motors', 'parkirs.id_motor', '=', 'motors.id')
             ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
-            ->where('transactions.id', $idTransaction)
-            ->select('transactions.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
+            ->where('parkirs.id', $idParkir)
+            ->select('parkirs.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
             ->first();
 
         $data = [
             'title' => 'Struk',
             'date' => date('m/d/Y'),
-            'data' => $transaction
+            'data' => $parkir
         ];
 
         $pdf = PDF::loadView('struk.pdfstruk', $data);
 
-        return $pdf->download('struk-' . $idTransaction . '.pdf');
+        return $pdf->download('struk-' . $idParkir . '.pdf');
     }
 
     public function generatePDFReport()
     {
-        $transaction = Transaction::leftJoin('motors', 'transactions.id_motor', '=', 'motors.id')
+        $parkir = Parkir::leftJoin('motors', 'parkirs.id_motor', '=', 'motors.id')
             ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
-            ->select('transactions.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
+            ->select('parkirs.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
             ->get();
-
-        // dd($transaction);
 
         $data = [
             'title' => 'Report',
             'date' => date('m/d/Y'),
-            'data' => $transaction
+            'data' => $parkir
         ];
 
         $pdf = PDF::loadView('transaksi.pdfreport', $data);
@@ -58,17 +56,16 @@ class PDFController extends Controller
         $startDate = Carbon::parse($request->startDatePdf)->startOfDay();
         $endDate = Carbon::parse($request->endDatePdf)->endOfDay();
 
-        $transaction = Transaction::leftJoin('motors', 'transactions.id_motor', '=', 'motors.id')
+        $parkir = Parkir::leftJoin('motors', 'parkirs.id_motor', '=', 'motors.id')
             ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
-            ->select('transactions.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
-            ->whereBetween('transactions.created_at', [$startDate, $endDate])
+            ->select('parkirs.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
+            ->whereBetween('parkirs.created_at', [$startDate, $endDate])
             ->get();
-        // dd($transaction);
 
         $data = [
             'title' => 'Report Filter Day',
             'date' => date('m/d/Y'),
-            'data' => $transaction
+            'data' => $parkir
         ];
 
         $pdf = PDF::loadView('transaksi.pdfreport', $data);
@@ -78,17 +75,16 @@ class PDFController extends Controller
 
     public function generatePDFReportFilterJenis(Request $request)
     {
-        $transaction = Transaction::leftJoin('motors', 'transactions.id_motor', '=', 'motors.id')
+        $parkir = Parkir::leftJoin('motors', 'parkirs.id_motor', '=', 'motors.id')
             ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
-            ->select('transactions.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
+            ->select('parkirs.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
             ->where('jenis_motors.id', '=', $request->jenis)
             ->get();
-        // dd($transaction);
 
         $data = [
             'title' => 'Report Filter Jenis',
             'date' => date('m/d/Y'),
-            'data' => $transaction
+            'data' => $parkir
         ];
 
         $pdf = PDF::loadView('transaksi.pdfreport', $data);

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Komplain;
-use App\Models\Transaction;
+use App\Models\Parkir;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -14,10 +14,10 @@ class DataMotorController extends Controller
      */
     public function index()
     {
-        $dataMotor = Transaction::leftJoin('motors', 'transactions.id_motor', '=', 'motors.id')
+        $dataMotor = Parkir::leftJoin('motors', 'parkirs.id_motor', '=', 'motors.id')
             ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
-            ->whereDate('transactions.created_at', date('Y-m-d'))
-            ->select('transactions.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
+            ->whereDate('parkirs.created_at', date('Y-m-d'))
+            ->select('parkirs.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
             ->get();
 
         $data = [
@@ -47,14 +47,14 @@ class DataMotorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Transaction $transaction)
+    public function show(Parkir $parkir)
     {
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Transaction $transaction)
+    public function edit(Parkir $parkir)
     {
         //
     }
@@ -68,8 +68,8 @@ class DataMotorController extends Controller
             'komplain' => $request->inputKomplainProperti,
             'status' => 'diproses',
         ]);
-        $transaction = Transaction::findOrFail($id);
-        $transaction->update([
+        $parkir = Parkir::findOrFail($id);
+        $parkir->update([
             'id_komplain' => $komplain->id,
         ]);
 
@@ -81,9 +81,9 @@ class DataMotorController extends Controller
      */
     public function destroy(int $id)
     {
-        $transaction = Transaction::findOrFail($id);
+        $parkir = Parkir::findOrFail($id);
 
-        $transaction->update([
+        $parkir->update([
             'status' => 'dibatalkan',
         ]);
         return redirect('/data-motor');
@@ -91,7 +91,7 @@ class DataMotorController extends Controller
 
     public function cash($id, Request $request)
     {
-        Transaction::where('id', $id)
+        Parkir::where('id', $id)
             ->update([
                 'status' => 'selesai',
                 'tipe_pembayaran' => 'cash',
@@ -106,7 +106,7 @@ class DataMotorController extends Controller
         $image = $request->file('bukti-bayar');
         $image->storeAs('public/images', $image->hashName());
 
-        Transaction::where('id', $id)
+        Parkir::where('id', $id)
             ->update([
                 'bukti_bayar' => $image->hashName(),
                 'status' => 'selesai',
@@ -118,7 +118,7 @@ class DataMotorController extends Controller
 
     public function komplain($id, Request $request)
     {
-        Transaction::where('id', $id)
+        Parkir::where('id', $id)
             ->update([
                 'komplain' => $request->komplain,
             ]);

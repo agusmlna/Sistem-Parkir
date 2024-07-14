@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transaction;
 use App\Models\Merek;
+use App\Models\Parkir;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -41,7 +41,7 @@ class TambahParkiranController extends Controller
     public function store(Request $request)
     {
 
-        $transaction = Transaction::create([
+        $transaction = Parkir::create([
             'id_motor' => $request->idMotor,
             'plat_nomor' => $request->platNomor,
             'properti' => $request->properti,
@@ -55,14 +55,14 @@ class TambahParkiranController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Transaction $transaction)
+    public function show(Parkir $parkir)
     {
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Transaction $transaction)
+    public function edit(Parkir $parkir)
     {
         //
     }
@@ -70,7 +70,7 @@ class TambahParkiranController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Transaction $transaction)
+    public function update(Request $request, Parkir $parkir)
     {
         //
     }
@@ -78,20 +78,20 @@ class TambahParkiranController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Transaction $transaction)
+    public function destroy(Parkir $parkir)
     {
         //
     }
-    public function struk($idTransaction)
+    public function struk($idParkir)
     {
 
         $data = [
             'title' => 'Struk',
             'date' => date('m/d/Y'),
-            'data' => Transaction::leftJoin('motors', 'transactions.id_motor', '=', 'motors.id')
+            'data' => Parkir::leftJoin('motors', 'Parkirs.id_motor', '=', 'motors.id')
                 ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
-                ->where('transactions.id', $idTransaction)
-                ->select('transactions.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
+                ->where('Parkirs.id', $idParkir)
+                ->select('Parkirs.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
                 ->first()
         ];
 
