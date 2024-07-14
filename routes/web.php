@@ -19,8 +19,12 @@ Route::post('/auth/login', [LoginController::class, 'login'])->middleware('guest
 Route::get('/auth/logout', [LoginController::class, 'logout'])->middleware('guest');
 
 Route::group(['middleware' => ['checkStatus']], function () {
+  Route::get('/', function () {
+    return redirect('/dashboard');
+  });
+
   // dashboard
-  Route::Resource('/dashboard', DashboardController::class)->middleware('checkStatus');
+  Route::Resource('/dashboard', DashboardController::class);
 
   // master
   Route::Resource('/motor', MotorController::class);
