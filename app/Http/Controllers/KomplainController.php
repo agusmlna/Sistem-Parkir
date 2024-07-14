@@ -16,7 +16,7 @@ class KomplainController extends Controller
         $komplains = Transaction::leftJoin('motors', 'transactions.id_motor', '=', 'motors.id')
             ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
             ->join('komplains', 'transactions.id_komplain', '=', 'komplains.id')
-            ->select('transactions.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya', 'komplains.id as id_komplain', 'komplains.komplain', 'komplains.status')
+            ->select('transactions.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya', 'komplains.id as id_komplain', 'komplains.komplain', 'komplains.status', 'komplains.biaya as biaya_ganti_rugi')
             ->get();
 
         $data = [
@@ -74,6 +74,7 @@ class KomplainController extends Controller
 
         $komplain->update([
             'komplain' => $request->inputGantiRugi,
+            'biaya' => $request->inputBiaya,
             'status' => 'selesai',
         ]);
 

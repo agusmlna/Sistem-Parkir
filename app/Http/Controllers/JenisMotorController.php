@@ -36,7 +36,7 @@ class JenisMotorController extends Controller
             'biaya' => $request->inputBiaya,
         ]);
 
-        return redirect('/jenis-motor');
+        return redirect('/jenis-motor')->with(['type' => 'success', 'message' => 'Berhasil Tambah Data Jenis Motor']);
     }
 
     /**
@@ -67,7 +67,7 @@ class JenisMotorController extends Controller
             'biaya' => $request->editInputBiaya,
         ]);
 
-        return redirect('/jenis-motor');
+        return redirect('/jenis-motor')->with(['type' => 'warning', 'message' => 'Berhasil Edit Data Jenis Motor']);
     }
 
     /**
@@ -77,6 +77,6 @@ class JenisMotorController extends Controller
     {
         JenisMotor::destroy($jenisMotor->id);
 
-        return redirect('/jenis-motor');
+        return redirect('/jenis-motor')->with(['type' => 'danger', 'message' => 'Berhasil Hapus Data Jenis Motor']);
     }
 }

@@ -35,7 +35,7 @@ class MerekController extends Controller
             'merek' => $request->inputMerek,
         ]);
 
-        return redirect('/merek-motor');
+        return redirect('/merek-motor')->with(['type' => 'success', 'message' => 'Berhasil Tambah Merek Motor']);
     }
 
     /**
@@ -65,7 +65,7 @@ class MerekController extends Controller
             'merek' => $request->editInputMerek,
         ]);
 
-        return redirect('/merek-motor');
+        return redirect('/merek-motor')->with(['type' => 'warning', 'message' => 'Berhasil Edit Merek Motor']);
     }
 
     /**
@@ -75,6 +75,6 @@ class MerekController extends Controller
     {
         Merek::destroy($id);
 
-        return redirect('/merek-motor');
+        return redirect('/merek-motor')->with(['type' => 'danger', 'message' => 'Berhasil Hapus Merek Motor']);
     }
 }

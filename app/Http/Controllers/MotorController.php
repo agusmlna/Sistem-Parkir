@@ -46,7 +46,7 @@ class MotorController extends Controller
             'id_jenis' => $request->inputJenis,
         ]);
 
-        return redirect('/motor');
+        return redirect('/motor')->with(['type' => 'success', 'message' => 'Berhasil Tambah Data Motor']);
     }
 
     /**
@@ -78,7 +78,7 @@ class MotorController extends Controller
             'id_jenis' => $request->selectEditJenis,
         ]);
 
-        return redirect('/motor');
+        return redirect('/motor')->with(['type' => 'warning', 'message' => 'Berhasil Edit Data Motor']);
     }
 
     /**
@@ -88,6 +88,6 @@ class MotorController extends Controller
     {
         Motor::destroy($id);
 
-        return redirect('/motor');
+        return redirect('/motor')->with(['type' => 'danger', 'message' => 'Berhasil Hapus Data Motor']);
     }
 }

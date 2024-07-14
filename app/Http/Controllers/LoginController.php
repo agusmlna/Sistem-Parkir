@@ -110,6 +110,6 @@ class LoginController extends Controller
     function logout()
     {
         session()->flush();
-        return redirect('/');
+        return redirect('/login');
     }
 }

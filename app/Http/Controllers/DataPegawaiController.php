@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DataPegawai;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -49,7 +48,7 @@ class DataPegawaiController extends Controller
             'foto' => $foto->hashName(),
         ]);
 
-        return redirect('/data-pegawai');
+        return redirect('/data-pegawai')->with(['type' => 'success', 'message' => 'Berhasil Tambah Data Pegawai']);
     }
 
     /**
@@ -101,7 +100,7 @@ class DataPegawaiController extends Controller
                 'no_handphone' => $request->inputEditNoHP,
             ]);
         }
-        return redirect('/data-pegawai');
+        return redirect('/data-pegawai')->with(['type' => 'warning', 'message' => 'Berhasil Edit Data Pegawai']);
     }
 
     /**
@@ -111,6 +110,6 @@ class DataPegawaiController extends Controller
     {
         User::destroy($id);
 
-        return redirect('/data-pegawai');
+        return redirect('/data-pegawai')->with(['type' => 'danger', 'message' => 'Berhasil Hapus Data Pegawai']);
     }
 }
