@@ -15,7 +15,7 @@ function dataToModal(id) {
 }
 
 function submitBuktiBayar(form) {
-    form.action = `/data-motor/transfer/${_id}`;
+    form.action = `/data-parkir/transfer/${_id}`;
 }
 
 async function startWebcam() {
@@ -78,7 +78,7 @@ function dataToModalComplain(motor) {
 }
 
 function submitKomplain(form) {
-    form.action = `/data-motor/${_idForComplain}`;
+    form.action = `/data-parkir/${_idForComplain}`;
 }
 
 function sendImageToModal(image) {
@@ -89,5 +89,5 @@ function sendImageToModal(image) {
 }
 
 function submitCancelParkir(form) {
-    form.action = `/data-motor/${_id}`;
+    form.action = `/data-parkir/${_id}`;
 }

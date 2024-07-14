@@ -87,8 +87,8 @@
     @endif
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item {{ request()->is('data-motor') ? 'active' : '' }}">
-        <a class="nav-link" href='/data-motor'>
+    <li class="nav-item {{ request()->is('data-parkir') ? 'active' : '' }}">
+        <a class="nav-link" href='/data-parkir'>
             <i class="fas fa-database"></i>
             <span>Data Parkir</span></a>
     </li>

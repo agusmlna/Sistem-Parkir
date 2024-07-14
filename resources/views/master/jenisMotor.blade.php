@@ -64,7 +64,7 @@
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             <td> {{ $j->jenis }} </td>
-                                            <td> {{ $j->biaya }} </td>
+                                            <td> {{ number_format($j->biaya, 0, ',', '.') }} </td>
                                             <td>
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editJenisMotor"

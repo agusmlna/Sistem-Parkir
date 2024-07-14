@@ -124,7 +124,7 @@
                                             <td>{{ $data->jam_masuk->format('d, M:H.i') }}</td>
                                             <td>{{ $data->jam_keluar != null ? $data->jam_keluar->format('d, M:H.i') : '' }}</td>
                                             <td>{{ $data->jenis }}</td>
-                                            <td>Rp. {{ $data->biaya }}</td>
+                                            <td>Rp. {{ number_format($data->biaya, 0, ',', '.') }}</td>
                                             <td>{{ $data->tipe_pembayaran }}</td>
                                             <td>
                                                 <img src='{{ asset('storage/images/' . $data->bukti_bayar) }}' alt="" class="buktibayar"

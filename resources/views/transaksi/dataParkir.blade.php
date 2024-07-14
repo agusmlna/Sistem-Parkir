@@ -22,11 +22,11 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Data Motor</h1>
+                <h1 class="h3 mb-2 text-gray-800">Data Parkir</h1>
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Data Motor</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Data Parkir</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -69,7 +69,7 @@
                                             <td>{{ $data->jam_keluar != null ? $data->jam_keluar->format('H.i') : '' }}
                                             </td>
                                             <td>{{ $data->jenis }}</td>
-                                            <td>Rp. {{ $data->biaya }}</td>
+                                            <td>Rp. {{ number_format($data->biaya, 0, ',', '.') }}</td>
                                             <td>
                                                 @if ($data->status == 'diproses')
                                                     <span class ="badge text-bg-primary"> Proses
@@ -90,7 +90,7 @@
                                                         >
                                                             <i class="fas fa-qrcode"></i>
                                                         </button>
-                                                        <a class="btn btn-primary rounded-circle btn-sm" href='/data-motor/cash/{{ $data->id }}'>
+                                                        <a class="btn btn-primary rounded-circle btn-sm" href='/data-parkir/cash/{{ $data->id }}'>
                                                             <i class="fas fa-money-bill"></i>
                                                         </a>
                                                     @endif

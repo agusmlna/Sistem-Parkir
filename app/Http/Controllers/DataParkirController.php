@@ -7,7 +7,7 @@ use App\Models\Parkir;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class DataMotorController extends Controller
+class DataParkirController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +25,7 @@ class DataMotorController extends Controller
             'dataMotor' => $dataMotor
         ];
 
-        return view('transaksi.datamotor', $data);
+        return view('transaksi.dataParkir', $data);
     }
 
     /**
@@ -86,7 +86,7 @@ class DataMotorController extends Controller
         $parkir->update([
             'status' => 'dibatalkan',
         ]);
-        return redirect('/data-motor');
+        return redirect('/data-parkir');
     }
 
     public function cash($id, Request $request)
@@ -97,7 +97,7 @@ class DataMotorController extends Controller
                 'tipe_pembayaran' => 'cash',
                 'jam_keluar' => Carbon::now(),
             ]);
-        return redirect('/data-motor');
+        return redirect('/data-parkir');
     }
 
     public function transfer($id, Request $request)
@@ -113,7 +113,7 @@ class DataMotorController extends Controller
                 'tipe_pembayaran' => 'transfer',
                 'jam_keluar' => Carbon::now(),
             ]);
-        return redirect('/data-motor');
+        return redirect('/data-parkir');
     }
 
     public function komplain($id, Request $request)
@@ -122,6 +122,6 @@ class DataMotorController extends Controller
             ->update([
                 'komplain' => $request->komplain,
             ]);
-        return redirect('/data-motor');
+        return redirect('/data-parkir');
     }
 }

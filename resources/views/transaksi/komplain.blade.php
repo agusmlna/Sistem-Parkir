@@ -76,7 +76,7 @@
                                             <td>{{ $k->jam_keluar != null ? $k->jam_keluar->format('H.i') : '' }}</td>
                                             <td>{{ $k->jenis }}</td>
                                             <td>{{ $k->komplain }}</td>
-                                            <td>{{ $k->biaya_ganti_rugi }}</td>
+                                            <td>Rp. {{ number_format($k->biaya_ganti_rugi, 0, ',', '.') }}</td>
                                             <td>
                                                 @if ($k->status == 'diproses')
                                                     <span class="badge rounded-pill text-bg-primary">Proses</span>

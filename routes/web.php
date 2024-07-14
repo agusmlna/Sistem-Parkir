@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DataMotorController;
+use App\Http\Controllers\DataParkirController;
 use App\Http\Controllers\DataPegawaiController;
 use App\Http\Controllers\TambahParkiranController;
 use App\Http\Controllers\JenisMotorController;
@@ -32,11 +32,11 @@ Route::group(['middleware' => ['checkStatus']], function () {
   Route::post('/report/filter', [ReportController::class, 'filterDate'])->name('report.filter');
   Route::post('/report/filter/jenis', [ReportController::class, 'filterJenis'])->name('report.filter.jenis');
 
-  // data-motor
-  Route::Resource('/data-motor', DataMotorController::class);
-  Route::get('/data-motor/cash/{id}', [DataMotorController::class, 'cash'])->name('datamotor.cash');
-  Route::put('/data-motor/transfer/{id}', [DataMotorController::class, 'transfer'])->name('datamotor.transfer');
-  Route::put('/data-motor/komplain/{id}', [DataMotorController::class, 'komplain']);
+  // data-parkir
+  Route::Resource('/data-parkir', DataParkirController::class);
+  Route::get('/data-parkir/cash/{id}', [DataParkirController::class, 'cash'])->name('dataparkir.cash');
+  Route::put('/data-parkir/transfer/{id}', [DataParkirController::class, 'transfer'])->name('dataparkir.transfer');
+  Route::put('/data-parkir/komplain/{id}', [DataParkirController::class, 'komplain']);
 
   // pegawai
   Route::Resource('/data-pegawai', DataPegawaiController::class);

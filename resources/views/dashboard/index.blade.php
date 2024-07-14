@@ -33,7 +33,7 @@
                                             Laporan Harian
                                         </div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            Rp. {{ $total_harian }}
+                                            Rp. {{ number_format($total_harian, 0, ',', '.') }}
                                         </div>
                                     </div>
                                     <div class="col-auto">
@@ -54,7 +54,7 @@
                                             Laporan Bulanan
                                         </div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            Rp. {{ $total_bulanan }}
+                                            Rp. {{ number_format($total_bulanan, 0, ',', '.') }}
                                         </div>
                                     </div>
                                     <div class="col-auto">
