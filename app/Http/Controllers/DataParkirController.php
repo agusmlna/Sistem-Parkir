@@ -14,11 +14,7 @@ class DataParkirController extends Controller
      */
     public function index()
     {
-        $dataMotor = Parkir::leftJoin('motors', 'parkirs.id_motor', '=', 'motors.id')
-            ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
-            ->whereDate('parkirs.created_at', date('Y-m-d'))
-            ->select('parkirs.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
-            ->get();
+        $dataMotor = Parkir::GetParkirDateNow();
 
         $data = [
             'title' => 'Detail Data Produk',
@@ -59,6 +55,7 @@ class DataParkirController extends Controller
         //
     }
 
+    // TODO: pindah ke model
     /**
      * Update the specified resource in storage.
      */
@@ -81,22 +78,14 @@ class DataParkirController extends Controller
      */
     public function destroy(int $id)
     {
-        $parkir = Parkir::findOrFail($id);
+        Parkir::cancelParkir($id);
 
-        $parkir->update([
-            'status' => 'dibatalkan',
-        ]);
         return redirect('/data-parkir');
     }
 
     public function cash($id, Request $request)
     {
-        Parkir::where('id', $id)
-            ->update([
-                'status' => 'selesai',
-                'tipe_pembayaran' => 'cash',
-                'jam_keluar' => Carbon::now(),
-            ]);
+        Parkir::payWithCash($id, Carbon::now());
         return redirect('/data-parkir');
     }
 
@@ -106,22 +95,13 @@ class DataParkirController extends Controller
         $image = $request->file('bukti-bayar');
         $image->storeAs('public/images', $image->hashName());
 
-        Parkir::where('id', $id)
-            ->update([
-                'bukti_bayar' => $image->hashName(),
-                'status' => 'selesai',
-                'tipe_pembayaran' => 'transfer',
-                'jam_keluar' => Carbon::now(),
-            ]);
+        Parkir::payWithTRansfer($id, Carbon::now(), $image->hashName());
         return redirect('/data-parkir');
     }
 
     public function komplain($id, Request $request)
     {
-        Parkir::where('id', $id)
-            ->update([
-                'komplain' => $request->komplain,
-            ]);
+        Parkir::addKomplain($id, $request->komplain);
         return redirect('/data-parkir');
     }
 }

@@ -16,11 +16,7 @@ class PDFController extends Controller
      */
     public function generatePDF($idParkir)
     {
-        $parkir = Parkir::leftJoin('motors', 'parkirs.id_motor', '=', 'motors.id')
-            ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
-            ->where('parkirs.id', $idParkir)
-            ->select('parkirs.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
-            ->first();
+        $parkir = Parkir::getParkirByID($idParkir);
 
         $data = [
             'title' => 'Struk',
@@ -35,10 +31,7 @@ class PDFController extends Controller
 
     public function generatePDFReport()
     {
-        $parkir = Parkir::leftJoin('motors', 'parkirs.id_motor', '=', 'motors.id')
-            ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
-            ->select('parkirs.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
-            ->get();
+        $parkir = Parkir::getAllParkir();
 
         $data = [
             'title' => 'Report',
@@ -56,11 +49,7 @@ class PDFController extends Controller
         $startDate = Carbon::parse($request->startDatePdf)->startOfDay();
         $endDate = Carbon::parse($request->endDatePdf)->endOfDay();
 
-        $parkir = Parkir::leftJoin('motors', 'parkirs.id_motor', '=', 'motors.id')
-            ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
-            ->select('parkirs.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
-            ->whereBetween('parkirs.created_at', [$startDate, $endDate])
-            ->get();
+        $parkir = Parkir::getParkirByDate($startDate, $endDate);
 
         $data = [
             'title' => 'Report Filter Day',
@@ -75,11 +64,7 @@ class PDFController extends Controller
 
     public function generatePDFReportFilterJenis(Request $request)
     {
-        $parkir = Parkir::leftJoin('motors', 'parkirs.id_motor', '=', 'motors.id')
-            ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
-            ->select('parkirs.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
-            ->where('jenis_motors.id', '=', $request->jenis)
-            ->get();
+        $parkir = Parkir::getParkirByJenis($request->jenis);
 
         $data = [
             'title' => 'Report Filter Jenis',

@@ -13,11 +13,7 @@ class KomplainController extends Controller
      */
     public function index()
     {
-        $komplains = Parkir::leftJoin('motors', 'parkirs.id_motor', '=', 'motors.id')
-            ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
-            ->join('komplains', 'parkirs.id_komplain', '=', 'komplains.id')
-            ->select('parkirs.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya', 'komplains.id as id_komplain', 'komplains.komplain', 'komplains.status', 'komplains.biaya as biaya_ganti_rugi')
-            ->get();
+        $komplains = Parkir::getAllKomplain();
 
         $data = [
             'title' => 'Detail Data Produk',

@@ -15,10 +15,7 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $parkir = Parkir::leftJoin('motors', 'parkirs.id_motor', '=', 'motors.id')
-            ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
-            ->select('parkirs.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
-            ->get();
+        $parkir = Parkir::getAllParkir();
 
         $data = [
             'title' => 'Report',
@@ -84,11 +81,7 @@ class ReportController extends Controller
         $startDate = Carbon::parse($request->startDate)->startOfDay();
         $endDate = Carbon::parse($request->endDate)->endOfDay();
 
-        $parkir = Parkir::leftJoin('motors', 'parkirs.id_motor', '=', 'motors.id')
-            ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
-            ->select('parkirs.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
-            ->whereBetween('parkirs.created_at', [$startDate, $endDate])
-            ->get();
+        $parkir = Parkir::getParkirByDate($startDate, $endDate);
 
         $data = [
             'title' => 'Report',
@@ -105,11 +98,7 @@ class ReportController extends Controller
 
     public function filterJenis(Request $request)
     {
-        $parkir = Parkir::leftJoin('motors', 'parkirs.id_motor', '=', 'motors.id')
-            ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
-            ->select('parkirs.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
-            ->where('jenis_motors.id', '=', $request->selectJenisMotor)
-            ->get();
+        $parkir = Parkir::getParkirByJenis($request->selectJenisMotor);
 
         $data = [
             'title' => 'Report',

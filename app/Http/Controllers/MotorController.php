@@ -14,10 +14,7 @@ class MotorController extends Controller
      */
     public function index()
     {
-        $motor = Motor::join('mereks', 'mereks.id', '=', 'motors.id_merek')
-            ->join('jenis_motors', 'jenis_motors.id', '=', 'motors.id_jenis')
-            ->select('motors.*', 'mereks.merek', 'jenis_motors.jenis')
-            ->get();
+        $motor = Motor::getAllMotor();
 
         $data = [
             'motor' => $motor,

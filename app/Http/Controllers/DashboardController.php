@@ -18,19 +18,9 @@ class DashboardController extends Controller
         $endDay = Carbon::now()->endOfDay();
         $startMoth = Carbon::now()->startOfMonth();
 
-        $laporan_harian = Parkir::join('motors', 'motors.id', '=', 'parkirs.id_motor')
-            ->join('jenis_motors', 'jenis_motors.id', '=', 'motors.id_jenis')
-            ->select('jenis_motors.biaya')
-            ->where('parkirs.status', '=', 'selesai')
-            ->whereBetween('parkirs.created_at', [$startDay, $endDay])
-            ->get();
+        $laporan_harian = Parkir::getFeeByDate($startDay, $endDay);
 
-        $laporan_bulanan = Parkir::join('motors', 'motors.id', '=', 'parkirs.id_motor')
-            ->join('jenis_motors', 'jenis_motors.id', '=', 'motors.id_jenis')
-            ->select('jenis_motors.biaya')
-            ->where('parkirs.status', '=', 'selesai')
-            ->whereBetween('parkirs.created_at', [$startMoth, $endDay])
-            ->get();
+        $laporan_bulanan = Parkir::getFeeByDate($startMoth, $endDay);
 
         $totalHarian = 0;
         foreach ($laporan_harian as $lh) {

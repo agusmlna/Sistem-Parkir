@@ -31,7 +31,6 @@ class DataPegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->file('inputFoto'));
         // upload image
         $foto = $request->file('inputFoto');
         $foto->storeAs('public/images', $foto->hashName());
@@ -110,6 +109,11 @@ class DataPegawaiController extends Controller
     {
         User::destroy($id);
 
-        return redirect('/data-pegawai')->with(['type' => 'danger', 'message' => 'Berhasil Hapus Data Pegawai']);
+        if (session('id') == $id) {
+            session()->flush();
+            return redirect('/login');
+        } else {
+            return redirect('/data-pegawai')->with(['type' => 'danger', 'message' => 'Berhasil Hapus Data Pegawai']);
+        }
     }
 }
