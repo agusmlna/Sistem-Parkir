@@ -36,6 +36,11 @@ class TambahParkiranController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'platNomor'         => 'required',
+            'properti'          => 'required',
+        ]);
+
 
         $transaction = Parkir::create([
             'id_motor' => $request->idMotor,

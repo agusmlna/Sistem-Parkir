@@ -1,11 +1,11 @@
 @extends('layouts.main')
 
 @section('content')
-    <!-- Page Wrapper -->
-    <div id="wrapper">
+<!-- Page Wrapper -->
+<div id="wrapper">
 
     @section('sidebar')
-        @include('layouts.sidebar')
+    @include('layouts.sidebar')
     @show
 
     <!-- Content Wrapper -->
@@ -16,7 +16,7 @@
 
             <!-- Topbar -->
             @section('topbar')
-                @include('layouts.topbar')
+            @include('layouts.topbar')
             @show
             <!-- End of Topbar -->
 
@@ -28,9 +28,6 @@
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Data Komplain</h6>
-                    </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -62,42 +59,39 @@
                                 </tfoot>
                                 <tbody>
                                     @php
-                                        $i = 0;
+                                    $i = 0;
                                     @endphp
 
                                     @foreach ($komplain as $k)
-                                        @php
-                                            $i++;
-                                        @endphp
-                                        <tr>
-                                            <td>{{ $i }}</td>
-                                            <td>{{ $k->plat_nomor }}</td>
-                                            <td>{{ $k->jam_masuk->format('H.i') }}</td>
-                                            <td>{{ $k->jam_keluar != null ? $k->jam_keluar->format('H.i') : '' }}</td>
-                                            <td>{{ $k->jenis }}</td>
-                                            <td>{{ $k->komplain }}</td>
-                                            <td>Rp. {{ number_format($k->biaya_ganti_rugi, 0, ',', '.') }}</td>
-                                            <td>
-                                                @if ($k->status == 'diproses')
-                                                    <span class="badge rounded-pill text-bg-primary">Proses</span>
-                                                @elseif($k->status == 'selesai')
-                                                    <span class="badge rounded-pill text-bg-success">Selesai</span>
-                                                @elseif($k->status == 'delete')
-                                                    <span class="badge rounded-pill text-bg-danger">Dibatalkan</span>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                <!-- Button trigger modal -->
-                                                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#gantiRugi"
-                                                    onclick="openModalGantiRugi({{ $k }}); takeIdKomplain({{ $k->id_komplain }})"
-                                                    {{ $k->status == 'selesai' || $k->status == 'delete' ? 'disabled' : '' }}
-                                                >
-                                                    Ganti Rugi
-                                                </button>
+                                    @php
+                                    $i++;
+                                    @endphp
+                                    <tr>
+                                        <td>{{ $i }}</td>
+                                        <td>{{ $k->plat_nomor }}</td>
+                                        <td>{{ $k->jam_masuk->format('H.i') }}</td>
+                                        <td>{{ $k->jam_keluar != null ? $k->jam_keluar->format('H.i') : '' }}</td>
+                                        <td>{{ $k->jenis }}</td>
+                                        <td>{{ $k->komplain }}</td>
+                                        <td>Rp. {{ number_format($k->biaya_ganti_rugi, 0, ',', '.') }}</td>
+                                        <td>
+                                            @if ($k->status == 'diproses')
+                                            <span class="badge rounded-pill text-bg-primary">Proses</span>
+                                            @elseif($k->status == 'selesai')
+                                            <span class="badge rounded-pill text-bg-success">Selesai</span>
+                                            @elseif($k->status == 'delete')
+                                            <span class="badge rounded-pill text-bg-danger">Dibatalkan</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#gantiRugi" onclick="openModalGantiRugi({{ $k }}); takeIdKomplain({{ $k->id_komplain }})" {{ $k->status == 'selesai' || $k->status == 'delete' ? 'disabled' : '' }}>
+                                                Ganti Rugi
+                                            </button>
 
 
-                                            </td>
-                                        </tr>
+                                        </td>
+                                    </tr>
                                     @endforeach
                                 </tbody>
 

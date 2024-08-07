@@ -1,11 +1,11 @@
 @extends('layouts.main')
 
 @section('content')
-    <!-- Page Wrapper -->
-    <div id="wrapper">
+<!-- Page Wrapper -->
+<div id="wrapper">
 
     @section('sidebar')
-        @include('layouts.sidebar')
+    @include('layouts.sidebar')
     @show
 
     <!-- Content Wrapper -->
@@ -15,7 +15,7 @@
         <div id="content">
 
             @section('topbar')
-                @include('layouts.topbar')
+            @include('layouts.topbar')
             @show
 
             <!-- Begin Page Content -->
@@ -25,9 +25,6 @@
                 <h1 class="h3 mb-2 text-gray-800">Data Parkir</h1>
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Data Parkir</h6>
-                    </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -61,67 +58,62 @@
                                 </tfoot>
                                 <tbody>
                                     @foreach ($dataMotor as $data)
-                                        <tr>
-                                            <td>{{ $data->motor }}</td>
-                                            <td>{{ $data->plat_nomor }}</td>
-                                            <td>{{ $data->properti }}</td>
-                                            <td>{{ $data->jam_masuk->format('H.i') }}</td>
-                                            <td>{{ $data->jam_keluar != null ? $data->jam_keluar->format('H.i') : '' }}
-                                            </td>
-                                            <td>{{ $data->jenis }}</td>
-                                            <td>Rp. {{ number_format($data->biaya, 0, ',', '.') }}</td>
-                                            <td>
-                                                @if ($data->status == 'diproses')
-                                                    <span class ="badge text-bg-primary"> Proses
-                                                    </span>
-                                                @elseif($data->status == 'selesai')
-                                                    <span class ="badge text-bg-success"> Selesai
-                                                    </span>
-                                                @elseif($data->status == 'dibatalkan')
-                                                    <span class="badge text-bg-danger"> Dibatalkan
-                                                    </span>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if ($data->status != 'selesai' && $data->status != 'dibatalkan')
-                                                    @if (session('role') == 'admin')
-                                                        <button type="button" class="btn btn-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#selesaiParkir"
-                                                            onclick="dataToModal({{ $data->id }})"
-                                                        >
-                                                            <i class="fas fa-qrcode"></i>
-                                                        </button>
-                                                        <a class="btn btn-primary rounded-circle btn-sm" href='/data-parkir/cash/{{ $data->id }}'>
-                                                            <i class="fas fa-money-bill"></i>
-                                                        </a>
-                                                    @endif
-                                                    @if (session('role') == 'owner')
-                                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                            onclick="dataToModal({{ $data->id }})"
-                                                        >
-                                                            Batalkan
-                                                        </button>
-                                                    @endif
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if ($data->id_komplain != null)
-                                                    <!-- Button trigger modal -->
-                                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#komplainParkir"
-                                                        onclick='dataToModalComplain({{ $data }})' disabled
-                                                    >
-                                                        Komplain
-                                                    </button>
-                                                @endif
-                                                @if ($data->id_komplain == null)
-                                                    <!-- Button trigger modal -->
-                                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#komplainParkir"
-                                                        onclick='dataToModalComplain({{ $data }})'
-                                                    >
-                                                        Komplain
-                                                    </button>
-                                                @endif
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td>{{ $data->motor }}</td>
+                                        <td>{{ $data->plat_nomor }}</td>
+                                        <td>{{ $data->properti }}</td>
+                                        <td>{{ $data->jam_masuk->format('H.i') }}</td>
+                                        <td>{{ $data->jam_keluar != null ? $data->jam_keluar->format('H.i') : '' }}
+                                        </td>
+                                        <td>{{ $data->jenis }}</td>
+                                        <td>Rp. {{ number_format($data->biaya, 0, ',', '.') }}</td>
+                                        <td>
+                                            @if ($data->status == 'diproses')
+                                            <span class="badge text-bg-primary"> Proses
+                                            </span>
+                                            @elseif($data->status == 'selesai')
+                                            <span class="badge text-bg-success"> Selesai
+                                            </span>
+                                            @elseif($data->status == 'dibatalkan')
+                                            <span class="badge text-bg-danger"> Dibatalkan
+                                            </span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($data->status != 'selesai' && $data->status != 'dibatalkan')
+                                            @if (session('role') == 'admin')
+                                            <button type="button" class="btn btn-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#selesaiParkir" onclick="dataToModal({{ $data->id }})">
+                                                <i class="fas fa-qrcode"></i>
+                                            </button>
+                                            <a class="btn btn-primary rounded-circle btn-sm" href='/data-parkir/cash/{{ $data->id }}'>
+                                                <i class="fas fa-money-bill"></i>
+                                            </a>
+                                            <button type="button" class="btn btn-primary rounded-circle btn-sm" data-bs-toggle="modal" data-bs-target="#editParkir" onclick="dataToModal({{ $data->id }})">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            @endif
+                                            @if (session('role') == 'owner')
+                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="dataToModal({{ $data->id }})">
+                                                Batalkan
+                                            </button>
+                                            @endif
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($data->id_komplain != null)
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#komplainParkir" onclick='dataToModalComplain({{ $data }})' disabled>
+                                                Komplain
+                                            </button>
+                                            @endif
+                                            @if ($data->id_komplain == null)
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#komplainParkir" onclick='dataToModalComplain({{ $data }})'>
+                                                Komplain
+                                            </button>
+                                            @endif
+                                        </td>
+                                    </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -295,6 +287,63 @@
                     @method('delete')
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{--modal edit Parkir--}}
+<div class="modal fade" id="editParkir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">Edit Data Parkir</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="motor" class="col-form-label fw-bold">Motor</label>
+                        <input type="text" class="form-control" id="inputEditParkirMotor" name="inputEditParkirMotor">
+                    </div>
+
+                    <div class="col-12 pt-2 mb-3">
+                        <label for="platnomor" class="form-label font-weight-bold">Plat Nomor</label>
+                        <input type="text" class="form-control" id="inputEditParkirMotor" name="inputEditParkirMotor">
+                    </div>
+                    <div class="col-12 pt-2">
+                        <label for="properti" class="form-label font-weight-bold">Properti</label>
+                        <input type="text" class="form-control" id="inputEditParkirProperti" name="inputEditParkirProperti">
+                    </div>
+                    <div class="col-12 pt-2">
+                        <label for="tipemotor" class="form-label font-weight-bold">Tipe</label>
+                        <select class="form-select" id="inputParkirTipe" aria-label="Example select with button addon" onchange="selectBox(event)" name='inputParkirTipe'>
+                            <option selected>Choose...</option>
+                            <option value="1">Motor Kecil </option>
+                            <option value="2">Motor Besar </option>
+                        </select>
+                    </div>
+                </div>
+                {{-- <div class="col-12 pt-2">
+                        <label for="input-biaya" class="form-label font-weight-bold">Biaya</label>
+                        <input type="text" class="form-control" id="inputBiaya" placeholder="0" name="input-biaya" readonly>
+                    </div> --}}
+                <div class="row mb-3 pt-3">
+                    <div class="col-sm-10 offset-sm-2">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="checkBoxEditMotor" onclick="confirmEditMotor()">
+                            <label class="form-check-label" for="checkBoxEditMotor">
+                                setuju?
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="btnEditMotor">Submit</button>
+                </div>
+                <!-- </form> -->
             </div>
         </div>
     </div>

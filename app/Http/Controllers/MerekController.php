@@ -31,6 +31,10 @@ class MerekController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'inputMerk'         => 'required',
+        ]);
+
         Merek::create([
             'merek' => $request->inputMerek,
         ]);

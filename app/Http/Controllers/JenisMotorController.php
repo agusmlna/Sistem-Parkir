@@ -31,6 +31,11 @@ class JenisMotorController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'inputJenis'         => 'required',
+            'inputBiaya'         => 'required',
+        ]);
+
         JenisMotor::create([
             'jenis' => $request->inputJenis,
             'biaya' => $request->inputBiaya,

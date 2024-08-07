@@ -37,6 +37,11 @@ class MotorController extends Controller
      */
     public function store(Request $request)
     {
+        //validate form
+        $request->validate([
+            'inputNamaMotor'         => 'required',
+        ]);
+
         Motor::create([
             'motor' => $request->inputNamaMotor,
             'id_merek' => $request->inputMerek,

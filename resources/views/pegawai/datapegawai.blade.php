@@ -1,11 +1,11 @@
 @extends('layouts.main')
 
 @section('content')
-    <!-- Page Wrapper -->
-    <div id="wrapper">
+<!-- Page Wrapper -->
+<div id="wrapper">
 
     @section('sidebar')
-        @include('layouts.sidebar')
+    @include('layouts.sidebar')
     @show
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -14,13 +14,13 @@
         <div id="content">
 
             @section('topbar')
-                @include('layouts.topbar')
+            @include('layouts.topbar')
             @show
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 @if (session()->get('message'))
-                    @include('layouts.alert', ['type' => session()->get('type'), 'message' => session()->get('message')])
+                @include('layouts.alert', ['type' => session()->get('type'), 'message' => session()->get('message')])
                 @endif
 
                 <!-- Page Heading -->
@@ -29,7 +29,6 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Isi Data Pegawai</h6>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Tambah Data Pegawai
                         </button>
@@ -66,41 +65,36 @@
                                 </tfoot>
                                 <tbody>
                                     @php
-                                        $i = 0;
+                                    $i = 0;
                                     @endphp
                                     @foreach ($pegawai as $p)
-                                        @php
-                                            $i++;
-                                        @endphp
-                                        <tr>
-                                            <td>{{ $i }}</td>
-                                            @if ($p->foto != '')
-                                                <td>
-                                                    <img src='{{ asset('storage/images/' . $p->foto) }}' alt="" style="width: 100px; min-height: 0; max-height: 100px; object-fit: cover;"
-                                                        type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userFotoModal"
-                                                        onclick="modalUserFoto('{{ asset('storage/images/' . $p->foto) }}')"
-                                                    >
-                                                </td>
-                                            @else
-                                                <td></td>
-                                            @endif
-                                            <td>{{ $p->name }}</td>
-                                            <td>{{ $p->tempat_tanggal_lahir }}</td>
-                                            <td>{{ $p->jenis_kelamin }}</td>
-                                            <td>{{ $p->alamat }}</td>
-                                            <td>{{ $p->no_handphone }}</td>
-                                            <td>
-                                                <!-- Button trigger modal -->
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editPegawai"
-                                                    onclick="openModalEditPegawai({{ $p }}); takeIdPegawai({{ $p->id }})"
-                                                >
-                                                    Edit
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="takeIdPegawai({{ $p->id }})">
-                                                    Hapus
-                                                </button>
-                                            </td>
-                                        </tr>
+                                    @php
+                                    $i++;
+                                    @endphp
+                                    <tr>
+                                        <td>{{ $i }}</td>
+                                        @if ($p->foto != '')
+                                        <td>
+                                            <img src='{{ asset('storage/images/' . $p->foto) }}' alt="" style="width: 100px; min-height: 0; max-height: 100px; object-fit: cover;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userFotoModal" onclick="modalUserFoto('{{ asset('storage/images/' . $p->foto) }}')">
+                                        </td>
+                                        @else
+                                        <td></td>
+                                        @endif
+                                        <td>{{ $p->name }}</td>
+                                        <td>{{ $p->tempat_tanggal_lahir }}</td>
+                                        <td>{{ $p->jenis_kelamin }}</td>
+                                        <td>{{ $p->alamat }}</td>
+                                        <td>{{ $p->no_handphone }}</td>
+                                        <td>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editPegawai" onclick="openModalEditPegawai({{ $p }}); takeIdPegawai({{ $p->id }})">
+                                                Edit
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="takeIdPegawai({{ $p->id }})">
+                                                Hapus
+                                            </button>
+                                        </td>
+                                    </tr>
                                     @endforeach
                                 </tbody>
                             </table>

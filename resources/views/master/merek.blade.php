@@ -1,11 +1,11 @@
 @extends('layouts.main')
 
 @section('content')
-    <!-- Page Wrapper -->
-    <div id="wrapper">
+<!-- Page Wrapper -->
+<div id="wrapper">
 
     @section('sidebar')
-        @include('layouts.sidebar')
+    @include('layouts.sidebar')
     @show
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -14,14 +14,14 @@
         <div id="content">
 
             @section('topbar')
-                @include('layouts.topbar')
+            @include('layouts.topbar')
             @show
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 {{-- alert --}}
                 @if (session()->get('message'))
-                    @include('layouts.alert', ['type' => session()->get('type'), 'message' => session()->get('message')])
+                @include('layouts.alert', ['type' => session()->get('type'), 'message' => session()->get('message')])
                 @endif
 
                 <!-- Page Heading -->
@@ -30,7 +30,6 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Isi Inputan Merek Motor</h6>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Tambah Data Merek Motor
                         </button>
@@ -55,25 +54,23 @@
                                 </tfoot>
                                 <tbody>
                                     @php
-                                        $i = 1;
+                                    $i = 1;
                                     @endphp
 
                                     @foreach ($merek as $m)
-                                        <tr>
-                                            <td>{{ $i++ }}</td>
-                                            <td> {{ $m->merek }} </td>
-                                            <td>
-                                                <!-- Button trigger modal -->
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editMerekMotor"
-                                                    onclick="openModalEditMerek({{ $m }}); takeIdMerek({{ $m->id }})"
-                                                >
-                                                    Edit
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="takeIdMerek({{ $m->id }})">
-                                                    Hapus
-                                                </button>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td>{{ $i++ }}</td>
+                                        <td> {{ $m->merek }} </td>
+                                        <td>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editMerekMotor" onclick="openModalEditMerek({{ $m }}); takeIdMerek({{ $m->id }})">
+                                                Edit
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="takeIdMerek({{ $m->id }})">
+                                                Hapus
+                                            </button>
+                                        </td>
+                                    </tr>
                                     @endforeach
                                 </tbody>
                             </table>

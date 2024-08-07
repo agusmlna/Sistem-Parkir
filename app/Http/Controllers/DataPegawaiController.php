@@ -31,6 +31,16 @@ class DataPegawaiController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'inputEmail'         => 'required',
+            'inputPassword'         => 'required',
+            'inputName'         => 'required',
+            'inputTTL'         => 'required',
+            'jenisKelamin'         => 'required',
+            'inputAlamat'         => 'required',
+            'inputNoHP'         => 'required',
+        ]);
+
         // upload image
         $foto = $request->file('inputFoto');
         $foto->storeAs('public/images', $foto->hashName());
