@@ -1,11 +1,11 @@
 @extends('layouts.main')
 
 @section('content')
-<!-- Page Wrapper -->
-<div id="wrapper">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
     @section('sidebar')
-    @include('layouts.sidebar')
+        @include('layouts.sidebar')
     @show
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -14,14 +14,105 @@
         <div id="content">
 
             @section('topbar')
-            @include('layouts.topbar')
+                @include('layouts.topbar')
             @show
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 @if (session()->get('message'))
-                @include('layouts.alert', ['type' => session()->get('type'), 'message' => session()->get('message')])
+                    @include('layouts.alert', [
+                        'type' => session()->get('type'),
+                        'message' => session()->get('message'),
+                    ])
                 @endif
+
+                <!-- error message untuk input pegawai -->
+                @error('inputEmail')
+                    @include('layouts.alert', [
+                        'type' => 'danger',
+                        'message' => $message,
+                    ])
+                @enderror
+                @error('inputPassword')
+                    @include('layouts.alert', [
+                        'type' => 'danger',
+                        'message' => $message,
+                    ])
+                @enderror
+                @error('inputName')
+                    @include('layouts.alert', [
+                        'type' => 'danger',
+                        'message' => $message,
+                    ])
+                @enderror
+                @error('inputTTL')
+                    @include('layouts.alert', [
+                        'type' => 'danger',
+                        'message' => $message,
+                    ])
+                @enderror
+                @error('jenisKelamin')
+                    @include('layouts.alert', [
+                        'type' => 'danger',
+                        'message' => $message,
+                    ])
+                @enderror
+                @error('inputAlamat')
+                    @include('layouts.alert', [
+                        'type' => 'danger',
+                        'message' => $message,
+                    ])
+                @enderror
+                @error('inputNoHP')
+                    @include('layouts.alert', [
+                        'type' => 'danger',
+                        'message' => $message,
+                    ])
+                @enderror
+
+                <!-- error message untuk edit pegawai -->
+                @error('inputEditEmail')
+                    @include('layouts.alert', [
+                        'type' => 'danger',
+                        'message' => $message,
+                    ])
+                @enderror
+                @error('inputEditPassword')
+                    @include('layouts.alert', [
+                        'type' => 'danger',
+                        'message' => $message,
+                    ])
+                @enderror
+                @error('inputEditNama')
+                    @include('layouts.alert', [
+                        'type' => 'danger',
+                        'message' => $message,
+                    ])
+                @enderror
+                @error('inputEditTTL')
+                    @include('layouts.alert', [
+                        'type' => 'danger',
+                        'message' => $message,
+                    ])
+                @enderror
+                @error('radioJenisKelamin')
+                    @include('layouts.alert', [
+                        'type' => 'danger',
+                        'message' => $message,
+                    ])
+                @enderror
+                @error('inputEditAlamat')
+                    @include('layouts.alert', [
+                        'type' => 'danger',
+                        'message' => $message,
+                    ])
+                @enderror
+                @error('inputEditNoHP')
+                    @include('layouts.alert', [
+                        'type' => 'danger',
+                        'message' => $message,
+                    ])
+                @enderror
 
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">Data Pegawai</h1>
@@ -65,36 +156,41 @@
                                 </tfoot>
                                 <tbody>
                                     @php
-                                    $i = 0;
+                                        $i = 0;
                                     @endphp
                                     @foreach ($pegawai as $p)
-                                    @php
-                                    $i++;
-                                    @endphp
-                                    <tr>
-                                        <td>{{ $i }}</td>
-                                        @if ($p->foto != '')
-                                        <td>
-                                            <img src='{{ asset('storage/images/' . $p->foto) }}' alt="" style="width: 100px; min-height: 0; max-height: 100px; object-fit: cover;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userFotoModal" onclick="modalUserFoto('{{ asset('storage/images/' . $p->foto) }}')">
-                                        </td>
-                                        @else
-                                        <td></td>
-                                        @endif
-                                        <td>{{ $p->name }}</td>
-                                        <td>{{ $p->tempat_tanggal_lahir }}</td>
-                                        <td>{{ $p->jenis_kelamin }}</td>
-                                        <td>{{ $p->alamat }}</td>
-                                        <td>{{ $p->no_handphone }}</td>
-                                        <td>
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editPegawai" onclick="openModalEditPegawai({{ $p }}); takeIdPegawai({{ $p->id }})">
-                                                Edit
-                                            </button>
-                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="takeIdPegawai({{ $p->id }})">
-                                                Hapus
-                                            </button>
-                                        </td>
-                                    </tr>
+                                        @php
+                                            $i++;
+                                        @endphp
+                                        <tr>
+                                            <td>{{ $i }}</td>
+                                            @if ($p->foto != '')
+                                                <td>
+                                                    <img src='{{ asset('storage/images/' . $p->foto) }}' alt="" style="width: 100px; min-height: 0; max-height: 100px; object-fit: cover;"
+                                                        type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userFotoModal"
+                                                        onclick="modalUserFoto('{{ asset('storage/images/' . $p->foto) }}')"
+                                                    >
+                                                </td>
+                                            @else
+                                                <td></td>
+                                            @endif
+                                            <td>{{ $p->name }}</td>
+                                            <td>{{ $p->tempat_tanggal_lahir }}</td>
+                                            <td>{{ $p->jenis_kelamin }}</td>
+                                            <td>{{ $p->alamat }}</td>
+                                            <td>{{ $p->no_handphone }}</td>
+                                            <td>
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editPegawai"
+                                                    onclick="openModalEditPegawai({{ $p }}); takeIdPegawai({{ $p->id }})"
+                                                >
+                                                    Edit
+                                                </button>
+                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="takeIdPegawai({{ $p->id }})">
+                                                    Hapus
+                                                </button>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -214,16 +310,6 @@
                             </div>
                         </div>
                     </fieldset>
-                    <div class="row mb-3">
-                        <div class="col-sm-10 offset-sm-2">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                <label class="form-check-label" for="gridCheck1">
-                                    Example checkbox
-                                </label>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>

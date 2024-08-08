@@ -32,13 +32,13 @@ class DataPegawaiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'inputEmail'         => 'required',
+            'inputEmail'            => 'required',
             'inputPassword'         => 'required',
-            'inputName'         => 'required',
-            'inputTTL'         => 'required',
-            'jenisKelamin'         => 'required',
-            'inputAlamat'         => 'required',
-            'inputNoHP'         => 'required',
+            'inputName'             => 'required',
+            'inputTTL'              => 'required',
+            'jenisKelamin'          => 'required',
+            'inputAlamat'           => 'required',
+            'inputNoHP'             => 'required',
         ]);
 
         // upload image
@@ -81,6 +81,16 @@ class DataPegawaiController extends Controller
      */
     public function update(Request $request, int $id)
     {
+        $request->validate([
+            'inputEditEmail'            => 'required',
+            'inputEditPassword'         => 'required',
+            'inputEditNama'             => 'required',
+            'inputEditTTL'              => 'required',
+            'radioJenisKelamin'         => 'required',
+            'inputEditAlamat'           => 'required',
+            'inputEditNoHP'             => 'required',
+        ]);
+
         $user = User::findOrFail($id);
 
         if ($request->hasFile('editFoto')) {
