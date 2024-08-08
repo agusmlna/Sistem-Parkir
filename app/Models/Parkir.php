@@ -31,9 +31,10 @@ class Parkir extends Model
     static public function GetParkirDateNow()
     {
         return Parkir::leftJoin('motors', 'parkirs.id_motor', '=', 'motors.id')
+            ->join('mereks', 'motors.id_merek', '=', 'mereks.id')
             ->join('jenis_motors', 'motors.id_jenis', '=', 'jenis_motors.id')
             ->whereDate('parkirs.created_at', date('Y-m-d'))
-            ->select('parkirs.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya')
+            ->select('parkirs.*', 'motors.motor', 'jenis_motors.jenis', 'jenis_motors.biaya', 'mereks.id as id_merek', 'mereks.merek')
             ->get();
     }
 

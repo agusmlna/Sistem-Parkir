@@ -66,6 +66,11 @@ class KomplainController extends Controller
      */
     public function update(Request $request, int $id)
     {
+        $request->validate([
+            'inputGantiRugi'        => 'required',
+            'inputBiaya'            => 'required|numeric',
+        ]);
+
         $komplain = Komplain::findOrFail($id);
 
         $komplain->update([

@@ -33,7 +33,7 @@ class JenisMotorController extends Controller
     {
         $request->validate([
             'inputJenis'         => 'required',
-            'inputBiaya'         => 'required',
+            'inputBiaya'         => 'required|numeric',
         ]);
 
         JenisMotor::create([
@@ -65,6 +65,11 @@ class JenisMotorController extends Controller
      */
     public function update(Request $request, int $id)
     {
+        $request->validate([
+            'editInputJenis'         => 'required',
+            'editInputBiaya'         => 'required|numeric',
+        ]);
+
         $jenis = JenisMotor::findOrFail($id);
 
         $jenis->update([

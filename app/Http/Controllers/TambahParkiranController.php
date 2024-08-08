@@ -37,8 +37,9 @@ class TambahParkiranController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'platNomor'         => 'required',
-            'properti'          => 'required',
+            'merek'         => 'required|not_in:0',
+            'motor'         => 'required|not_in:0',
+            'platNomor'       => 'required',
         ]);
 
 

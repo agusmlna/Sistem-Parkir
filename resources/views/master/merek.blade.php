@@ -1,11 +1,11 @@
 @extends('layouts.main')
 
 @section('content')
-<!-- Page Wrapper -->
-<div id="wrapper">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
     @section('sidebar')
-    @include('layouts.sidebar')
+        @include('layouts.sidebar')
     @show
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -14,15 +14,34 @@
         <div id="content">
 
             @section('topbar')
-            @include('layouts.topbar')
+                @include('layouts.topbar')
             @show
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 {{-- alert --}}
                 @if (session()->get('message'))
-                @include('layouts.alert', ['type' => session()->get('type'), 'message' => session()->get('message')])
+                    @include('layouts.alert', [
+                        'type' => session()->get('type'),
+                        'message' => session()->get('message'),
+                    ])
                 @endif
+
+                <!-- error message untuk add -->
+                @error('inputMerek')
+                    @include('layouts.alert', [
+                        'type' => 'danger',
+                        'message' => $message,
+                    ])
+                @enderror
+
+                <!-- error message untuk edit -->
+                @error('editInputMerek')
+                    @include('layouts.alert', [
+                        'type' => 'danger',
+                        'message' => $message,
+                    ])
+                @enderror
 
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">Data Merek Motor</h1>
@@ -54,23 +73,25 @@
                                 </tfoot>
                                 <tbody>
                                     @php
-                                    $i = 1;
+                                        $i = 1;
                                     @endphp
 
                                     @foreach ($merek as $m)
-                                    <tr>
-                                        <td>{{ $i++ }}</td>
-                                        <td> {{ $m->merek }} </td>
-                                        <td>
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editMerekMotor" onclick="openModalEditMerek({{ $m }}); takeIdMerek({{ $m->id }})">
-                                                Edit
-                                            </button>
-                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="takeIdMerek({{ $m->id }})">
-                                                Hapus
-                                            </button>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>{{ $i++ }}</td>
+                                            <td> {{ $m->merek }} </td>
+                                            <td>
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editMerekMotor"
+                                                    onclick="openModalEditMerek({{ $m }}); takeIdMerek({{ $m->id }})"
+                                                >
+                                                    Edit
+                                                </button>
+                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="takeIdMerek({{ $m->id }})">
+                                                    Hapus
+                                                </button>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -120,17 +141,13 @@
                     <div class="row mb-3">
                         <label for="inputMerek" class="col-sm-2 col-form-label">Merek Motor</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputMerek" name="inputMerek">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-sm-10 offset-sm-2">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                <label class="form-check-label" for="gridCheck1">
-                                    Example checkbox
-                                </label>
-                            </div>
+                            <input type="text" class="form-control" id="inputMerek" name="inputMerek" @error('inputMerek') is-invalid @enderror>
+                            @error('inputMerek')
+                                @include('layouts.alert', [
+                                    'type' => 'danger',
+                                    'message' => $message,
+                                ])
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -158,7 +175,13 @@
                     <div class="row mb-3">
                         <label for="editInputMerek" class="col-sm-2 col-form-label">Merek Motor</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="editInputMerek" name="editInputMerek">
+                            <input type="text" class="form-control" id="editInputMerek" name="editInputMerek" @error('editInputMerek') is-invalid @enderror>
+                            @error('editInputMerek')
+                                @include('layouts.alert', [
+                                    'type' => 'danger',
+                                    'message' => $message,
+                                ])
+                            @enderror
                         </div>
                     </div>
                     <div class="row mb-3">

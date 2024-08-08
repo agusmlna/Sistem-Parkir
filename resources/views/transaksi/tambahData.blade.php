@@ -38,28 +38,50 @@
 
                             <div class="col-12 pt-2 mb-3">
                                 <label for="merek-motor" class="form-label font-weight-bold">Merek Motor</label>
-                                <select class="form-select" id="merekMotor" aria-label="Example select with button addon" onchange="selectMerek(event)">
-                                    <option selected>Choose...</option>
+                                <select class="form-select" id="merekMotor" aria-label="Example select with button addon" name="merek" @error('merek') is-invalid @enderror
+                                    onchange="selectMerek(event)"
+                                >
+                                    <option selected value="0">Choose...</option>
                                     @foreach ($merek as $mrk)
                                         <option value={{ $mrk->id }}>{{ $mrk->merek }}</option>
                                     @endforeach
                                 </select>
+                                @error('merek')
+                                    @include('layouts.alert', [
+                                        'type' => 'danger',
+                                        'message' => $message,
+                                    ])
+                                @enderror
                             </div>
                             <div class="col-md-6">
                                 <label for="nama-motor" class="form-label font-weight-bold">Nama Motor</label>
-                                <select class="form-select" id="selectNamaMotor" name="motor" aria-label="Example select with button addon" onchange="selectMotor(event)">
-                                    <option selected>Choose...</option>
+                                <select class="form-select" id="selectNamaMotor" name="motor" aria-label="Example select with button addon" @error('motor') is-invalid @enderror
+                                    onchange="selectMotor(event)"
+                                >
+                                    <option selected value="0">Choose...</option>
                                     {{-- @foreach ($motor as $mtr)
                                         <option value={{ $mtr->id }}>{{ $mtr->motor }}</option>
                                     @endforeach --}}
                                 </select>
+                                @error('motor')
+                                    @include('layouts.alert', [
+                                        'type' => 'danger',
+                                        'message' => $message,
+                                    ])
+                                @enderror
                                 <input type="hidden" name="idMotor" id="idMotor">
                                 {{-- <label for="motor" class="form-label font-weight-bold">Nama Motor</label>
                                 <input type="text" class="form-control" id="motor" name="motor"> --}}
                             </div>
                             <div class="col-md-6">
                                 <label for="platNomor" class="form-label font-weight-bold">Plat Nomor</label>
-                                <input type="text" class="form-control" id="platNomor" name="platNomor">
+                                <input type="text" class="form-control" id="platNomor" name="platNomor" @error('platNomor') is-invalid @enderror>
+                                @error('platNomor')
+                                    @include('layouts.alert', [
+                                        'type' => 'danger',
+                                        'message' => $message,
+                                    ])
+                                @enderror
                             </div>
                             <div class="col-12 pt-2">
                                 <label for="properti" class="form-label font-weight-bold">Properti</label>

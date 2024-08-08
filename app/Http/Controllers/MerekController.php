@@ -32,7 +32,7 @@ class MerekController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'inputMerk'         => 'required',
+            'inputMerek'         => 'required',
         ]);
 
         Merek::create([
@@ -63,6 +63,10 @@ class MerekController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'editInputMerek'         => 'required',
+        ]);
+
         $jenis = Merek::findOrFail($id);
 
         $jenis->update([

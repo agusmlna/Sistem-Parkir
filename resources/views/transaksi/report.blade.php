@@ -1,11 +1,11 @@
 @extends('layouts.main')
 
 @section('content')
-<!-- Page Wrapper -->
-<div id="wrapper">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
     @section('sidebar')
-    @include('layouts.sidebar')
+        @include('layouts.sidebar')
     @show
 
     <!-- Content Wrapper -->
@@ -15,7 +15,7 @@
         <div id="content">
 
             @section('topbar')
-            @include('layouts.topbar')
+                @include('layouts.topbar')
             @show
 
             <!-- Begin Page Content -->
@@ -25,29 +25,29 @@
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800 fw-bold">Data Laporan Parkiran</h1>
                     @if (request()->is('report'))
-                    <a href="/generate-pdf/report" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                        <i class="fas fa-download fa-sm text-white-50"></i>
-                        Generate Report
-                    </a>
+                        <a href="/generate-pdf/report" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                            <i class="fas fa-download fa-sm text-white-50"></i>
+                            Generate Report
+                        </a>
                     @elseif (request()->is('report/filter'))
-                    <form action="/generate-pdf/report/filter-date" method="post">
-                        @csrf
-                        <input type="hidden" id="startDatePdf" name="startDatePdf" value={{ $start_date_pdf }}>
-                        <input type="hidden" id="endDatePdf" name="endDatePdf" value={{ $end_date_pdf }}>
-                        <button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                            <i class="fas fa-download fa-sm text-white-50"></i>
-                            Generate Report
-                        </button>
-                    </form>
+                        <form action="/generate-pdf/report/filter-date" method="post">
+                            @csrf
+                            <input type="hidden" id="startDatePdf" name="startDatePdf" value={{ $start_date_pdf }}>
+                            <input type="hidden" id="endDatePdf" name="endDatePdf" value={{ $end_date_pdf }}>
+                            <button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                <i class="fas fa-download fa-sm text-white-50"></i>
+                                Generate Report
+                            </button>
+                        </form>
                     @elseif (request()->is('report/filter/jenis'))
-                    <form action="/generate-pdf/report/filter-jenis" method="post">
-                        @csrf
-                        <input type="hidden" value={{ $input_jenis }} name="jenis">
-                        <button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                            <i class="fas fa-download fa-sm text-white-50"></i>
-                            Generate Report
-                        </button>
-                    </form>
+                        <form action="/generate-pdf/report/filter-jenis" method="post">
+                            @csrf
+                            <input type="hidden" value={{ $input_jenis }} name="jenis">
+                            <button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                <i class="fas fa-download fa-sm text-white-50"></i>
+                                Generate Report
+                            </button>
+                        </form>
                     @endif
                 </div>
                 <!-- DataTales Example -->
@@ -73,7 +73,7 @@
                                 <select class="form-select w-50" aria-label="Default select example" name="selectJenisMotor">
                                     <option selected>Jenis Motor</option>
                                     @foreach ($jenis as $j)
-                                    <option value="{{ $j->id }}">{{ $j->jenis }}</option>
+                                        <option value="{{ $j->id }}">{{ $j->jenis }}</option>
                                     @endforeach
                                 </select>
                                 <button type="submit" class="btn btn-primary ms-2">Search</button>
@@ -114,28 +114,31 @@
                                 </tfoot>
                                 <tbody>
                                     @foreach ($dataMotor as $data)
-                                    <tr>
-                                        <td>{{ $data->motor }}</td>
-                                        <td>{{ $data->plat_nomor }}</td>
-                                        <td>{{ $data->properti }}</td>
-                                        <td>{{ $data->jam_masuk->format('d, M:H.i') }}</td>
-                                        <td>{{ $data->jam_keluar != null ? $data->jam_keluar->format('d, M:H.i') : '' }}</td>
-                                        <td>{{ $data->jenis }}</td>
-                                        <td>Rp. {{ number_format($data->biaya, 0, ',', '.') }}</td>
-                                        <td>{{ $data->tipe_pembayaran }}</td>
-                                        <td>
-                                            <img src='{{ asset('storage/images/' . $data->bukti_bayar) }}' alt="" class="buktibayar" style="width: 100px; min-height: 0; max-height: 100px; object-fit: cover;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="sendImageToModal('{{ asset('storage/images/' . $data->bukti_bayar) }}')">
-                                        </td>
-                                        <td>
-                                            @if ($data->status == 'diproses')
-                                            <span class="badge rounded-pill text-bg-primary">Proses</span>
-                                            @elseif($data->status == 'selesai')
-                                            <span class="badge rounded-pill text-bg-success">Selesai</span>
-                                            @elseif($data->status == 'delete')
-                                            <span class="badge rounded-pill text-bg-danger">Dibatalkan</span>
-                                            @endif
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>{{ $data->motor }}</td>
+                                            <td>{{ $data->plat_nomor }}</td>
+                                            <td>{{ $data->properti }}</td>
+                                            <td>{{ $data->jam_masuk->format('d, M:H.i') }}</td>
+                                            <td>{{ $data->jam_keluar != null ? $data->jam_keluar->format('d, M:H.i') : '' }}</td>
+                                            <td>{{ $data->jenis }}</td>
+                                            <td>Rp. {{ number_format($data->biaya, 0, ',', '.') }}</td>
+                                            <td>{{ $data->tipe_pembayaran }}</td>
+                                            <td>
+                                                <img src='{{ asset('storage/images/' . $data->bukti_bayar) }}' alt="" class="buktibayar"
+                                                    style="width: 100px; min-height: 0; max-height: 100px; object-fit: cover;" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#imageModal" onclick="sendImageToModal('{{ asset('storage/images/' . $data->bukti_bayar) }}')"
+                                                >
+                                            </td>
+                                            <td>
+                                                @if ($data->status == 'diproses')
+                                                    <span class="badge rounded-pill text-bg-primary">Proses</span>
+                                                @elseif($data->status == 'selesai')
+                                                    <span class="badge rounded-pill text-bg-success">Selesai</span>
+                                                @elseif($data->status == 'delete')
+                                                    <span class="badge rounded-pill text-bg-danger">Dibatalkan</span>
+                                                @endif
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
 

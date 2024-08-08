@@ -41,6 +41,7 @@ Route::group(['middleware' => ['checkStatus']], function () {
   Route::get('/data-parkir/cash/{id}', [DataParkirController::class, 'cash'])->name('dataparkir.cash');
   Route::put('/data-parkir/transfer/{id}', [DataParkirController::class, 'transfer'])->name('dataparkir.transfer');
   Route::put('/data-parkir/komplain/{id}', [DataParkirController::class, 'komplain']);
+  Route::put('/data-parkir/edit-parkir/{id}', [DataParkirController::class, 'editParkir'])->name('dataparkir.edit-parkir');
 
   // pegawai
   Route::Resource('/data-pegawai', DataPegawaiController::class);

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Komplain;
+use App\Models\Merek;
+use App\Models\Motor;
 use App\Models\Parkir;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -14,11 +16,12 @@ class DataParkirController extends Controller
      */
     public function index()
     {
-        $dataMotor = Parkir::GetParkirDateNow();
-
         $data = [
             'title' => 'Detail Data Produk',
-            'dataMotor' => $dataMotor
+            'dataMotor' => Parkir::GetParkirDateNow(),
+            'motorForEdit' => Motor::getAllMotor(),
+            'merek' => Merek::all(),
+
         ];
 
         return view('transaksi.dataParkir', $data);
@@ -55,12 +58,15 @@ class DataParkirController extends Controller
         //
     }
 
-    // TODO: pindah ke model
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, int $id)
     {
+
+        $request->validate([
+            'inputKomplainProperti'         => 'required',
+        ]);
         $komplain = Komplain::create([
             'komplain' => $request->inputKomplainProperti,
             'status' => 'diproses',
@@ -98,6 +104,25 @@ class DataParkirController extends Controller
         Parkir::payWithTRansfer($id, Carbon::now(), $image->hashName());
         return redirect('/data-parkir');
     }
+
+    public function editParkir(Request $request, int $id)
+    {
+        $request->validate([
+            'merek'         => 'required|not_in:0',
+            'motor'         => 'required|not_in:0',
+            'platNomor'     => 'required',
+        ]);
+
+        Parkir::where('id', '=', $id)
+            ->update([
+                'id_motor' => $request->motor,
+                'plat_nomor' => $request->platNomor,
+                'properti' => $request->properti,
+            ]);
+
+        return redirect('/data-parkir');
+    }
+
 
     public function komplain($id, Request $request)
     {

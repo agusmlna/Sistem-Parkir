@@ -1,11 +1,11 @@
 @extends('layouts.main')
 
 @section('content')
-<!-- Page Wrapper -->
-<div id="wrapper">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
     @section('sidebar')
-    @include('layouts.sidebar')
+        @include('layouts.sidebar')
     @show
 
     <!-- Content Wrapper -->
@@ -16,12 +16,25 @@
 
             <!-- Topbar -->
             @section('topbar')
-            @include('layouts.topbar')
+                @include('layouts.topbar')
             @show
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
+                @error('inputGantiRugi')
+                    @include('layouts.alert', [
+                        'type' => 'danger',
+                        'message' => $message,
+                    ])
+                @enderror
+
+                @error('inputBiaya')
+                    @include('layouts.alert', [
+                        'type' => 'danger',
+                        'message' => $message,
+                    ])
+                @enderror
 
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800 fw-bold">Data Komplain</h1>
@@ -59,39 +72,42 @@
                                 </tfoot>
                                 <tbody>
                                     @php
-                                    $i = 0;
+                                        $i = 0;
                                     @endphp
 
                                     @foreach ($komplain as $k)
-                                    @php
-                                    $i++;
-                                    @endphp
-                                    <tr>
-                                        <td>{{ $i }}</td>
-                                        <td>{{ $k->plat_nomor }}</td>
-                                        <td>{{ $k->jam_masuk->format('H.i') }}</td>
-                                        <td>{{ $k->jam_keluar != null ? $k->jam_keluar->format('H.i') : '' }}</td>
-                                        <td>{{ $k->jenis }}</td>
-                                        <td>{{ $k->komplain }}</td>
-                                        <td>Rp. {{ number_format($k->biaya_ganti_rugi, 0, ',', '.') }}</td>
-                                        <td>
-                                            @if ($k->status == 'diproses')
-                                            <span class="badge rounded-pill text-bg-primary">Proses</span>
-                                            @elseif($k->status == 'selesai')
-                                            <span class="badge rounded-pill text-bg-success">Selesai</span>
-                                            @elseif($k->status == 'delete')
-                                            <span class="badge rounded-pill text-bg-danger">Dibatalkan</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#gantiRugi" onclick="openModalGantiRugi({{ $k }}); takeIdKomplain({{ $k->id_komplain }})" {{ $k->status == 'selesai' || $k->status == 'delete' ? 'disabled' : '' }}>
-                                                Ganti Rugi
-                                            </button>
+                                        @php
+                                            $i++;
+                                        @endphp
+                                        <tr>
+                                            <td>{{ $i }}</td>
+                                            <td>{{ $k->plat_nomor }}</td>
+                                            <td>{{ $k->jam_masuk->format('H.i') }}</td>
+                                            <td>{{ $k->jam_keluar != null ? $k->jam_keluar->format('H.i') : '' }}</td>
+                                            <td>{{ $k->jenis }}</td>
+                                            <td>{{ $k->komplain }}</td>
+                                            <td>Rp. {{ number_format($k->biaya_ganti_rugi, 0, ',', '.') }}</td>
+                                            <td>
+                                                @if ($k->status == 'diproses')
+                                                    <span class="badge rounded-pill text-bg-primary">Proses</span>
+                                                @elseif($k->status == 'selesai')
+                                                    <span class="badge rounded-pill text-bg-success">Selesai</span>
+                                                @elseif($k->status == 'delete')
+                                                    <span class="badge rounded-pill text-bg-danger">Dibatalkan</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#gantiRugi"
+                                                    onclick="openModalGantiRugi({{ $k }}); takeIdKomplain({{ $k->id_komplain }})"
+                                                    {{ $k->status == 'selesai' || $k->status == 'delete' ? 'disabled' : '' }}
+                                                >
+                                                    Ganti Rugi
+                                                </button>
 
 
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
 
@@ -141,13 +157,25 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="inputGantiRugi" class="form-label">Keterangan</label>
-                        <input type="text" class="form-control" id="inputGantiRugi" name="inputGantiRugi" aria-describedby="gantiHelp">
+                        <input type="text" class="form-control" id="inputGantiRugi" name="inputGantiRugi" aria-describedby="gantiHelp" @error('inputGantiRugi') is-invalid @enderror>
                         <div id="gantiHelp" class="form-text">Masukan Keterangan.</div>
+                        @error('inputGantiRugi')
+                            @include('layouts.alert', [
+                                'type' => 'danger',
+                                'message' => $message,
+                            ])
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="inputBiaya" class="form-label">Biaya</label>
-                        <input type="number" class="form-control" id="inputBiaya" name="inputBiaya" aria-describedby="gantiHelp">
+                        <input type="number" class="form-control" id="inputBiaya" name="inputBiaya" aria-describedby="gantiHelp" @error('inputBiaya') is-invalid @enderror>
                         <div id="gantiHelp" class="form-text">Masukan Biaya.</div>
+                        @error('inputBiaya')
+                            @include('layouts.alert', [
+                                'type' => 'danger',
+                                'message' => $message,
+                            ])
+                        @enderror
                     </div>
                 </div>
                 <div class="modal-footer">

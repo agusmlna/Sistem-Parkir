@@ -15,7 +15,7 @@ class Motor extends Model
     {
         return Motor::join('mereks', 'mereks.id', '=', 'motors.id_merek')
             ->join('jenis_motors', 'jenis_motors.id', '=', 'motors.id_jenis')
-            ->select('motors.*', 'mereks.merek', 'jenis_motors.jenis')
+            ->select('motors.*', 'mereks.merek', 'jenis_motors.jenis', 'jenis_motors.biaya')
             ->get();
     }
 }

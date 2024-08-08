@@ -39,8 +39,11 @@ class MotorController extends Controller
     {
         //validate form
         $request->validate([
-            'inputNamaMotor'         => 'required',
+            'inputNamaMotor'     => 'required',
+            'inputMerek'         => 'required|not_in:0',
+            'inputJenis'         => 'required|not_in:0',
         ]);
+
 
         Motor::create([
             'motor' => $request->inputNamaMotor,
@@ -72,6 +75,13 @@ class MotorController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        //validate form
+        $request->validate([
+            'inputEditNamaMotor'      => 'required',
+            'selectEditMerek'         => 'required|not_in:0',
+            'selectEditJenis'         => 'required|not_in:0',
+        ]);
+
         $motor = Motor::findOrFail($id);
 
         $motor->update([
